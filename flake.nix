@@ -32,26 +32,21 @@
     hyperion,
     ...
   }: let
-    # Import modular components
-    overlays = import ./overlays.nix {
-      inherit nixpkgs neovim-nightly rust-overlay;
-    };
-
     # System configurations
     systemConfigs = {
       darwinConfigurations.Mac =
         (import ./systems/darwin/personal.nix {
-          inherit darwin home-manager nixpkgs overlays;
+          inherit darwin home-manager nixpkgs neovim-nightly;
         }).darwinSystem;
 
       darwinConfigurations.WHM5006336 =
         (import ./systems/darwin/work.nix {
-          inherit darwin home-manager nixpkgs overlays;
+          inherit darwin home-manager nixpkgs neovim-nightly;
         }).darwinSystem;
 
       nixosConfigurations.hyperion =
         (import ./systems/nixos/hyperion.nix {
-          inherit nixpkgs home-manager overlays hyperion;
+          inherit nixpkgs home-manager neovim-nightly hyperion;
         })
         .nixosSystem;
     };
@@ -60,7 +55,7 @@
     systemOutputs = flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = overlays.dev;
+        overlays = [rust-overlay.overlays.default];
       };
       shells = import ./shells.nix {inherit pkgs;};
     in {
