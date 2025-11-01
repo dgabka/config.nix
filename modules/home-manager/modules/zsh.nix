@@ -6,7 +6,11 @@
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
+    autosuggestion.highlight = "fg=blue";
+    autosuggestion.strategy = ["history" "completion"];
     enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    defaultKeymap = "viins";
     dotDir = "${config.xdg.configHome}/zsh";
     history.ignorePatterns = ["rm *"];
     history.ignoreAllDups = true;
@@ -36,7 +40,6 @@
       node23 = "nix develop \"github:dgabka/config.nix#node23\" -c $SHELL";
       node24 = "nix develop \"github:dgabka/config.nix#node24\" -c $SHELL";
     };
-    syntaxHighlighting.enable = true;
-    initContent = lib.mkDefault (builtins.readFile ./zshContent.zsh);
+    initContent = lib.mkAfter (builtins.readFile ./zshContent.zsh);
   };
 }

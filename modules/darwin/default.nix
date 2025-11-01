@@ -1,10 +1,13 @@
 {pkgs, ...}: {
-  programs.zsh.enable = true;
-  environment.shells = [pkgs.zsh];
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+  programs.zsh.enable = true;
+  environment.shells = [pkgs.zsh];
   environment.systemPackages = with pkgs; [coreutils];
+  # completion for system packages?
+  environment.pathsToLink = ["/share/zsh"];
+
   fonts.packages = [../fonts];
   users.users.dgabka.home = "/Users/dgabka";
   users.users.dgabka.shell = pkgs.zsh;

@@ -1,5 +1,3 @@
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^E" edit-command-line
@@ -23,5 +21,3 @@ zle -N fzf-grep-widget
 bindkey '^[^F' fzf-grep-widget
 
 PATH=$HOME/.npm/bin:$PATH
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=blue"
