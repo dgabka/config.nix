@@ -1,13 +1,13 @@
 {lib, ...}: {
   programs.git = {
     enable = lib.mkDefault true;
-    aliases = lib.mkDefault {
-      co = "checkout";
-      s = "status";
-      sw = "switch";
-      rb = "rebase";
-    };
-    extraConfig = {
+    settings = {
+      alias = lib.mkDefault {
+        co = "checkout";
+        s = "status";
+        sw = "switch";
+        rb = "rebase";
+      };
       init.defaultBranch = "main";
       pull.rebase = lib.mkDefault true;
       user = {
