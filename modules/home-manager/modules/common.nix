@@ -48,9 +48,9 @@
     devbox
   ];
 
-  home.sessionVariables = lib.mkDefault {
-    EDITOR = "nvim";
-    TERM = "alacritty";
+  home.sessionVariables = {
+    EDITOR = lib.mkDefault "nvim";
+    TERM = lib.mkDefault "alacritty";
   };
 
   xdg.enable = lib.mkDefault true;
