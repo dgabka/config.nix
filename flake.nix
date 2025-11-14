@@ -40,7 +40,7 @@
         }).darwinSystem;
 
       darwinConfigurations.WHM5006336 =
-        (import ./systems/darwin/work.nix {
+        (import ./systems/darwin/wh.nix {
           inherit darwin home-manager nixpkgs neovim-nightly;
         }).darwinSystem;
 
