@@ -7,7 +7,10 @@
   darwinSystem = darwin.lib.darwinSystem {
     system = "aarch64-darwin";
     modules = [
-      ({...}: {nixpkgs.overlays = [neovim-nightly.overlays.default];})
+      ({...}: {
+        nixpkgs.overlays = [neovim-nightly.overlays.default];
+        nixpkgs.config.allowUnfree = true;
+      })
       ../../modules/darwin
       home-manager.darwinModules.home-manager
       {
