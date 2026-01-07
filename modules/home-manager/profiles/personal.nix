@@ -9,6 +9,7 @@
     ../modules/fd.nix
     ../modules/fzf.nix
     ../modules/git.nix
+    ../modules/neovide.nix
     ../modules/ripgrep.nix
     ../modules/starship.nix
     ../modules/tmux.nix

@@ -10,6 +10,7 @@
     ../modules/fzf.nix
     ../modules/git.nix
     ../modules/k9s.nix
+    ../modules/neovide.nix
     ../modules/ripgrep.nix
     ../modules/starship.nix
     ../modules/tmux.nix
@@ -27,6 +28,7 @@
     devbox
     pass
     gnupg
+    github-copilot-cli
   ];
 
   programs.zsh.shellAliases = {
