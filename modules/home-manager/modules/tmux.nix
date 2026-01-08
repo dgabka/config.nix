@@ -1,7 +1,16 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: let
+  sageveil = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "sageveil";
+    version = "unstable-2025-12-21";
+    rtpFilePath = "sageveil.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "sageveil";
+      repo = "tmux";
+      rev = "0.2.0";
+      sha256 = "sha256-JmurD+yHp+Eq/t7tAxJUmosoNV+xvFpbp9PdFCBfGCc=";
+    };
+  };
+in {
   programs.tmux = {
     enable = true;
     prefix = "C-a";
@@ -14,15 +23,13 @@
     baseIndex = 1;
 
     plugins = with pkgs; [
-      # {
-      #   plugin = sageveil-tmux;
-      #   extraConfig = ''
-      #     if-shell 'uname | grep -q Darwin' 'set-option -g default-command "reattach-to-user-namespace -l zsh"'
-      #     set -g @sageveil_show_pane_directory 'on'
-      #     set -g @sageveil_window_status_separator " │ "
-      #     set -g @sageveil_date_time '%a %d %b, %H:%M' # It accepts the date UNIX command format (man date for info)
-      #   '';
-      # }
+      {
+        plugin = sageveil;
+        extraConfig = ''
+          set -g @sv_show_session_count 'on'
+          set -g @sv_show_date_time 'on'
+        '';
+      }
       tmuxPlugins.yank
       {
         plugin = tmuxPlugins.resurrect;
