@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  fontFamily = "OperatorMono Nerd Font";
+  fontFamily = "JetBrainsMonoNL Nerd Font Mono";
 in {
   programs.neovide = {
     enable = true;
@@ -12,7 +12,7 @@ in {
         size = 17.0;
         normal = {
           family = "${fontFamily}";
-          style = "Light";
+          style = "ExtraLight";
         };
         bold = {
           family = "${fontFamily}";
@@ -20,7 +20,7 @@ in {
         };
         italic = {
           family = "${fontFamily}";
-          style = "Light Italic";
+          style = "ExtraLight Italic";
         };
         bold_italic = {
           family = "${fontFamily}";

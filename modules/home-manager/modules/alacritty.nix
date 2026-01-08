@@ -22,21 +22,21 @@ in {
         blinking = "Always";
         shape = "Block";
       };
-      font.size = lib.mkDefault 17;
+      font.size = lib.mkDefault 15;
       font.normal = {
-        family = "OperatorMono Nerd Font";
-        style = "Light";
+        family = "JetBrainsMonoNL Nerd Font Mono";
+        style = "ExtraLight";
       };
       font.italic = {
-        family = "OperatorMono Nerd Font";
-        style = "Light Italic";
+        family = "JetBrainsMonoNL Nerd Font Mono";
+        style = "ExtraLight Italic";
       };
       font.bold = {
-        family = "OperatorMono Nerd Font";
+        family = "JetBrainsMonoNL Nerd Font Mono";
         style = "Regular";
       };
       font.bold_italic = {
-        family = "OperatorMono Nerd Font";
+        family = "JetBrainsMonoNL Nerd Font Mono";
         style = "Italic";
       };
       font.offset = {
