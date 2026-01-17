@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ../modules/alacritty.nix
     ../modules/bat.nix
@@ -8,6 +12,7 @@
     ../modules/fzf.nix
     ../modules/git.nix
     ../modules/ripgrep.nix
+    ../modules/scripts.nix
     ../modules/starship.nix
     ../modules/tmux.nix
     ../modules/zsh.nix

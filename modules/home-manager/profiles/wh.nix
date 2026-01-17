@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ../modules/alacritty.nix
     ../modules/bat.nix
@@ -12,6 +16,7 @@
     ../modules/k9s.nix
     ../modules/neovide.nix
     ../modules/ripgrep.nix
+    ../modules/scripts.nix
     ../modules/starship.nix
     ../modules/tmux.nix
     ../modules/zsh.nix
@@ -41,9 +46,4 @@
       fnm use $1;
     }
   '';
-
-  home.sessionVariables = {
-    NIXPKGS_ALLOW_UNFREE = "1";
-    OBSIDIAN_NOTES_DIRECTORY = "/Users/dgabka/notes";
-  };
 }

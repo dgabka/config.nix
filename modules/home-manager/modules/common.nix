@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   home.stateVersion = "24.05";
@@ -51,6 +52,9 @@
   home.sessionVariables = {
     EDITOR = lib.mkDefault "nvim";
     TERM = lib.mkDefault "alacritty";
+    NIXPKGS_ALLOW_UNFREE = lib.mkDefault "1";
+    OBSIDIAN_VAULT = lib.mkDefault "${config.home.homeDirectory}/notes";
+    OBSIDIAN_QUICK_SUBDIR = lib.mkDefault "quick_notes";
   };
 
   xdg.enable = lib.mkDefault true;
