@@ -41,4 +41,9 @@
       fnm use $1;
     }
   '';
+
+  home.sessionVariables = {
+    NIXPKGS_ALLOW_UNFREE = "1";
+    OBSIDIAN_NOTES_DIRECTORY = "/Users/dgabka/notes";
+  };
 }
