@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ../modules/alacritty.nix
     ../modules/bat.nix
@@ -11,6 +15,7 @@
     ../modules/git.nix
     ../modules/neovide.nix
     ../modules/ripgrep.nix
+    ../modules/scripts.nix
     ../modules/starship.nix
     ../modules/tmux.nix
     ../modules/zsh.nix
@@ -24,7 +29,6 @@
   ];
 
   home.sessionVariables = {
-    NIXPKGS_ALLOW_UNFREE = "1";
-    OBSIDIAN_NOTES_DIRECTORY = "/Users/dgabka/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes";
+    OBSIDIAN_VAULT = "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes";
   };
 }
