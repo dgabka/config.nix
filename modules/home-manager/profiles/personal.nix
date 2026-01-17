@@ -22,4 +22,9 @@
     pass
     gnupg
   ];
+
+  home.sessionVariables = {
+    NIXPKGS_ALLOW_UNFREE = "1";
+    OBSIDIAN_NOTES_DIRECTORY = "/Users/dgabka/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes";
+  };
 }
