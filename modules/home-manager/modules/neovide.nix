@@ -3,13 +3,13 @@
   lib,
   ...
 }: let
-  fontFamily = "JetBrainsMonoNL Nerd Font Mono";
+  fontFamily = "JetBrainsMonoNL Nerd Font";
 in {
   programs.neovide = {
     enable = true;
     settings = {
       font = {
-        size = 17.0;
+        size = 14.0;
         normal = {
           family = "${fontFamily}";
           style = "ExtraLight";

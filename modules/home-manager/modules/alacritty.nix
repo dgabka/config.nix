@@ -24,19 +24,19 @@ in {
       };
       font.size = lib.mkDefault 15;
       font.normal = {
-        family = "JetBrainsMonoNL Nerd Font Mono";
+        family = "JetBrainsMonoNL Nerd Font";
         style = "ExtraLight";
       };
       font.italic = {
-        family = "JetBrainsMonoNL Nerd Font Mono";
+        family = "JetBrainsMonoNL Nerd Font";
         style = "ExtraLight Italic";
       };
       font.bold = {
-        family = "JetBrainsMonoNL Nerd Font Mono";
+        family = "JetBrainsMonoNL Nerd Font";
         style = "Regular";
       };
       font.bold_italic = {
-        family = "JetBrainsMonoNL Nerd Font Mono";
+        family = "JetBrainsMonoNL Nerd Font";
         style = "Italic";
       };
       font.offset = {
