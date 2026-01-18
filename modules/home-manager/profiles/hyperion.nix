@@ -11,6 +11,7 @@
     ../modules/fd.nix
     ../modules/fzf.nix
     ../modules/git.nix
+    ../modules/ghostty.nix
     ../modules/ripgrep.nix
     ../modules/scripts.nix
     ../modules/starship.nix

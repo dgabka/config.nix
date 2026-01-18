@@ -13,6 +13,7 @@
     ../modules/fd.nix
     ../modules/fzf.nix
     ../modules/git.nix
+    ../modules/ghostty.nix
     ../modules/k9s.nix
     ../modules/neovide.nix
     ../modules/ripgrep.nix
