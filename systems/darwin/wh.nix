@@ -12,6 +12,7 @@
         nixpkgs.config.allowUnfree = true;
       })
       ../../modules/darwin
+      ../../modules/darwin/wh.nix
       home-manager.darwinModules.home-manager
       {
         home-manager = {
