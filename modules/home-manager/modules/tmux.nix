@@ -14,7 +14,7 @@ in {
   programs.tmux = {
     enable = true;
     prefix = "C-a";
-    terminal = "alacritty";
+    terminal = "tmux-256color";
     clock24 = true;
     escapeTime = 10;
     sensibleOnTop = false;
