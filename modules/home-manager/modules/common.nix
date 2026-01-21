@@ -51,7 +51,7 @@
 
   home.sessionVariables = {
     EDITOR = lib.mkDefault "nvim";
-    TERM = lib.mkDefault "alacritty";
+    TERM = lib.mkDefault "xterm-ghostty";
     NIXPKGS_ALLOW_UNFREE = lib.mkDefault "1";
     OBSIDIAN_VAULT = lib.mkDefault "${config.home.homeDirectory}/notes";
   };
