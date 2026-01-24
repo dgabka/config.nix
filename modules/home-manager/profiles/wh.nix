@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   imports = [
@@ -19,6 +20,7 @@
     ../modules/ripgrep.nix
     ../modules/scripts.nix
     ../modules/starship.nix
+    ../modules/tmux-sessionizer.nix
     ../modules/tmux.nix
     ../modules/zsh.nix
   ];
@@ -46,5 +48,21 @@
       eval $(fnm env);
       fnm use $1;
     }
+  '';
+
+  xdg.configFile."tms/config.toml".text = lib.mkDefault ''
+    default_session = "main"
+
+    [[search_dirs]]
+    path = "${config.home.homeDirectory}/repos"
+    depth = 2
+
+    [[search_dirs]]
+    path = "${config.home.homeDirectory}/dotfiles"
+    depth = 1
+
+    [[search_dirs]]
+    path = "${config.home.homeDirectory}/williamhillplc/sports"
+    depth = 4
   '';
 }

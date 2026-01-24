@@ -15,7 +15,6 @@
     tree
     stow
     htop
-    tmux-sessionizer
 
     # language tools, LSPs, formatters, etc...
     # nix
