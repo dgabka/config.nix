@@ -18,6 +18,7 @@
     ../modules/ripgrep.nix
     ../modules/scripts.nix
     ../modules/starship.nix
+    ../modules/tmux-sessionizer.nix
     ../modules/tmux.nix
     ../modules/zsh.nix
   ];
