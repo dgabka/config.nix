@@ -33,7 +33,10 @@ in {
       tmuxPlugins.yank
       {
         plugin = tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents 'on'
+          set -g @resurrect-strategy-nvim 'session'
+        '';
       }
       {
         plugin = tmuxPlugins.continuum;
