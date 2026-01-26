@@ -50,17 +50,7 @@
     }
   '';
 
-  xdg.configFile."tms/config.toml".text = lib.mkDefault ''
-    default_session = "main"
-
-    [[search_dirs]]
-    path = "${config.home.homeDirectory}/repos"
-    depth = 2
-
-    [[search_dirs]]
-    path = "${config.home.homeDirectory}/dotfiles"
-    depth = 1
-
+  xdg.configFile."tms/config.toml".text = lib.mkAfter ''
     [[search_dirs]]
     path = "${config.home.homeDirectory}/williamhillplc/sports"
     depth = 4
