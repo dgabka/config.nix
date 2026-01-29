@@ -60,4 +60,21 @@
       vscode-langservers-extracted
     ];
   };
+
+  python = pkgs.mkShell {
+    name = "python-sh";
+    buildInputs = with pkgs; [
+      # Python
+      python314
+      uv
+
+      # LSP
+      pyright
+
+      # Linting / formatting / typing
+      ruff
+      black
+      mypy
+    ];
+  };
 }
