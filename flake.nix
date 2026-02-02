@@ -21,6 +21,16 @@
 
     hyperion.url = "git+ssh://git@github.com/dgabka/config.hyperion.nix.git";
     hyperion.flake = false;
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
   outputs = {
     nixpkgs,
@@ -30,18 +40,21 @@
     rust-overlay,
     flake-utils,
     hyperion,
+    nix-homebrew,
+    homebrew-core,
+    homebrew-cask,
     ...
   }: let
     # System configurations
     systemConfigs = {
       darwinConfigurations.Mac =
         (import ./systems/darwin/personal.nix {
-          inherit darwin home-manager nixpkgs neovim-nightly;
+          inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core;
         }).darwinSystem;
 
       darwinConfigurations.WHM5006336 =
         (import ./systems/darwin/wh.nix {
-          inherit darwin home-manager nixpkgs neovim-nightly;
+          inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core;
         }).darwinSystem;
 
       nixosConfigurations.hyperion =
