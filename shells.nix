@@ -76,5 +76,9 @@
       black
       mypy
     ];
+    shellHook = ''
+      export VIRTUAL_ENV=".venv"
+      export PATH="$PWD/.venv/bin:$PATH"
+    '';
   };
 }
