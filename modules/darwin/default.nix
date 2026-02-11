@@ -2,6 +2,7 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+  nix.settings.experimental-features = "nix-command flakes";
   programs.zsh.enable = true;
   environment.shells = [pkgs.zsh];
   environment.systemPackages = with pkgs; [coreutils];

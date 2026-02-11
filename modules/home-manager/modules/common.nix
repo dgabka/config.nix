@@ -38,7 +38,7 @@
     prettierd
     vscode-langservers-extracted
     # other
-    marksman
+    # marksman
     dockerfile-language-server
 
     # dev tools
