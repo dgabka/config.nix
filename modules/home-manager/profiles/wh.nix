@@ -16,7 +16,6 @@
     ../modules/git.nix
     ../modules/ghostty.nix
     ../modules/k9s.nix
-    ../modules/neovide.nix
     ../modules/ripgrep.nix
     ../modules/scripts.nix
     ../modules/starship.nix

@@ -5,6 +5,8 @@
     "ghostty"
     "iina"
     "neovide-app"
+    "brave-browser"
+    "bruno"
   ];
   homebrew.onActivation.cleanup = "zap";
 }

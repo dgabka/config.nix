@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{...}: let
   fontFamily = "JetBrainsMonoNL Nerd Font";
 in {
   programs.neovide = {
@@ -29,9 +25,4 @@ in {
       };
     };
   };
-  home.activation.neovide = lib.hm.dag.entryAfter ["writeBoundry"] ''
-    $DRY_RUN_CMD [ -f ~/Applications/Neovide.app ] && rm -rf ~/Applications/Neovide.app
-    $DRY_RUN_CMD cp -r ${pkgs.neovide}/Applications/Neovide.app/ ~/Applications
-    $DRY_RUN_CMD chmod -R 755 ~/Applications/Neovide.app
-  '';
 }
