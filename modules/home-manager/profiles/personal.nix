@@ -27,6 +27,7 @@
     gh
     pass
     gnupg
+    codex-acp
   ];
 
   home.sessionVariables = {
