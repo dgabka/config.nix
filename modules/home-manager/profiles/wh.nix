@@ -36,6 +36,7 @@
     pass
     gnupg
     github-copilot-cli
+    codex-acp
   ];
 
   programs.zsh.shellAliases = {
