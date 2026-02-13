@@ -2,7 +2,7 @@
   description = "config.nix";
   inputs = {
     # Main package source
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Manages link to home dir
     home-manager.url = "github:nix-community/home-manager/master";

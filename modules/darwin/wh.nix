@@ -4,7 +4,6 @@
   homebrew.casks = [
     "ghostty"
     "iina"
-    "neovide-app"
     "brave-browser"
     "bruno"
   ];

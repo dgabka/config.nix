@@ -3,7 +3,6 @@
   homebrew.enable = true;
   homebrew.casks = [
     "ghostty"
-    "neovide-app"
     "bruno"
     "brave-browser"
     "obsidian"
