@@ -15,6 +15,7 @@
     ../modules/fzf.nix
     ../modules/git.nix
     ../modules/ghostty.nix
+    ../modules/glab.nix
     ../modules/k9s.nix
     ../modules/ripgrep.nix
     ../modules/scripts.nix
