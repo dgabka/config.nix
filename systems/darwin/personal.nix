@@ -5,6 +5,7 @@
   nix-homebrew,
   homebrew-core,
   homebrew-cask,
+  llm-agents,
   ...
 }: {
   darwinSystem = darwin.lib.darwinSystem {
@@ -18,6 +19,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
+          extraSpecialArgs = {inherit llm-agents;};
           users.dgabka = import ../../modules/home-manager/profiles/personal.nix;
         };
       }

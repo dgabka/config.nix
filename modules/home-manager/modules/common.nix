@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  llm-agents,
   ...
 }: {
   home.stateVersion = "24.05";
@@ -46,6 +47,11 @@
     pre-commit
     docker
     devbox
+
+    # llm agents
+    llm-agents.packages.${pkgs.system}.codex
+    llm-agents.packages.${pkgs.system}."codex-acp"
+    llm-agents.packages.${pkgs.system}."copilot-cli"
   ];
 
   home.sessionVariables = {
