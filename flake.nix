@@ -18,6 +18,8 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
     flake-utils.url = "github:numtide/flake-utils";
+    llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents.inputs.nixpkgs.follows = "nixpkgs";
 
     hyperion.url = "git+ssh://git@github.com/dgabka/config.hyperion.nix.git";
     hyperion.flake = false;
@@ -39,6 +41,7 @@
     neovim-nightly,
     rust-overlay,
     flake-utils,
+    llm-agents,
     hyperion,
     nix-homebrew,
     homebrew-core,
@@ -49,12 +52,12 @@
     systemConfigs = {
       darwinConfigurations.Mac =
         (import ./systems/darwin/personal.nix {
-          inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core;
+          inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
         }).darwinSystem;
 
       darwinConfigurations.WHM5006336 =
         (import ./systems/darwin/wh.nix {
-          inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core;
+          inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
         }).darwinSystem;
 
       nixosConfigurations.hyperion =

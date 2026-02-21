@@ -2,7 +2,7 @@
   fontFamily = "JetBrainsMonoNL Nerd Font";
 in {
   programs.neovide = {
-    enable = true;
+    enable = false;
     settings = {
       font = {
         size = 14.0;
