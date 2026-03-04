@@ -28,8 +28,8 @@
   node20 = pkgs.mkShell {
     name = "node20-sh";
     buildInputs = with pkgs; [
-      nodejs_20
       pnpm
+      nodejs_20
       yarn
       typescript
       vtsls
@@ -40,8 +40,8 @@
   node22 = pkgs.mkShell {
     name = "node22-sh";
     buildInputs = with pkgs; [
-      nodejs_22
       pnpm
+      nodejs_22
       yarn
       typescript
       vtsls
@@ -52,8 +52,8 @@
   node24 = pkgs.mkShell {
     name = "node24-sh";
     buildInputs = with pkgs; [
-      nodejs_24
       pnpm
+      nodejs_24
       yarn
       typescript
       vtsls

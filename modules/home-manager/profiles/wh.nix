@@ -36,6 +36,8 @@
     devbox
     pass
     gnupg
+    codex-acp
+    cacert
   ];
 
   programs.zsh.shellAliases = {
@@ -54,4 +56,9 @@
     path = "${config.home.homeDirectory}/williamhillplc/sports"
     depth = 4
   '';
+
+  home.sessionVariables = {
+    NIX_SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+    SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+  };
 }

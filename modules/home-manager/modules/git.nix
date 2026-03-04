@@ -2,7 +2,7 @@
   programs.git = {
     enable = lib.mkDefault true;
     includes = [
-      { path = "~/.gitconfig.local"; }
+      {path = "~/.gitconfig.local";}
     ];
     settings = {
       alias = lib.mkDefault {
@@ -15,6 +15,9 @@
       merge = {
         tool = "nvimdiff";
         conflictstyle = "diff3";
+      };
+      diff = {
+        tool = "nvimdiff";
       };
       pull.rebase = lib.mkDefault true;
       user = {
