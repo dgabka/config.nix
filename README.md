@@ -41,9 +41,13 @@ chsh -s "/etc/profiles/per-user/$(whoami)/bin/zsh"
 ### Switch configuration
 
 ```
-sudo nix run nix-darwin -- switch --flake .#personal
-sudo nix run nix-darwin -- switch --flake .#work
+make switch
+sudo darwin-rebuild switch --flake .#personal
+sudo darwin-rebuild switch --flake .#work
+sudo nixos-rebuild switch --flake .#hyperion
 ```
+
+`make switch` auto-detects the current OS and hostname and runs `darwin-rebuild` or `nixos-rebuild` with the matching flake host.
 
 ### Update inputs
 
