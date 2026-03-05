@@ -4,6 +4,7 @@
   home-manager,
   hyperion,
   neovim-nightly,
+  llm-agents,
   ...
 }: {
   nixosSystem = nixpkgs.lib.nixosSystem {
@@ -18,6 +19,7 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {inherit llm-agents;};
         home-manager.users.dgabka = import ../../modules/home-manager/profiles/hyperion.nix;
       }
     ];
