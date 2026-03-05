@@ -12,9 +12,7 @@
   allowUnfree ? false,
 }: let
   commonModules = [
-    ({
-      ...
-    }: {
+    ({...}: {
       nixpkgs.overlays = [neovim-nightly.overlays.default];
       nixpkgs.config.allowUnfree = allowUnfree;
     })

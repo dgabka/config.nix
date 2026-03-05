@@ -37,7 +37,6 @@
       rust-sh = "nix develop \"github:dgabka/config.nix#rust\" -c $SHELL";
       node20 = "nix develop \"github:dgabka/config.nix#node20\" -c $SHELL";
       node22 = "nix develop \"github:dgabka/config.nix#node22\" -c $SHELL";
-      node23 = "nix develop \"github:dgabka/config.nix#node23\" -c $SHELL";
       node24 = "nix develop \"github:dgabka/config.nix#node24\" -c $SHELL";
     };
     initContent = lib.mkAfter (builtins.readFile ../../../assets/zsh/content.zsh);

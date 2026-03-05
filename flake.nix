@@ -47,47 +47,13 @@
     homebrew-core,
     homebrew-cask,
     ...
-  }: let
-    personalDarwin =
-      (import ./systems/darwin/personal.nix {
-        inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
-      }).darwinSystem;
-
-    workDarwin =
-      (import ./systems/darwin/wh.nix {
-        inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
-      }).darwinSystem;
-
-    # System configurations
-    systemConfigs = {
-      darwinConfigurations = rec {
-        personal = personalDarwin;
-        work = workDarwin;
-        # Backward-compatible aliases
-        "Dawids-MacBook-Pro" = personal;
-        Mac = personal;
-        WHM5006336 = work;
-      };
-
-      nixosConfigurations.hyperion =
-        (import ./systems/nixos/hyperion.nix {
-          inherit nixpkgs home-manager neovim-nightly hyperion llm-agents;
-        })
-        .nixosSystem;
-    };
-
-    # Create per-system outputs using flake-utils
-    systemOutputs = flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [rust-overlay.overlays.default];
-      };
-      shells = import ./shells.nix {inherit pkgs;};
-    in {
-      # Re-export the shells from the dedicated file
-      devShells = shells;
-    });
+  } @ inputs: let
+    darwinConfigurations = import ./outputs/darwin.nix inputs;
+    nixosConfigurations = import ./outputs/nixos.nix inputs;
+    devShellOutputs = import ./outputs/devshells.nix inputs;
   in
-    # Merge the two output sets
-    systemConfigs // systemOutputs;
+    {
+      inherit darwinConfigurations nixosConfigurations;
+    }
+    // devShellOutputs;
 }
