@@ -8,39 +8,10 @@
   llm-agents,
   ...
 }: {
-  darwinSystem = darwin.lib.darwinSystem {
+  darwinSystem = import ../../lib/mkDarwinHost.nix {
+    inherit darwin home-manager neovim-nightly nix-homebrew homebrew-core homebrew-cask llm-agents;
     system = "x86_64-darwin";
-    modules = [
-      ({...}: {nixpkgs.overlays = [neovim-nightly.overlays.default];})
-      ../../modules/darwin
-      ../../modules/darwin/personal.nix
-      home-manager.darwinModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {inherit llm-agents;};
-          users.dgabka = import ../../modules/home-manager/profiles/personal.nix;
-        };
-      }
-      nix-homebrew.darwinModules.nix-homebrew
-      {
-        nix-homebrew = {
-          # Install Homebrew under the default prefix
-          enable = true;
-          # User owning the Homebrew prefix
-          user = "dgabka";
-          # Optional: Declarative tap management
-          taps = {
-            "homebrew/homebrew-core" = homebrew-core;
-            "homebrew/homebrew-cask" = homebrew-cask;
-          };
-          # Optional: Enable fully-declarative tap management
-          #
-          # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-          mutableTaps = false;
-        };
-      }
-    ];
+    hostModule = ../../modules/darwin/personal.nix;
+    homeProfile = ../../modules/home-manager/profiles/personal.nix;
   };
 }

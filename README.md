@@ -21,6 +21,10 @@ Note: Make sure darwin configuration for the system is available.
 sudo nix run nix-darwin -- switch
 ```
 
+Flake host keys:
+- `.#personal` (aliases: `.#Dawids-MacBook-Pro`, `.#Mac`)
+- `.#work` (alias: `.#WHM5006336`)
+
 3. Change shell manually
 ```
 echo "/etc/profiles/per-user/$(whoami)/bin/zsh" | sudo tee -a /etc/shells
