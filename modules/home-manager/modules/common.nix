@@ -51,7 +51,6 @@
     # llm agents
     llm-agents.packages.${pkgs.system}.codex
     llm-agents.packages.${pkgs.system}."codex-acp"
-    llm-agents.packages.${pkgs.system}."copilot-cli"
   ];
 
   home.sessionVariables = {

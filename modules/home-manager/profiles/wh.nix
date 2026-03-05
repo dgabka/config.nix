@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  llm-agents,
   ...
 }: {
   imports = [
@@ -38,6 +39,8 @@
     gnupg
     codex-acp
     cacert
+
+    llm-agents.packages.${pkgs.system}."copilot-cli"
   ];
 
   programs.zsh.shellAliases = {
