@@ -47,6 +47,6 @@ in {
       }
     ];
 
-    extraConfig = builtins.readFile ./tmuxExtra.conf;
+    extraConfig = builtins.readFile ../../../assets/tmux/extra.conf;
   };
 }

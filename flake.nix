@@ -48,17 +48,26 @@
     homebrew-cask,
     ...
   }: let
+    personalDarwin =
+      (import ./systems/darwin/personal.nix {
+        inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
+      }).darwinSystem;
+
+    workDarwin =
+      (import ./systems/darwin/wh.nix {
+        inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
+      }).darwinSystem;
+
     # System configurations
     systemConfigs = {
-      darwinConfigurations.Mac =
-        (import ./systems/darwin/personal.nix {
-          inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
-        }).darwinSystem;
-
-      darwinConfigurations.WHM5006336 =
-        (import ./systems/darwin/wh.nix {
-          inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
-        }).darwinSystem;
+      darwinConfigurations = rec {
+        personal = personalDarwin;
+        work = workDarwin;
+        # Backward-compatible aliases
+        "Dawids-MacBook-Pro" = personal;
+        Mac = personal;
+        WHM5006336 = work;
+      };
 
       nixosConfigurations.hyperion =
         (import ./systems/nixos/hyperion.nix {

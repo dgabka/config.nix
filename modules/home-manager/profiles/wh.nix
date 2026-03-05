@@ -6,24 +6,11 @@
   ...
 }: {
   imports = [
-    ../modules/alacritty.nix
-    ../modules/bat.nix
+    ./base.nix
     ../modules/codex.nix
-    ../modules/common.nix
     ../modules/darwin.nix
-    ../modules/direnv.nix
-    ../modules/fd.nix
-    ../modules/fzf.nix
-    ../modules/git.nix
-    ../modules/ghostty.nix
     ../modules/glab.nix
     ../modules/k9s.nix
-    ../modules/ripgrep.nix
-    ../modules/scripts.nix
-    ../modules/starship.nix
-    ../modules/tmux-sessionizer.nix
-    ../modules/tmux.nix
-    ../modules/zsh.nix
   ];
 
   home.packages = with pkgs; [
