@@ -3,15 +3,22 @@
   lib,
   config,
   llm-agents,
+  neovim-nightly,
   ...
-}: {
+}: let
+  nightlyPkgs = import pkgs.path {
+    inherit (pkgs) system;
+    overlays = [neovim-nightly.overlays.default];
+    config = pkgs.config;
+  };
+in {
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
     # common tools
     curl
     tree-sitter
-    neovim
+    nightlyPkgs.neovim
     jq
     tree
     stow
