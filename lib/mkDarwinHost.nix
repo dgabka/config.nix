@@ -12,10 +12,7 @@
   allowUnfree ? false,
 }: let
   commonModules = [
-    ({...}: {
-      nixpkgs.overlays = [neovim-nightly.overlays.default];
-      nixpkgs.config.allowUnfree = allowUnfree;
-    })
+    ({...}: {nixpkgs.config.allowUnfree = allowUnfree;})
     ../modules/darwin
     hostModule
     home-manager.darwinModules.home-manager
@@ -23,7 +20,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit llm-agents;};
+        extraSpecialArgs = {inherit llm-agents neovim-nightly;};
         users.dgabka = import homeProfile;
       };
     }

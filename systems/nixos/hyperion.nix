@@ -2,8 +2,8 @@
 {
   nixpkgs,
   home-manager,
-  hyperion,
   neovim-nightly,
+  hyperion,
   llm-agents,
   ...
 }: {
@@ -13,13 +13,12 @@
       fontsPath = ../../modules/fonts;
     };
     modules = [
-      ({...}: {nixpkgs.overlays = [neovim-nightly.overlays.default];})
       (hyperion + "/configuration.nix")
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {inherit llm-agents;};
+        home-manager.extraSpecialArgs = {inherit llm-agents neovim-nightly;};
         home-manager.users.dgabka = import ../../modules/home-manager/profiles/hyperion.nix;
       }
     ];

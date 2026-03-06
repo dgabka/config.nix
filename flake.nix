@@ -1,7 +1,11 @@
 {
   description = "config.nix";
+  nixConfig = {
+    extra-substituters = ["https://cache.numtide.com" "https://nix-community.cachix.org"];
+    extra-trusted-public-keys = ["niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
+  };
   inputs = {
-    # Main package source
+    # Main package source (kept on unstable to match nix-darwin master)
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Manages link to home dir
@@ -12,7 +16,7 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    # NeoVim Nightly
+    # Keep Neovim nightly available, but do not overlay globally
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
 
