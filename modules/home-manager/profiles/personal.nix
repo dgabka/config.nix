@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  llm-agents,
   ...
 }: {
   imports = [
@@ -14,6 +15,8 @@
     gh
     pass
     gnupg
+
+    llm-agents.packages.${pkgs.system}.claude-code
   ];
 
   home.sessionVariables = {
