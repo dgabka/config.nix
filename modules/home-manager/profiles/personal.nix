@@ -4,19 +4,11 @@
   llm-agents,
   ...
 }: {
-  imports = [
-    ./base.nix
-    ../modules/codex.nix
-    ../modules/darwin.nix
-  ];
+  imports = [./base.nix ./personal-base.nix ../modules/codex.nix ../modules/darwin.nix];
 
-  home.packages = with pkgs; [
-    rename
-    gh
-    pass
-    gnupg
-
+  home.packages = [
     llm-agents.packages.${pkgs.system}.claude-code
+    llm-agents.packages.${pkgs.system}.claude-code-acp
   ];
 
   home.sessionVariables = {
