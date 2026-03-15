@@ -9,21 +9,24 @@
   llm-agents,
   ...
 }: let
-  personalDarwin =
-    (import ../systems/darwin/personal.nix {
-      inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
-    }).darwinSystem;
-
-  workDarwin =
-    (import ../systems/darwin/wh.nix {
-      inherit darwin home-manager nixpkgs neovim-nightly nix-homebrew homebrew-cask homebrew-core llm-agents;
-    }).darwinSystem;
+  mkDarwinHost = import ../lib/mkDarwinHost.nix;
 in rec {
-  personal = personalDarwin;
-  work = workDarwin;
+  personal = mkDarwinHost {
+    inherit darwin home-manager neovim-nightly nix-homebrew homebrew-core homebrew-cask llm-agents;
+    system = "x86_64-darwin";
+    hostModule = ../modules/darwin/personal.nix;
+    homeProfile = ../modules/home-manager/profiles/personal.nix;
+  };
 
-  # Backward-compatible aliases
+  work = mkDarwinHost {
+    inherit darwin home-manager neovim-nightly nix-homebrew homebrew-core homebrew-cask llm-agents;
+    system = "aarch64-darwin";
+    hostModule = ../modules/darwin/wh.nix;
+    homeProfile = ../modules/home-manager/profiles/wh.nix;
+    allowUnfree = true;
+  };
+
+  # Real machine hostnames
   "Dawids-MacBook-Pro" = personal;
-  Mac = personal;
   WHM5006336 = work;
 }
