@@ -8,7 +8,7 @@ check:
 	nix flake check
 
 validate:
-	nix eval '.#darwinConfigurations."Dawids-MacBook-Pro".system'
+	nix eval .#darwinConfigurations.personal.system
 	nix eval .#darwinConfigurations.work.system
 	nix eval .#devShells.x86_64-linux.default.name
 	nix eval .#nixosConfigurations --apply builtins.attrNames
