@@ -1,13 +1,13 @@
 {pkgs, ...}: let
   sageveil = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "sageveil";
-    version = "unstable-2025-12-21";
+    version = "0.3.3";
     rtpFilePath = "sageveil.tmux";
     src = pkgs.fetchFromGitHub {
       owner = "sageveil";
       repo = "tmux";
-      rev = "0.2.0";
-      sha256 = "sha256-JmurD+yHp+Eq/t7tAxJUmosoNV+xvFpbp9PdFCBfGCc=";
+      rev = "0.3.3";
+      sha256 = "sha256-Ai8xF/D6wDC6ghXvHxUqU1RLb6sQVWXviXSBg7M9EZ4=";
     };
   };
 in {
