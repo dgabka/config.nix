@@ -8,7 +8,7 @@
     pkgs.tmux-sessionizer
   ];
   home.sessionVariables.TMS_CONFIG_FILE = "${config.home.homeDirectory}/.config/tms/config.toml";
-  xdg.configFile."tms/config.toml".text = lib.mkDefault ''
+  xdg.configFile."tms/config.toml".text = lib.mkBefore ''
     default_session = "main"
     search_submodules = false
     session_sort_order = "LastAttached"
