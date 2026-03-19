@@ -44,6 +44,10 @@ This is a Nix flake managing system configuration for two macOS hosts and one Ni
 - `nix-homebrew` — manages Homebrew taps declaratively (immutable taps)
 - `llm-agents` — provides claude-code, codex, codex-acp, copilot-cli packages
 
+## Git
+
+Do not include `Co-Authored-By: Claude` or any Claude attribution in commit messages.
+
 ## Formatting
 
 Nix files use `alejandra`. YAML files use `yamlfmt`. Pre-commit hooks enforce both. Run `make fmt` before committing.
