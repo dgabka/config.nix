@@ -41,13 +41,13 @@ chsh -s "/etc/profiles/per-user/$(whoami)/bin/zsh"
 ### Switch configuration
 
 ```
-make switch
+just switch
 sudo darwin-rebuild switch --flake .#personal
 sudo darwin-rebuild switch --flake .#work
 sudo nixos-rebuild switch --flake .#hyperion
 ```
 
-`make switch` auto-detects the current OS and hostname and runs `darwin-rebuild` or `nixos-rebuild` with the matching flake host.
+`just switch` auto-detects the current OS and runs `darwin-rebuild` or `nixos-rebuild` with the repository flake.
 
 ### Update inputs
 
@@ -86,7 +86,7 @@ nix eval .#devShells.x86_64-linux.default.name
 Or use the repository targets:
 
 ```
-make fmt
-make validate
-make check
+just fmt
+just validate
+just check
 ```

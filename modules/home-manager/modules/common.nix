@@ -23,6 +23,7 @@ in {
     tree
     stow
     htop
+    just
 
     # language tools, LSPs, formatters, etc...
     # nix
