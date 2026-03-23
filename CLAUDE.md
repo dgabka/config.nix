@@ -5,14 +5,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-make fmt       # Format all Nix files (alejandra) and YAML files (yamlfmt)
-make check     # Run nix flake check
-make validate  # Evaluate key flake outputs to verify they parse correctly
-make switch    # Auto-detect OS/hostname and apply the matching configuration
-make update    # Update all flake inputs (nix flake update)
+just fmt       # Format all Nix files (alejandra) and YAML files (yamlfmt)
+just check     # Run nix flake check
+just validate  # Evaluate key flake outputs to verify they parse correctly
+just switch    # Auto-detect OS and apply the matching configuration command
+just update    # Update all flake inputs (nix flake update)
 ```
 
-For `make switch`: on macOS it runs `sudo darwin-rebuild switch --flake ".#<target>"`, on NixOS it runs `sudo nixos-rebuild switch --flake ".#<target>"`. The target is resolved from hostname, falling back to `personal` (Darwin) or `hyperion` (NixOS).
+For `just switch`: on macOS it runs `sudo darwin-rebuild switch --flake .`, and on NixOS it runs `sudo nixos-rebuild switch --flake .`.
 
 ## Architecture
 
@@ -50,4 +50,4 @@ Do not include `Co-Authored-By: Claude` or any Claude attribution in commit mess
 
 ## Formatting
 
-Nix files use `alejandra`. YAML files use `yamlfmt`. Pre-commit hooks enforce both. Run `make fmt` before committing.
+Nix files use `alejandra`. YAML files use `yamlfmt`. Pre-commit hooks enforce both. Run `just fmt` before committing.
