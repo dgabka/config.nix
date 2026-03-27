@@ -51,11 +51,18 @@
 
   xdg.configFile."tms/config.toml".text = lib.mkMerge [
     (lib.mkBefore ''
-      bookmarks = ["${config.home.homeDirectory}/repos/horizon-cms.git"]
+      bookmarks = [
+        "${config.home.homeDirectory}/repos/horizon-cms.git",
+        "${config.home.homeDirectory}/repos/cms-bcl-service.git",
+      ]
     '')
     (lib.mkAfter ''
       [[search_dirs]]
       path = "${config.home.homeDirectory}/repos/horizon-cms.git"
+      depth = 3
+
+      [[search_dirs]]
+      path = "${config.home.homeDirectory}/repos/cms-bcl-service.git"
       depth = 3
 
       [[search_dirs]]
