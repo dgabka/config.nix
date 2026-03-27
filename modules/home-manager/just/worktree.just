@@ -1,14 +1,11 @@
 # Shared git worktree + tms helpers.
 #
-# Per-repo bootstrap:
-#   set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
-#   import "~/.config/just/worktree.just"
-#
 # Example target justfile:
 #   set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
+#   base := "main"
 #   import "~/.config/just/worktree.just"
 
-wt branch base="develop":
+wt branch base="":
   @git-worktree-tms open "{{branch}}" "{{base}}"
 
 wt-path branch:

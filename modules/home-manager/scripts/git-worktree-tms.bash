@@ -78,6 +78,27 @@ resolve_base_ref() {
   exit 1
 }
 
+default_base_branch() {
+  local remote_head=""
+
+  remote_head="$(git_root symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null || true)"
+  if [[ -n "$remote_head" ]]; then
+    printf '%s\n' "${remote_head#origin/}"
+    return 0
+  fi
+
+  local candidate
+  for candidate in main master develop; do
+    if branch_exists_local "$candidate" || branch_exists_remote "$candidate"; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+
+  printf 'Could not determine a default base branch. Pass one explicitly.\n' >&2
+  exit 1
+}
+
 target_path() {
   local branch="$1"
   printf '%s/%s' "$DEFAULT_ROOT" "$branch"
@@ -85,7 +106,7 @@ target_path() {
 
 ensure_worktree() {
   local branch="$1"
-  local base="${2:-develop}"
+  local base="${2:-$(default_base_branch)}"
   local existing
 
   existing="$(worktree_for_branch "$branch")"
@@ -105,7 +126,8 @@ ensure_worktree() {
   fi
 
   if branch_exists_remote "$branch"; then
-    git_root worktree add --track -b "$branch" "$path" "origin/$branch" >/dev/null
+    git_root worktree add -b "$branch" "$path" "origin/$branch" >/dev/null
+    git -C "$path" branch --set-upstream-to="origin/$branch" "$branch" >/dev/null
     printf '%s\n' "$path"
     return 0
   fi
@@ -155,7 +177,7 @@ close_tmux_windows_for_path() {
 
 cmd_open() {
   local branch="${1:-}"
-  local base="${2:-develop}"
+  local base="${2:-}"
 
   [[ -n "$branch" ]] || {
     usage >&2
@@ -214,8 +236,6 @@ cmd_remove() {
     had_registered_worktree="0"
   fi
 
-  close_tmux_windows_for_path "$path"
-
   if [[ "$had_registered_worktree" == "0" ]]; then
     refresh_tms "$REPO_NAME"
     printf 'No worktree found for branch: %s\n' "$branch" >&2
@@ -228,6 +248,7 @@ cmd_remove() {
     git_root worktree remove "$path"
   fi
 
+  close_tmux_windows_for_path "$path"
   refresh_tms "$REPO_NAME"
 }
 
