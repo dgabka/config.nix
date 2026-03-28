@@ -32,6 +32,18 @@
       gcob = "git checkout -b";
       glog = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
       gloga = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
+      grb = "git rebase";
+      grbc = "git rebase --continue";
+      grba = "git rebase --abort";
+      gap = "git add -p";
+
+      j = "just";
+      n = "nvim";
+
+      dc = "docker compose";
+      dcu = "docker compose up -d";
+      dcub = "docker compose up -d --build";
+      dcd = "docker compose down";
 
       devshell = "nix develop \"github:dgabka/config.nix\" -c $SHELL";
       rust-sh = "nix develop \"github:dgabka/config.nix#rust\" -c $SHELL";
