@@ -13,6 +13,15 @@
 }: let
   commonModules = [
     ({...}: {nixpkgs.config.allowUnfree = allowUnfree;})
+    ({...}: {
+      nixpkgs.overlays = [
+        (final: prev: {
+          direnv = prev.direnv.overrideAttrs (old: {
+            env = (old.env or {}) // {CGO_ENABLED = "1";};
+          });
+        })
+      ];
+    })
     ../modules/darwin
     hostModule
     home-manager.darwinModules.home-manager

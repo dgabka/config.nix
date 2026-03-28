@@ -26,7 +26,7 @@
     gnupg
     cacert
 
-    llm-agents.packages.${pkgs.system}."copilot-cli"
+    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}."copilot-cli"
   ];
 
   programs.zsh.shellAliases = {
