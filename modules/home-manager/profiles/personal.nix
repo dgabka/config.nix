@@ -4,7 +4,7 @@
   llm-agents,
   ...
 }: {
-  imports = [./base.nix ./personal-base.nix ../modules/codex.nix ../modules/darwin.nix];
+  imports = [./base.nix ./personal-base.nix ../modules/claude.nix ../modules/codex.nix ../modules/darwin.nix];
 
   home.packages = [
     llm-agents.packages.${pkgs.system}.claude-code
