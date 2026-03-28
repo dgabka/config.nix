@@ -7,7 +7,7 @@
   ...
 }: let
   nightlyPkgs = import pkgs.path {
-    inherit (pkgs) system;
+    system = pkgs.stdenv.hostPlatform.system;
     overlays = [neovim-nightly.overlays.default];
     config = pkgs.config;
   };
@@ -57,8 +57,8 @@ in {
     devbox
 
     # llm agents
-    llm-agents.packages.${pkgs.system}.codex
-    llm-agents.packages.${pkgs.system}."codex-acp"
+    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
+    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}."codex-acp"
   ];
 
   home.sessionVariables = {
