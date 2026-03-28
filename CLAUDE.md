@@ -36,6 +36,9 @@ This is a Nix flake managing system configuration for two macOS hosts and one Ni
 - `modules/home-manager/modules/common.nix` — installs neovim-nightly, LSPs, formatters, and sets session variables
 - `modules/home-manager/modules/` — individual tool configurations (one file per tool)
 
+**Skills:**
+- `assets/skills/<skill>/SKILL.md` — shared agent skills deployed to both `~/.claude/skills/` (Claude Code) and `~/.codex/skills/` (Codex) via `claude.nix` and `codex.nix`
+
 **Key inputs:**
 - `nixpkgs-unstable` — main package source
 - `home-manager` — user environment management
