@@ -2,10 +2,10 @@
   home.packages = [
     # Keep the zsh shebang from the script file.
     (pkgs.writeScriptBin "obsidian-quick-note"
-      (builtins.readFile ../scripts/obsidian-quick-note.zsh))
+      (builtins.readFile ../../../assets/scripts/obsidian-quick-note.zsh))
     (pkgs.writeShellScriptBin "git-worktree-tms"
-      (builtins.readFile ../scripts/git-worktree-tms.bash))
+      (builtins.readFile ../../../assets/scripts/git-worktree-tms.bash))
   ];
 
-  xdg.configFile."just/worktree.just".source = ../just/worktree.just;
+  xdg.configFile."just/worktree.just".source = ../../../assets/just/worktree.just;
 }
