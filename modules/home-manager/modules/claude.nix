@@ -1,8 +1,11 @@
-{...}: {
+{...}: let
+  skillsDir = ../../../assets/skills;
+  skillNames = builtins.filter (skill: (builtins.readDir skillsDir).${skill} == "directory") (builtins.attrNames (builtins.readDir skillsDir));
+in {
   home.file = builtins.listToAttrs (
-    map (file: {
-      name = ".claude/commands/${file}";
-      value.source = ../../../assets/claude/commands/${file};
-    }) (builtins.attrNames (builtins.readDir ../../../assets/claude/commands))
+    map (skill: {
+      name = ".claude/skills/${skill}";
+      value.source = skillsDir + "/${skill}";
+    }) skillNames
   );
 }
