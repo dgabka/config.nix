@@ -6,12 +6,16 @@ This repository contains NixOS and Nix Darwin configurations organized by system
 - `systems/` holds host-specific configs (e.g. `systems/darwin/personal.nix`, `systems/nixos/hyperion.nix`).
 - `modules/` contains reusable modules and profiles, including `modules/home-manager/modules/` and `modules/home-manager/profiles/`.
 - `modules/fonts/` stores bundled font assets.
+- `assets/skills/` stores shared agent skills (deployed to `~/.claude/skills/` and `~/.codex/skills/` for Claude Code and Codex respectively).
 - `shells.nix` defines dev shells exported by the flake.
 
 ## Build, Test, and Development Commands
-- `sudo nix run nix-darwin -- switch` applies the active Darwin configuration (see `README.md` for setup).
-- `nix develop` enters a dev shell from `shells.nix` (select with `nix develop .#<shell>` if needed).
-- `nix flake check` runs flake checks if configured.
+- `just fmt` — format all Nix files (alejandra) and YAML files (yamlfmt).
+- `just check` — run `nix flake check`.
+- `just validate` — evaluate key flake outputs to verify they parse correctly.
+- `just switch` — auto-detect OS and apply the matching configuration (`sudo darwin-rebuild switch --flake .` on macOS, `sudo nixos-rebuild switch --flake .` on NixOS).
+- `just update` — update all flake inputs (`nix flake update`).
+- `nix develop .#<shell>` — enter a named dev shell from `shells.nix` (default, rust, node20/22/24, python).
 
 ## Coding Style & Naming Conventions
 - Indentation: follow existing Nix formatting (two spaces is common in this repo).
