@@ -1,3 +1,9 @@
+---
+name: nvim-log
+description: Log neovim config changes to the decision log. Use this when the user asks to log, record, or document neovim/nvim changes made in this session or recently in the repo.
+disable-model-invocation: true
+---
+
 Log neovim config changes to the decision log at $OBSIDIAN_VAULT/10-projects/dotfiles/nvim/config-nvim-decision-log.md.
 
 Steps:
