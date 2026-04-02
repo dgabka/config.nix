@@ -37,7 +37,7 @@ in {
     yaml-language-server
     yamlfmt
     # shell tools
-    nodePackages_latest.bash-language-server
+    bash-language-server
     shellcheck
     shfmt
     # javascript tools
