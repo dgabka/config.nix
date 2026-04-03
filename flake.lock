@@ -181,11 +181,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1775161894,
-        "narHash": "sha256-t1Kf5jTz8YVzoCg3kiYY5hKLlmB5W6+uTLFI48dstFM=",
+        "lastModified": 1775171248,
+        "narHash": "sha256-RRs3wNXDnHHLP9v1r2QTBAYoaXU3XNHSVu8ejy56k90=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "ed2d9d262fcef52c9471bde799a24dd61e591f4a",
+        "rev": "2ce6689439a285c6566f240c728b5a7b7eefb103",
         "type": "github"
       },
       "original": {
@@ -197,11 +197,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1775166083,
-        "narHash": "sha256-MwzoW7roDjfdOvz3GgbHFZuSgnjzqTrAv4WHNlIqO/Y=",
+        "lastModified": 1775169440,
+        "narHash": "sha256-X03+ho/m6RmnIOTjhbbiUXkDJ8Pe3DYAvg51WqLwCLI=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "aeb41ed9084031cc76450dfefbdfa95769d0757a",
+        "rev": "8ba59f981cfa9373cdefdee11baf7aeedf67039d",
         "type": "github"
       },
       "original": {
@@ -213,11 +213,11 @@
     "hyperion": {
       "flake": false,
       "locked": {
-        "lastModified": 1775091228,
-        "narHash": "sha256-BqsFVWPUmDQ5hLZ15A4nPhSMgiW8DcvR4nkiRBsPx1k=",
+        "lastModified": 1775171636,
+        "narHash": "sha256-IkGaT2kwhBhx9LpcsyZtbGEqVnqSZQHLzW7l4YaLwlw=",
         "ref": "refs/heads/main",
-        "rev": "5e6e99221599ff093d8519870bf36e702529c1b6",
-        "revCount": 11,
+        "rev": "2ee494a7351f01fc79486929b4f410b4442dc04d",
+        "revCount": 12,
         "type": "git",
         "url": "ssh://git@github.com/dgabka/config.hyperion.nix.git"
       },
