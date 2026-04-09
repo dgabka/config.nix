@@ -6,6 +6,7 @@
     "iina"
     "brave-browser"
     "bruno"
+    "amethyst"
   ];
   homebrew.onActivation.cleanup = "zap";
 }
