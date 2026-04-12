@@ -14,7 +14,7 @@
   alacrittyTerminfoSrc = "${pkgs.alacritty.src}/extra/alacritty.info";
 in {
   programs.alacritty = {
-    enable = true;
+    enable = false;
     settings = {
       cursor.blink_interval = 500;
       cursor.blink_timeout = 0;

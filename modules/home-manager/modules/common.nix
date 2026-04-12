@@ -55,18 +55,5 @@ in {
     pre-commit
     docker
     devbox
-
-    # llm agents
-    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
-    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}."codex-acp"
   ];
-
-  home.sessionVariables = {
-    EDITOR = lib.mkDefault "nvim";
-    TERM = lib.mkDefault "xterm-ghostty";
-    NIXPKGS_ALLOW_UNFREE = lib.mkDefault "1";
-    OBSIDIAN_VAULT = lib.mkDefault "${config.home.homeDirectory}/notes";
-  };
-
-  xdg.enable = lib.mkDefault true;
 }

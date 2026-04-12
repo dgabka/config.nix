@@ -54,6 +54,7 @@
       bookmarks = [
         "${config.home.homeDirectory}/repos/horizon-cms.git",
         "${config.home.homeDirectory}/repos/cms-bcl-service.git",
+        "${config.home.sessionVariables.OBSIDIAN_VAULT}",
       ]
     '')
     (lib.mkAfter ''

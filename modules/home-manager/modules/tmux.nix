@@ -42,7 +42,10 @@ in {
         plugin = tmuxPlugins.continuum;
         extraConfig = ''
           set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '10' # minutes
+          # Resurrect restores pane cwd, but only from the last Continuum save.
+          # Keep the autosave interval short so reboots don't roll pane paths
+          # back to an older snapshot.
+          set -g @continuum-save-interval '1' # minutes
         '';
       }
     ];

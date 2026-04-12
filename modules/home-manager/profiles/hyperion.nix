@@ -1,4 +1,9 @@
-{...}: {
-  imports = [./base.nix ./personal-base.nix];
-  programs.alacritty.settings.font.size = 12;
+{pkgs, ...}: {
+  imports = [./base.nix ../modules/codex];
+  home.packages = with pkgs; [
+    rename
+    gh
+    pass
+    gnupg
+  ];
 }
