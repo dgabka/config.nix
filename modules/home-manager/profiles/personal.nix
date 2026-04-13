@@ -24,7 +24,7 @@
     OBSIDIAN_VAULT = config.home.sessionVariables.TERMINUS_VAULT;
   };
 
-  xdg.configFile."tms/config.toml".text = lib.mkAfter ''
+  xdg.configFile."tms/config.toml".text = lib.mkBefore ''
     bookmarks = [
       "${config.home.sessionVariables.TERMINUS_VAULT}",
       "${config.home.sessionVariables.WILLIAM_HILL_VAULT}"
