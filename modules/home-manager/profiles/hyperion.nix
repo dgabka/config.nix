@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./base.nix ../modules/codex];
+  imports = [./base.nix ../modules/codex.nix];
   home.packages = with pkgs; [
     rename
     gh
