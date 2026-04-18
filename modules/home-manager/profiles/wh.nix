@@ -4,13 +4,12 @@
   lib,
   llm-agents,
   ...
-}: let
-  forge = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.forge;
-in {
+}: {
   imports = [
     ./base.nix
     ../modules/codex.nix
     ../modules/darwin.nix
+    ../modules/forge.nix
     ../modules/glab.nix
     ../modules/k9s.nix
   ];
@@ -21,30 +20,17 @@ in {
     kubectl
     kubectx
     glab
-    fnm
     colima
-    devbox
     pass
     gnupg
     cacert
 
     llm-agents.packages.${pkgs.stdenv.hostPlatform.system}."copilot-cli"
-    forge
   ];
 
   programs.zsh.shellAliases = {
     sports = "cd ~/williamhillplc/sports/";
   };
-
-  programs.zsh.initContent = ''
-    useFnm() {
-      eval $(fnm env);
-      fnm use $1;
-    }
-
-    export FORGE_BIN="${lib.getExe forge}"
-    source <($FORGE_BIN zsh plugin)
-  '';
 
   xdg.configFile."tms/config.toml".text = lib.mkMerge [
     (lib.mkBefore ''

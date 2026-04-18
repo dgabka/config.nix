@@ -9,6 +9,7 @@
     ../modules/claude.nix
     ../modules/codex.nix
     ../modules/darwin.nix
+    ../modules/forge.nix
   ];
 
   home.packages = [
@@ -19,15 +20,12 @@
   ];
 
   home.sessionVariables = {
-    TERMINUS_VAULT = "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/Terminus";
-    WILLIAM_HILL_VAULT = "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/WilliamHill";
-    OBSIDIAN_VAULT = config.home.sessionVariables.TERMINUS_VAULT;
+    OBSIDIAN_VAULT = "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/Terminus";
   };
 
   xdg.configFile."tms/config.toml".text = lib.mkBefore ''
     bookmarks = [
-      "${config.home.sessionVariables.TERMINUS_VAULT}",
-      "${config.home.sessionVariables.WILLIAM_HILL_VAULT}"
+      "${config.home.sessionVariables.OBSIDIAN_VAULT}"
     ]
   '';
 }
