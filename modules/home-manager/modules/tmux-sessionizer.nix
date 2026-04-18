@@ -8,6 +8,9 @@
     pkgs.tmux-sessionizer
   ];
   home.sessionVariables.TMS_CONFIG_FILE = "${config.home.homeDirectory}/.config/tms/config.toml";
+  programs.tmux.extraConfig = lib.mkAfter ''
+    set-environment -g TMS_CONFIG_FILE "${config.home.homeDirectory}/.config/tms/config.toml"
+  '';
   xdg.configFile."tms/config.toml".text = lib.mkBefore ''
     default_session = "main"
     search_submodules = false

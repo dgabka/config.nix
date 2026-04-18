@@ -25,5 +25,12 @@ switch:
     exit 1
   fi
 
-update:
-  nix flake update
+update input='':
+  #!/usr/bin/env sh
+  set -eu
+
+  if [ -n "{{input}}" ]; then
+    nix flake update "{{input}}"
+  else
+    nix flake update
+  fi

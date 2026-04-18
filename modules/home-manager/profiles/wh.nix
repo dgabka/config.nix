@@ -4,7 +4,9 @@
   lib,
   llm-agents,
   ...
-}: {
+}: let
+  forge = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.forge;
+in {
   imports = [
     ./base.nix
     ../modules/codex.nix
@@ -27,6 +29,7 @@
     cacert
 
     llm-agents.packages.${pkgs.stdenv.hostPlatform.system}."copilot-cli"
+    forge
   ];
 
   programs.zsh.shellAliases = {
@@ -39,14 +42,8 @@
       fnm use $1;
     }
 
-    hrz() {
-      tms open-session horizon-cms.git
-      tms refresh horizon-cms.git
-    }
-  '';
-
-  programs.tmux.extraConfig = lib.mkAfter ''
-    bind C-h run-shell "tms open-session horizon-cms.git && tms refresh horizon-cms.git"
+    export FORGE_BIN="${lib.getExe forge}"
+    source <($FORGE_BIN zsh plugin)
   '';
 
   xdg.configFile."tms/config.toml".text = lib.mkMerge [
@@ -68,7 +65,7 @@
 
       [[search_dirs]]
       path = "${config.home.homeDirectory}/williamhillplc/sports"
-      depth = 4
+      depth = 5
     '')
   ];
 
