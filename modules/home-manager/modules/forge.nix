@@ -14,7 +14,7 @@ in {
 
   home.file = builtins.listToAttrs (
     map (skill: {
-      name = ".forge/skills/${skill}";
+      name = ".agents/skills/${skill}";
       value.source = skillsDir + "/${skill}";
     })
     skillNames

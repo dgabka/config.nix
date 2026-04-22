@@ -9,7 +9,7 @@ This repository is a Nix flake for macOS and NixOS environments.
 - `modules/home-manager/modules/` contains reusable Home Manager modules.
 - `modules/home-manager/profiles/` contains profile composition for shared and machine-specific user environments.
 - `modules/fonts/` stores bundled font assets used by system configuration.
-- `assets/skills/` is the source of truth for shared agent skills; these are linked into `~/.claude/skills/`, `~/.codex/skills/`, and `~/.forge/skills/`.
+- `assets/skills/` is the source of truth for shared agent skills; these are linked into `~/.claude/skills/`, `~/.codex/skills/`, and `~/.agents/skills/`.
 - `shells.nix` defines development shells exported through the flake.
 
 ## Host and Profile Layout
