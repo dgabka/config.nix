@@ -28,7 +28,6 @@ No dedicated test framework is present. Use `nix flake check` for any flake-defi
 
 ## Commit & Pull Request Guidelines
 - Commit messages in history are short, lowercase, and action-oriented (e.g. “update flake”, “fix tmux theme plugin”). Follow that style.
-- PRs should describe the target system(s), the modules touched, and any manual steps required to apply changes.
 
 ## Agent-Specific Instructions
 Follow `AGENTS.md` for repo-specific collaboration rules. Keep changes minimal, and prefer updating existing modules over adding new ones.
