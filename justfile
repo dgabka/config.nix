@@ -11,6 +11,8 @@ validate:
   nix eval .#devShells.x86_64-linux.default.name
   nix eval .#nixosConfigurations --apply builtins.attrNames
 
+alias s := switch
+
 switch:
   #!/usr/bin/env sh
   set -eu
@@ -24,6 +26,8 @@ switch:
     echo "Unsupported OS: $os" >&2
     exit 1
   fi
+
+alias u := update
 
 update input='':
   #!/usr/bin/env sh
