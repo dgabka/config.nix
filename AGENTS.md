@@ -1,33 +1,72 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository contains NixOS and Nix Darwin configurations organized by system and module:
-- `flake.nix` defines flake inputs and system outputs.
-- `systems/` holds host-specific configs (e.g. `systems/darwin/personal.nix`, `systems/nixos/hyperion.nix`).
-- `modules/` contains reusable modules and profiles, including `modules/home-manager/modules/` and `modules/home-manager/profiles/`.
-- `modules/fonts/` stores bundled font assets.
-- `assets/skills/` stores shared agent skills (deployed to `~/.claude/skills/` and `~/.codex/skills/` for Claude Code and Codex respectively).
-- `shells.nix` defines dev shells exported by the flake.
+This repository is a Nix flake for macOS and NixOS environments.
+
+- `flake.nix` is the main entry point and delegates outputs to `outputs/darwin.nix`, `outputs/nixos.nix`, and `outputs/devshells.nix`.
+- `lib/mkDarwinHost.nix` and `lib/mkNixosHost.nix` contain the shared host-construction logic.
+- `modules/darwin/` contains shared Darwin defaults plus host-specific Darwin modules.
+- `modules/home-manager/modules/` contains reusable Home Manager modules.
+- `modules/home-manager/profiles/` contains profile composition for shared and machine-specific user environments.
+- `modules/fonts/` stores bundled font assets used by system configuration.
+- `assets/skills/` is the source of truth for shared agent skills; these are linked into `~/.claude/skills/`, `~/.codex/skills/`, and `~/.forge/skills/`.
+- `shells.nix` defines development shells exported through the flake.
+
+## Host and Profile Layout
+- Darwin hosts are defined in `outputs/darwin.nix`: `personal` and `work`.
+- NixOS host output is currently `hyperion`.
+- `hyperion` uses an external host configuration flake input, so local changes here typically affect shared modules, Home Manager profiles, or special arguments rather than an in-repo system file.
+- Shared user-level defaults belong in `modules/home-manager/profiles/base.nix`.
+- Machine- or context-specific user changes belong in `modules/home-manager/profiles/personal.nix`, `modules/home-manager/profiles/wh.nix`, and `modules/home-manager/profiles/hyperion.nix`.
 
 ## Build, Test, and Development Commands
-- `just fmt` — format all Nix files (alejandra) and YAML files (yamlfmt).
+- `just fmt` — format all Nix and YAML files.
+- `just validate` — evaluate key Darwin, NixOS, and dev shell outputs.
 - `just check` — run `nix flake check`.
-- `just validate` — evaluate key flake outputs to verify they parse correctly.
-- `just switch` — auto-detect OS and apply the matching configuration (`sudo darwin-rebuild switch --flake .` on macOS, `sudo nixos-rebuild switch --flake .` on NixOS).
-- `just update` — update all flake inputs (`nix flake update`).
-- `nix develop .#<shell>` — enter a named dev shell from `shells.nix` (default, rust, node20/22/24, python).
+- `just switch` — apply the current machine configuration (`darwin-rebuild` on macOS, `nixos-rebuild` on Linux).
+- `just update` — update all flake inputs.
+- `just update <input>` — update a single flake input.
+- `nix develop .#<shell>` — enter a named dev shell from `shells.nix`.
+- `nix log <drv>` — inspect logs for failed derivations during evaluation or rebuild troubleshooting.
+
+Available shells currently include:
+- `default`
+- `rust`
+- `node20`
+- `node22`
+- `node24`
+- `python`
+
+## Change Placement Rules
+- Prefer editing an existing module or profile over adding a new file.
+- Put shared CLI, shell, editor, and tooling changes in `modules/home-manager/modules/` or `modules/home-manager/profiles/base.nix`.
+- Put personal/work-specific user environment changes in the matching profile file.
+- Put macOS system defaults, Homebrew configuration, and OS-level settings in `modules/darwin/`.
+- Keep skill-linking behavior aligned across `modules/home-manager/modules/claude.nix`, `modules/home-manager/modules/codex.nix`, and `modules/home-manager/modules/forge.nix`.
 
 ## Coding Style & Naming Conventions
-- Indentation: follow existing Nix formatting (two spaces is common in this repo).
-- Nix formatting: use Alejandra (`pre-commit` hook: `alejandra-system`).
-- YAML formatting: `yamlfmt` via `pre-commit`.
-- Naming: keep module and profile filenames descriptive and lowercase (e.g. `modules/home-manager/modules/git.nix`).
+- Follow existing Nix formatting conventions and run `just fmt`.
+- Keep module and profile filenames descriptive and lowercase.
+- Prefer small, composable modules with explicit imports over large host-specific blocks.
+- Reuse existing Home Manager patterns already present in the repo: `home.packages`, `programs.*`, `xdg.configFile`, and `home.file`.
 
-## Testing Guidelines
-No dedicated test framework is present. Use `nix flake check` for any flake-defined checks and validate by applying the relevant system configuration.
+## Validation Guidelines
+- For flake wiring, host output, or module changes, run `just validate` and `just check`.
+- If a build or check fails with a derivation path, inspect it with `nix log <drv>`.
+- For formatting-related changes, run `just fmt`.
+- For dev shell changes, verify the relevant shell still evaluates with `nix develop .#<shell>`.
+- For agent or skill changes, verify that shared skills still map consistently into Claude, Codex, and Forge destinations.
 
 ## Commit & Pull Request Guidelines
-- Commit messages in history are short, lowercase, and action-oriented (e.g. “update flake”, “fix tmux theme plugin”). Follow that style.
+- Keep commit messages short, lowercase, and action-oriented.
+- Keep changes narrowly scoped.
+- Prefer extending existing patterns over introducing parallel abstractions.
+- In pull request summaries, mention the affected host, profile, or shared module scope when relevant.
 
 ## Agent-Specific Instructions
-Follow `AGENTS.md` for repo-specific collaboration rules. Keep changes minimal, and prefer updating existing modules over adding new ones.
+- Do not assume host definitions live in a `systems/` directory; follow the flake output wiring instead.
+- Check both shared and host-specific layers before making recommendations: flake outputs, host builders, shared modules, and profile composition.
+- If a change affects all environments, update the shared layer.
+- If a change is machine-specific, keep it in the smallest appropriate host/profile file.
+- When touching agent tooling, treat `assets/skills/` as the shared source of truth.
+
