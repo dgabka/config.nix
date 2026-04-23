@@ -26,8 +26,14 @@ wt-refresh session="":
 wt-rm branch:
   @git-worktree-tms remove "{{branch}}"
 
+wt-rm-pick:
+  @git-worktree-tms remove-picked
+
 wt-rm-force branch:
   @git-worktree-tms remove "{{branch}}" --force
+
+wt-rm-pick-force:
+  @git-worktree-tms remove-picked --force
 
 wt-prune:
   @git-worktree-tms prune

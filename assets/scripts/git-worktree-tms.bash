@@ -28,6 +28,7 @@ Usage:
   git-worktree-tms list
   git-worktree-tms refresh [session]
   git-worktree-tms remove <branch> [--force]
+  git-worktree-tms remove-picked [--force]
   git-worktree-tms prune
 EOF
 }
@@ -104,6 +105,80 @@ target_path() {
   printf '%s/%s' "$DEFAULT_ROOT" "$branch"
 }
 
+require_command() {
+  local cmd="$1"
+
+  if command -v "$cmd" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  printf '%s is not installed.\n' "$cmd" >&2
+  exit 1
+}
+
+worktree_picker_entries() {
+  local main_worktree_path=""
+  local path=""
+  local branch=""
+  local entries=()
+  local line
+
+  while IFS= read -r line; do
+    case "$line" in
+      worktree\ *)
+        path="${line#worktree }"
+        if [[ -z "$main_worktree_path" ]]; then
+          main_worktree_path="$path"
+        fi
+        ;;
+      branch\ refs/heads/*)
+        branch="${line#branch refs/heads/}"
+        if [[ "$path" != "$main_worktree_path" ]]; then
+          entries+=("$branch"$'\t'"$path")
+        fi
+        ;;
+    esac
+  done < <(git_root worktree list --porcelain)
+
+  if [[ ${#entries[@]} -eq 0 ]]; then
+    printf 'No linked worktrees available to remove.\n' >&2
+    return 1
+  fi
+
+  printf '%s\n' "${entries[@]}"
+}
+
+pick_worktree_branches() {
+  require_command fzf
+
+  local selected=""
+
+  selected="$(
+    worktree_picker_entries \
+      | fzf \
+          --multi \
+          --delimiter=$'\t' \
+          --with-nth=1,2 \
+          --prompt='Remove worktree > ' \
+          --header='tab to mark, enter to remove' \
+          --preview-window='right,60%' \
+          --preview='bash -lc '"'"'
+            line="$1"
+            branch="$(printf "%s" "$line" | cut -f1)"
+            path="$(printf "%s" "$line" | cut -f2-)"
+            printf "branch: %s\npath: %s\n\n" "$branch" "$path"
+            git -C "$path" status --short --branch 2>/dev/null || true
+            printf "\nrecent commits:\n"
+            git -C "$path" log --oneline -n 5 2>/dev/null || true
+          '"'"' _ {}'
+  )" || return 1
+
+  while IFS=$'\t' read -r branch _; do
+    [[ -n "$branch" ]] || continue
+    printf '%s\n' "$branch"
+  done <<<"$selected"
+}
+
 ensure_worktree() {
   local branch="$1"
   local base="${2:-$(default_base_branch)}"
@@ -175,6 +250,32 @@ close_tmux_windows_for_path() {
   done <<<"$window_ids"
 }
 
+remove_worktree_branch() {
+  local branch="$1"
+  local flag="${2:-}"
+  local path
+  local had_registered_worktree="1"
+
+  path="$(worktree_for_branch "$branch")"
+  if [[ -z "$path" ]]; then
+    path="$(target_path "$branch")"
+    had_registered_worktree="0"
+  fi
+
+  if [[ "$had_registered_worktree" == "0" ]]; then
+    printf 'No worktree found for branch: %s\n' "$branch" >&2
+    return 1
+  fi
+
+  if [[ "$flag" == "--force" ]]; then
+    git_root worktree remove --force "$path"
+  else
+    git_root worktree remove "$path"
+  fi
+
+  close_tmux_windows_for_path "$path"
+}
+
 cmd_open() {
   local branch="${1:-}"
   local base="${2:-}"
@@ -222,34 +323,42 @@ cmd_refresh() {
 cmd_remove() {
   local branch="${1:-}"
   local flag="${2:-}"
-  local path
-  local had_registered_worktree="1"
 
   [[ -n "$branch" ]] || {
     usage >&2
     exit 1
   }
 
-  path="$(worktree_for_branch "$branch")"
-  if [[ -z "$path" ]]; then
-    path="$(target_path "$branch")"
-    had_registered_worktree="0"
-  fi
-
-  if [[ "$had_registered_worktree" == "0" ]]; then
-    refresh_tms "$REPO_NAME"
-    printf 'No worktree found for branch: %s\n' "$branch" >&2
-    exit 1
-  fi
-
-  if [[ "$flag" == "--force" ]]; then
-    git_root worktree remove --force "$path"
-  else
-    git_root worktree remove "$path"
-  fi
-
-  close_tmux_windows_for_path "$path"
+  remove_worktree_branch "$branch" "$flag"
   refresh_tms "$REPO_NAME"
+}
+
+cmd_remove_picked() {
+  local flag="${1:-}"
+  local selected=""
+  local branch
+  local removed_any="0"
+  local had_error="0"
+
+  selected="$(pick_worktree_branches)" || return 0
+  [[ -n "$selected" ]] || return 0
+
+  while IFS= read -r branch; do
+    [[ -n "$branch" ]] || continue
+    if remove_worktree_branch "$branch" "$flag"; then
+      removed_any="1"
+    else
+      had_error="1"
+    fi
+  done <<<"$selected"
+
+  if [[ "$removed_any" == "1" ]]; then
+    refresh_tms "$REPO_NAME"
+  fi
+
+  if [[ "$had_error" == "1" ]]; then
+    return 1
+  fi
 }
 
 cmd_prune() {
@@ -266,6 +375,7 @@ main() {
     list) cmd_list ;;
     refresh) cmd_refresh "$@" ;;
     remove) cmd_remove "$@" ;;
+    remove-picked) cmd_remove_picked "$@" ;;
     prune) cmd_prune ;;
     *)
       usage >&2
