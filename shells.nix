@@ -9,7 +9,7 @@
 
       # Node.js tools
       nodejs
-      (pnpm.override { nodejs = nodejs; })
+      (pnpm.override {nodejs = nodejs;})
       yarn
       typescript
       vtsls
@@ -28,7 +28,7 @@
   node20 = pkgs.mkShell {
     name = "node20-sh";
     buildInputs = with pkgs; [
-      (pnpm.override { nodejs = nodejs_20; })
+      (pnpm.override {nodejs = nodejs_20;})
       nodejs_20
       yarn
       typescript
@@ -40,7 +40,7 @@
   node22 = pkgs.mkShell {
     name = "node22-sh";
     buildInputs = with pkgs; [
-      (pnpm.override { nodejs = nodejs_22; })
+      (pnpm.override {nodejs = nodejs_22;})
       nodejs_22
       yarn
       typescript
@@ -52,7 +52,7 @@
   node24 = pkgs.mkShell {
     name = "node24-sh";
     buildInputs = with pkgs; [
-      (pnpm.override { nodejs = nodejs_24; })
+      (pnpm.override {nodejs = nodejs_24;})
       nodejs_24
       yarn
       typescript
