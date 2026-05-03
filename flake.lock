@@ -214,11 +214,11 @@
     "hyperion": {
       "flake": false,
       "locked": {
-        "lastModified": 1776121902,
-        "narHash": "sha256-nc95GfffP6f+qGGzBRWhVJxi3A5sluj6IIW3RYfNE9o=",
+        "lastModified": 1777769119,
+        "narHash": "sha256-mEz1CQu691goIW8/bxFdUPffXKGkS7toNPtssRZdRq8=",
         "ref": "refs/heads/main",
-        "rev": "42bc0e9089082a17c835f4910827fe994c0ebb23",
-        "revCount": 14,
+        "rev": "533bba103f932f46dc4f7ca83e7087acf9355fa9",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@github.com/dgabka/config.hyperion.nix.git"
       },
