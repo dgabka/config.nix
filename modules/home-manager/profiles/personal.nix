@@ -10,13 +10,16 @@
     ../modules/codex.nix
     ../modules/darwin.nix
     ../modules/forge.nix
+    ../modules/k9s.nix
   ];
 
-  home.packages = [
-    pkgs.rename
-    pkgs.gh
-    pkgs.pass
-    pkgs.gnupg
+  home.packages = with pkgs; [
+    rename
+    gh
+    pass
+    gnupg
+    kubectl
+    kubectx
   ];
 
   home.sessionVariables = {
