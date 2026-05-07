@@ -18,6 +18,8 @@
     gh
     pass
     gnupg
+    age
+    sops
     kubectl
     kubectx
   ];
