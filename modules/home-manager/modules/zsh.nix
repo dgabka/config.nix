@@ -51,6 +51,9 @@
       node22 = "nix develop \"github:dgabka/config.nix#node22\" -c $SHELL";
       node24 = "nix develop \"github:dgabka/config.nix#node24\" -c $SHELL";
     };
-    initContent = lib.mkAfter (builtins.readFile ../../../assets/zsh/content.zsh);
+    initContent = lib.mkAfter ''
+      ${builtins.readFile ../../../assets/zsh/content.zsh}
+      ${builtins.readFile ../../../assets/zsh/commit.zsh}
+    '';
   };
 }

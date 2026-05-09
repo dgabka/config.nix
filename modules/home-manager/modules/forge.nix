@@ -21,7 +21,7 @@ in {
   );
 
   programs.zsh.initContent = lib.mkAfter ''
-    export FORGE_BIN="${lib.getExe forge}"
-    source <($FORGE_BIN zsh plugin)
+    # export FORGE_BIN="${lib.getExe forge}"
+    # source <($FORGE_BIN zsh plugin)
   '';
 }
