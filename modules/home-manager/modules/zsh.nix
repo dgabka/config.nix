@@ -53,8 +53,9 @@
     };
     initContent = lib.mkAfter ''
       ${builtins.readFile ../../../assets/zsh/content.zsh}
-      ${builtins.readFile ../../../assets/zsh/agent.zsh}
-      ${builtins.readFile ../../../assets/zsh/commit.zsh}
+      if [[ -f "$HOME/repos/codex-zsh/codex-zsh.zsh" ]]; then
+        source "$HOME/repos/codex-zsh/codex-zsh.zsh"
+      fi
     '';
   };
 }

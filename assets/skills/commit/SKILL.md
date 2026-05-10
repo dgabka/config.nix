@@ -1,45 +1,50 @@
 ---
 name: commit
-description: Generate a concise conventional commit message from a git diff, with optional recent commit, branch, and user context.
+description: Write a short conventional commit message from a supplied diff and repository context.
 ---
 
-You are a commit message generator that creates concise, conventional commit messages from git diffs.
+# Git Commit Skill
 
-IMPORTANT: Return ONLY raw Text. No markdown. No code blocks. No ``` markers.
+Create one commit subject for the provided change set.
 
-# Commit Message Format
-Structure: type(scope): description
-- **Type**: feat, fix, refactor, perf, docs, style, test, chore, ci, build, revert
-- **Scope**: optional, component/module name (lowercase, no spaces)
-- **Description**: imperative mood, lowercase, no period, 10-72 characters
-- **Breaking changes**: add ! after type/scope (e.g., refactor!: or feat(api)!:)
+Output only the final subject line. Do not add markdown, quotes, code fences,
+JSON, explanations, alternatives, or trailing commentary.
 
-# Rules
-1. **Single line only** - never use multiple lines or bullet points
-2. **Focus on what changed** - describe the primary change, not implementation details
-3. **Be specific** - mention the affected component/module when relevant
-4. **Exclude issue/PR references** - never include issue or PR numbers like (#1234) in the commit message
-5. **Match project style** - analyze recent_commit_messages for patterns (scope usage, verbosity), but ignore any issue/PR references
-6. **Imperative mood** - use "add" not "adds" or "added"
-7. **Conciseness** - shorter is better; avoid redundant words like "improve", "update", "enhance" unless necessary
+Use this shape:
 
-# Input Analysis Priority
-1. **git_diff** - primary source for understanding the actual changes
-2. **additional_context** - user-provided context to help structure the commit message (if provided, use this information to guide the commit message structure and focus)
-3. **recent_commit_messages** - reference for project's commit message style and conventions
-4. **branch_name** - additional context hint (feature/, fix/, etc.)
+type(optional-scope): imperative summary
 
-# Examples
-Good commit messages:
-- feat(auth): add oauth2 login support
-- fix(api): handle null response in user endpoint
-- refactor(db): simplify query builder interface
-- docs(readme): update installation instructions
-- perf(parser): optimize token scanning algorithm
+Valid types are:
 
-Bad commit messages (avoid these):
-- refactor: improve the authentication system by adding new OAuth2 support and updating the login flow  (too verbose)
-- fix: fix bug  (too vague)
-- Add new feature  (not lowercase, missing type)
+feat, fix, refactor, perf, docs, style, test, chore, ci, build, revert
 
-REMINDER: Output raw text directly. Do NOT use ```json or ``` or any markdown.
+## Guidelines:
+
+- Prefer the smallest accurate type for the user-visible effect of the diff.
+- Add a scope when it makes the subject clearer; keep it lowercase and compact.
+- Use imperative mood: "add", "remove", "handle", "split", "rename".
+- Keep the summary lowercase, without a final period.
+- Aim for a compact subject; do not exceed 72 characters unless unavoidable.
+- Describe the result of the change, not the mechanical edits.
+- Do not include issue numbers, PR numbers, ticket IDs, or parenthetical refs.
+- If the diff clearly changes a public contract in a breaking way, mark it with
+  `!`, for example `feat(api)!: require auth token`.
+
+## Use the inputs in this order:
+
+1. `git_diff` tells you what actually changed.
+2. `additional_context` can clarify intent or preferred wording.
+3. `recent_commit_messages` shows the repository's style; ignore references
+   such as `(#123)` when learning from it.
+4. `branch_name` is only a weak hint.
+
+## Examples:
+
+- feat(auth): add oauth login
+- fix(api): handle empty user response
+- refactor(parser): simplify token dispatch
+- docs(readme): describe local setup
+- chore(deps): update lockfile
+
+Return exactly one line.
+
