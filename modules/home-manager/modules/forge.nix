@@ -9,7 +9,7 @@
   forge = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.forge;
 in {
   home.packages = [
-    forge
+    #   forge
   ];
 
   home.file = builtins.listToAttrs (
@@ -20,8 +20,8 @@ in {
     skillNames
   );
 
-  programs.zsh.initContent = lib.mkAfter ''
-    # export FORGE_BIN="${lib.getExe forge}"
-    # source <($FORGE_BIN zsh plugin)
-  '';
+  # programs.zsh.initContent = lib.mkAfter ''
+  #   # export FORGE_BIN="${lib.getExe forge}"
+  #   # source <($FORGE_BIN zsh plugin)
+  # '';
 }

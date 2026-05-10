@@ -53,6 +53,7 @@
     };
     initContent = lib.mkAfter ''
       ${builtins.readFile ../../../assets/zsh/content.zsh}
+      ${builtins.readFile ../../../assets/zsh/agent.zsh}
       ${builtins.readFile ../../../assets/zsh/commit.zsh}
     '';
   };
