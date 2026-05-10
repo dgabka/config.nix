@@ -9,7 +9,6 @@
     ../modules/claude.nix
     ../modules/codex.nix
     ../modules/darwin.nix
-    ../modules/forge.nix
     ../modules/k9s.nix
   ];
 

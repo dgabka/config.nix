@@ -42,7 +42,7 @@ Available shells currently include:
 - Put shared CLI, shell, editor, and tooling changes in `modules/home-manager/modules/` or `modules/home-manager/profiles/base.nix`.
 - Put personal/work-specific user environment changes in the matching profile file.
 - Put macOS system defaults, Homebrew configuration, and OS-level settings in `modules/darwin/`.
-- Keep skill-linking behavior aligned across `modules/home-manager/modules/claude.nix`, `modules/home-manager/modules/codex.nix`, and `modules/home-manager/modules/forge.nix`.
+- Keep skill-linking behavior aligned across `modules/home-manager/modules/claude.nix` and `modules/home-manager/modules/codex.nix`.
 
 ## Coding Style & Naming Conventions
 - Follow existing Nix formatting conventions and run `just fmt`.
@@ -55,7 +55,7 @@ Available shells currently include:
 - If a build or check fails with a derivation path, inspect it with `nix log <drv>`.
 - For formatting-related changes, run `just fmt`.
 - For dev shell changes, verify the relevant shell still evaluates with `nix develop .#<shell>`.
-- For agent or skill changes, verify that shared skills still map consistently into Claude, Codex, and Forge destinations.
+- For agent or skill changes, verify that shared skills still map consistently into Claude and Codex destinations.
 
 ## Commit & Pull Request Guidelines
 - Keep commit messages short, lowercase, and action-oriented.
@@ -69,4 +69,3 @@ Available shells currently include:
 - If a change affects all environments, update the shared layer.
 - If a change is machine-specific, keep it in the smallest appropriate host/profile file.
 - When touching agent tooling, treat `assets/skills/` as the shared source of truth.
-
