@@ -8,6 +8,21 @@
       aws.disabled = true;
       command_timeout = 5000;
       docker_context.disabled = true;
+      custom.codex_agent = {
+        command = ''
+          if [ -n "$CODEX_AGENT_MODEL" ] && [ -n "$CODEX_AGENT_REASONING_EFFORT" ]; then
+            printf "%s:%s" "$CODEX_AGENT_MODEL" "$CODEX_AGENT_REASONING_EFFORT"
+          elif [ -n "$CODEX_AGENT_MODEL" ]; then
+            printf "%s" "$CODEX_AGENT_MODEL"
+          else
+            printf "%s" "$CODEX_AGENT_REASONING_EFFORT"
+          fi
+        '';
+        when = ''test -n "$CODEX_AGENT_MODEL" || test -n "$CODEX_AGENT_REASONING_EFFORT"'';
+        symbol = "󱚟 ";
+        style = "bold cyan";
+        format = "via [$symbol$output]($style) ";
+      };
       nix_shell = {
         symbol = "❄️";
         format = "via [$symbol$name]($style) ";
