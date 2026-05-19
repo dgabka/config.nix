@@ -3,6 +3,20 @@
   pkgs,
   ...
 }: {
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "restic-hyperion" ''
+      set -euo pipefail
+      set -a
+      . ${config.sops.secrets.restic_s3_env.path}
+      set +a
+
+      exec ${pkgs.restic}/bin/restic \
+        --repository-file ${config.sops.secrets.restic_repository.path} \
+        --password-file ${config.sops.secrets.restic_password.path} \
+        "$@"
+    '')
+  ];
+
   services.restic.backups.s3 = {
     initialize = true; # creates the repo on first run if missing
     repositoryFile = config.sops.secrets.restic_repository.path;
