@@ -3,6 +3,7 @@
   home-manager,
   neovim-nightly,
   llm-agents,
+  sops-nix,
   system,
   hostConfigPath,
   homeProfile,
@@ -14,13 +15,16 @@ nixpkgs.lib.nixosSystem {
   specialArgs = specialArgs;
   modules = [
     hostConfigPath
+    sops-nix.nixosModules.sops
     home-manager.nixosModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs =
         {inherit llm-agents neovim-nightly;} // extraSpecialArgs;
-      home-manager.users.dgabka = import homeProfile;
+      home-manager.users.dgabka = {
+        imports = [homeProfile sops-nix.homeManagerModules.sops];
+      };
     }
   ];
 }

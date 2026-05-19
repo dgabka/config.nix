@@ -13,6 +13,11 @@
     ../modules/k9s.nix
   ];
 
+  sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+  sops.defaultSopsFile = ../../../secrets/work.yaml;
+  sops.secrets.git_email_include = {};
+  programs.git.includes = [{path = config.sops.secrets.git_email_include.path;}];
+
   home.packages = with pkgs; [
     saml2aws
     awscli2

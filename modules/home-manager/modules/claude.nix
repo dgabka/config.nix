@@ -8,7 +8,6 @@
 in {
   home.packages = [
     llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
-    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code-acp
   ];
 
   home.file = builtins.listToAttrs (

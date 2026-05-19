@@ -210,22 +210,6 @@
         "type": "github"
       }
     },
-    "hyperion": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1778935106,
-        "narHash": "sha256-4UfMZloJyfFn/nG78B7jca5Atha1RPHwORdolCR6WLE=",
-        "ref": "refs/heads/main",
-        "rev": "f2aa334076908cfc293565b5a4b9308c1c34974c",
-        "revCount": 28,
-        "type": "git",
-        "url": "ssh://git@github.com/dgabka/config.hyperion.nix.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/dgabka/config.hyperion.nix.git"
-      }
-    },
     "llm-agents": {
       "inputs": {
         "blueprint": "blueprint",
@@ -346,12 +330,12 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "hyperion": "hyperion",
         "llm-agents": "llm-agents",
         "neovim-nightly": "neovim-nightly",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "sops-nix": "sops-nix"
       }
     },
     "rust-overlay": {
@@ -369,6 +353,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777944972,
+        "narHash": "sha256-VfGRo1qTBKOe3s2gOv8LSoA6Fk19PvBlwQ1ECN0Evn8=",
+        "owner": "mic92",
+        "repo": "sops-nix",
+        "rev": "c591bf665727040c6cc5cb409079acb22dcce33c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     },

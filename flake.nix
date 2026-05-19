@@ -25,8 +25,8 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyperion.url = "git+ssh://git@github.com/dgabka/config.hyperion.nix.git";
-    hyperion.flake = false;
+    sops-nix.url = "github:mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
@@ -46,7 +46,7 @@
     rust-overlay,
     flake-utils,
     llm-agents,
-    hyperion,
+    sops-nix,
     nix-homebrew,
     homebrew-core,
     homebrew-cask,

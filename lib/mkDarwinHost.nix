@@ -6,6 +6,7 @@
   homebrew-core,
   homebrew-cask,
   llm-agents,
+  sops-nix,
   system,
   hostModule,
   homeProfile,
@@ -21,7 +22,9 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {inherit llm-agents neovim-nightly;};
-        users.dgabka = import homeProfile;
+        users.dgabka = {
+          imports = [homeProfile sops-nix.homeManagerModules.sops];
+        };
       };
     }
     nix-homebrew.darwinModules.nix-homebrew

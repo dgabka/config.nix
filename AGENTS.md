@@ -15,7 +15,7 @@ This repository is a Nix flake for macOS and NixOS environments.
 ## Host and Profile Layout
 - Darwin hosts are defined in `outputs/darwin.nix`: `personal` and `work`.
 - NixOS host output is currently `hyperion`.
-- `hyperion` uses an external host configuration flake input, so local changes here typically affect shared modules, Home Manager profiles, or special arguments rather than an in-repo system file.
+- `hyperion` system configuration lives in `modules/nixos/hyperion/` (hardware, drives, samba, selfhosted k3s/backup). System changes go there; shared module and Home Manager profile changes apply across all hosts as usual.
 - Shared user-level defaults belong in `modules/home-manager/profiles/base.nix`.
 - Machine- or context-specific user changes belong in `modules/home-manager/profiles/personal.nix`, `modules/home-manager/profiles/wh.nix`, and `modules/home-manager/profiles/hyperion.nix`.
 

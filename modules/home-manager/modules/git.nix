@@ -2,9 +2,6 @@
   programs.git = {
     enable = lib.mkDefault true;
     signing.format = lib.mkDefault "openpgp";
-    includes = [
-      {path = "~/.gitconfig.local";}
-    ];
     settings = {
       alias = lib.mkDefault {
         co = "checkout";
