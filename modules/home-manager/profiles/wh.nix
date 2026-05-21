@@ -28,6 +28,8 @@
     pass
     gnupg
     cacert
+    age
+    sops
 
     llm-agents.packages.${pkgs.stdenv.hostPlatform.system}."copilot-cli"
   ];
