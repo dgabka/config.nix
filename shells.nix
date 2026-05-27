@@ -61,6 +61,18 @@
     ];
   };
 
+  node26 = pkgs.mkShell {
+    name = "node26-sh";
+    buildInputs = with pkgs; [
+      (pnpm.override {nodejs = nodejs_26;})
+      nodejs_26
+      yarn
+      typescript
+      vtsls
+      vscode-langservers-extracted
+    ];
+  };
+
   python = pkgs.mkShell {
     name = "python-sh";
     buildInputs = with pkgs; [
