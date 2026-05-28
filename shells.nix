@@ -1,5 +1,11 @@
 # Development shells definitions
-{pkgs, ...}: {
+{pkgs, ...}: let
+  nodeGlobalHook = ''
+    export NPM_CONFIG_PREFIX="''${XDG_DATA_HOME:-$HOME/.local/share}/npm-global"
+    export PNPM_HOME="''${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
+    export PATH="$NPM_CONFIG_PREFIX/bin:$PNPM_HOME:''${XDG_DATA_HOME:-$HOME/.local/share}/yarn/bin:$PATH"
+  '';
+in {
   default = pkgs.mkShell {
     name = "dev-sh";
     buildInputs = with pkgs; [
@@ -14,6 +20,7 @@
       typescript
       vtsls
     ];
+    shellHook = nodeGlobalHook;
   };
 
   rust = pkgs.mkShell {
@@ -35,6 +42,7 @@
       vtsls
       vscode-langservers-extracted
     ];
+    shellHook = nodeGlobalHook;
   };
 
   node22 = pkgs.mkShell {
@@ -47,6 +55,7 @@
       vtsls
       vscode-langservers-extracted
     ];
+    shellHook = nodeGlobalHook;
   };
 
   node24 = pkgs.mkShell {
@@ -59,6 +68,7 @@
       vtsls
       vscode-langservers-extracted
     ];
+    shellHook = nodeGlobalHook;
   };
 
   node26 = pkgs.mkShell {
@@ -71,6 +81,7 @@
       vtsls
       vscode-langservers-extracted
     ];
+    shellHook = nodeGlobalHook;
   };
 
   python = pkgs.mkShell {

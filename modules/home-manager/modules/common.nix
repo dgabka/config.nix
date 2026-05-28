@@ -11,8 +11,27 @@
     overlays = [neovim-nightly.overlays.default];
     config = pkgs.config;
   };
+  npmPrefix = "${config.xdg.dataHome}/npm-global";
+  pnpmHome = "${config.xdg.dataHome}/pnpm";
+  yarnPrefix = "${config.xdg.dataHome}/yarn";
 in {
   home.stateVersion = "24.05";
+
+  home.sessionVariables = {
+    NPM_CONFIG_PREFIX = npmPrefix;
+    PNPM_HOME = pnpmHome;
+  };
+
+  home.sessionPath = [
+    "${npmPrefix}/bin"
+    pnpmHome
+    "${yarnPrefix}/bin"
+  ];
+
+  home.file.".yarnrc".text = ''
+    prefix "${yarnPrefix}"
+    --global-folder "${yarnPrefix}/global"
+  '';
 
   home.packages = with pkgs; [
     # common tools
