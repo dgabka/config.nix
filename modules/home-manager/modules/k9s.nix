@@ -6,7 +6,7 @@
   sageveil = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "k9s";
-    rev = "0.2.5";
+    rev = "v0.2.0-rc.0";
     sha256 = "sha256-SuBPD876dIEtPjUx61AnziHUMjmJ+r1pIf2aRK0OpZ8=";
   };
 in {

@@ -7,8 +7,8 @@
   ghosttyTheme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "ghostty";
-    rev = "4488be1c790276b7e858433e61a040a743f1cff0";
-    sha256 = "sha256-+6rfkKbzR5jPbO3f+RQehIHkbruH3bZRWyk5652JFD4=";
+    rev = "v0.2.0-rc.0";
+    sha256 = "sha256-EMaqOkaMIdJnBn1ojaGZE8Ukox3qr3kMqK9hXIj63nI=";
   };
 in {
   programs.ghostty.enable = lib.mkIf isLinux true;
