@@ -12,8 +12,11 @@ in {
 
   home.packages = [
     # llm agents
-    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
-    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}."codex-acp"
+    (
+      if pkgs.stdenv.hostPlatform.system == "x86_64-darwin"
+      then pkgs.codex
+      else llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
+    )
   ];
 
   home.file = builtins.listToAttrs (
