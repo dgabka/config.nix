@@ -26,8 +26,6 @@ zle -N fzf-grep-widget
 # CTRL+ALT+F
 bindkey '^[^F' fzf-grep-widget
 
-PATH=$HOME/.npm/bin:$PATH
-
 function _just_wt_branches {
   local -a refs branches
   local ref
