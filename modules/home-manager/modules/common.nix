@@ -24,7 +24,7 @@ in {
 
   home.sessionPath = [
     "${npmPrefix}/bin"
-    pnpmHome
+    "${pnpmHome}/bin"
     "${yarnPrefix}/bin"
   ];
 

@@ -3,7 +3,7 @@
   nodeGlobalHook = ''
     export NPM_CONFIG_PREFIX="''${XDG_DATA_HOME:-$HOME/.local/share}/npm-global"
     export PNPM_HOME="''${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
-    export PATH="$NPM_CONFIG_PREFIX/bin:$PNPM_HOME:''${XDG_DATA_HOME:-$HOME/.local/share}/yarn/bin:$PATH"
+    export PATH="$NPM_CONFIG_PREFIX/bin:$PNPM_HOME/bin:''${XDG_DATA_HOME:-$HOME/.local/share}/yarn/bin:$PATH"
   '';
 in {
   default = pkgs.mkShell {
