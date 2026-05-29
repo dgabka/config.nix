@@ -3,7 +3,13 @@
     experimental-features = nix-command flakes
   '';
   nix.settings.experimental-features = "nix-command flakes";
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableBashCompletion = false;
+    enableGlobalCompInit = false;
+    promptInit = "";
+  };
+  nix-homebrew.enableZshIntegration = false;
   environment.shells = [pkgs.zsh];
   environment.systemPackages = with pkgs; [coreutils];
   # completion for system packages?

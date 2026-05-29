@@ -9,6 +9,10 @@
     autosuggestion.highlight = "fg=blue";
     autosuggestion.strategy = ["history" "completion"];
     enableCompletion = true;
+    completionInit = ''
+      autoload -Uz compinit
+      compinit -C -d "''${ZDOTDIR:-$HOME}/.zcompdump"
+    '';
     syntaxHighlighting.enable = true;
     defaultKeymap = "viins";
     dotDir = "${config.xdg.configHome}/zsh";
