@@ -2,8 +2,8 @@
   theme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "fzf";
-    rev = "v0.2.0-rc.2";
-    sha256 = "sha256-xFnjWHiS5cV02qcXaJViCNpBktd+ZfhfWRPjEgZeRH8=";
+    rev = "v0.2.0-rc.3";
+    sha256 = "sha256-OVvSNN6FWkaO5tzJmteFREXLpKD2kEs+7Sn1wSRFECc=";
   };
 in {
   programs.fzf = {
