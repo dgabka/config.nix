@@ -7,8 +7,8 @@
   sageveil = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "alacritty";
-    rev = "v0.2.0-rc.0";
-    sha256 = "sha256-4QfkXuyqtePXurf0XQrjFUalxc6nSCRHuBEHxU00jhA=";
+    rev = "v0.2.0-rc.1";
+    sha256 = "sha256-K4hYcTkBo9Xe9CQeqZYVe6jLfsExuoq/XJM9EGfvn8A=";
   };
   terminfoDir = "${config.home.homeDirectory}/.terminfo";
   alacrittyTerminfoSrc = "${pkgs.alacritty.src}/extra/alacritty.info";
