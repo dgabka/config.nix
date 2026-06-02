@@ -74,5 +74,7 @@ in {
     pre-commit
     docker
     devbox
+
+    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.agentsview
   ];
 }

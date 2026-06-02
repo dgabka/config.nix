@@ -8,6 +8,7 @@
   imports = [
     ./base.nix
     ../modules/codex.nix
+    ../modules/copilot.nix
     ../modules/darwin.nix
     ../modules/glab.nix
     ../modules/k9s.nix
