@@ -32,7 +32,6 @@ This repository is a Nix flake for macOS and NixOS environments.
 Available shells currently include:
 - `default`
 - `rust`
-- `node20`
 - `node22`
 - `node24`
 - `python`

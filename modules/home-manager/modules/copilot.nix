@@ -7,7 +7,10 @@
   skillNames = builtins.filter (skill: (builtins.readDir skillsDir).${skill} == "directory") (builtins.attrNames (builtins.readDir skillsDir));
 in {
   home.packages = [
+    # llm agents
+    (
       llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.copilot-cli
+    )
   ];
 
   home.file = builtins.listToAttrs (

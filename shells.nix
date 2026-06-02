@@ -32,19 +32,6 @@ in {
     ];
   };
 
-  node20 = pkgs.mkShell {
-    name = "node20-sh";
-    buildInputs = with pkgs; [
-      (pnpm.override {nodejs = nodejs_20;})
-      nodejs_20
-      yarn
-      typescript
-      vtsls
-      vscode-langservers-extracted
-    ];
-    shellHook = nodeGlobalHook;
-  };
-
   node22 = pkgs.mkShell {
     name = "node22-sh";
     buildInputs = with pkgs; [

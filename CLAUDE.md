@@ -27,7 +27,7 @@ Always run `just fmt` before committing. Run `just validate` after any flake wir
 The flake (`flake.nix`) delegates all outputs to three files:
 - `outputs/darwin.nix` — builds `personal` (x86_64) and `work` (aarch64) via `lib/mkDarwinHost.nix`
 - `outputs/nixos.nix` — builds `hyperion` (x86_64-linux) via `lib/mkNixosHost.nix`
-- `outputs/devshells.nix` — named dev shells (default, rust, node20/22/24, python)
+- `outputs/devshells.nix` — named dev shells (default, rust, node22/24/26, python)
 
 The lib builders wire together nixpkgs, home-manager, and host/profile modules. They are the only place that threads `specialArgs`/`extraSpecialArgs` into the module system.
 
