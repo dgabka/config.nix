@@ -66,8 +66,9 @@ in {
     prettierd
     vscode-langservers-extracted
     # other
-    # marksman
+    marksman
     dockerfile-language-server
+    python3
 
     # dev tools
     nodejs
