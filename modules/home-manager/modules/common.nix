@@ -60,18 +60,19 @@ in {
     shellcheck
     shfmt
     # javascript tools
+    nodejs
     vtsls
     typescript
     eslint_d
     prettierd
     vscode-langservers-extracted
     # other
+    lspmux
     marksman
     dockerfile-language-server
     python3
 
     # dev tools
-    nodejs
     pre-commit
     docker
     devbox
