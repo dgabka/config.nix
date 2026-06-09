@@ -334,6 +334,7 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
         "rust-overlay": "rust-overlay",
+        "shap": "shap",
         "sops-nix": "sops-nix"
       }
     },
@@ -352,6 +353,32 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "shap": {
+      "inputs": {
+        "llm-agents": [
+          "llm-agents"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781037254,
+        "narHash": "sha256-4/+EdBLcyJsQaBMl1ebL9VrjzV66d0vQzJgOEUhx4VU=",
+        "owner": "dgabka",
+        "repo": "shap",
+        "rev": "bc86e8632f87350ce30464480ee2f273ac53a6d7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dgabka",
+        "repo": "shap",
         "type": "github"
       }
     },

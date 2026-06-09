@@ -25,6 +25,13 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs";
 
+    shap = {
+      url = "github:dgabka/shap";
+      inputs.llm-agents.follows = "llm-agents";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
+
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -46,6 +53,7 @@
     rust-overlay,
     flake-utils,
     llm-agents,
+    shap,
     sops-nix,
     nix-homebrew,
     homebrew-core,

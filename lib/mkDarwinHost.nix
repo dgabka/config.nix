@@ -6,6 +6,7 @@
   homebrew-core,
   homebrew-cask,
   llm-agents,
+  shap,
   sops-nix,
   system,
   hostModule,
@@ -21,7 +22,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit llm-agents neovim-nightly;};
+        extraSpecialArgs = {inherit llm-agents neovim-nightly shap;};
         users.dgabka = {
           imports = [homeProfile sops-nix.homeManagerModules.sops];
         };

@@ -4,6 +4,7 @@
   config,
   llm-agents,
   neovim-nightly,
+  shap,
   ...
 }: let
   nightlyPkgs = import pkgs.path {
@@ -78,5 +79,6 @@ in {
     devbox
 
     llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.agentsview
+    shap.packages.${pkgs.stdenv.hostPlatform.system}.shap
   ];
 }
