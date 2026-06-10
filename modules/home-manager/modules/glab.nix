@@ -2,8 +2,8 @@
   theme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "glamour";
-    rev = "v0.2.0-rc.3";
-    sha256 = "sha256-q1rH82qTtHquZaC7LV+jr2/irnGv7S0HVVfpsYQlSqU=";
+    rev = "v0.2.0";
+    sha256 = "sha256-C3QpNOYYS6jwNWwg3Wwpr+yrNNoBENkaYkzOCDv1mhs=";
   };
 in {
   home.sessionVariables.GLAB_GLAMOUR_STYLE = "${theme}/sageveil.json";

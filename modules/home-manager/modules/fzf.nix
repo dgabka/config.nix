@@ -2,7 +2,7 @@
   theme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "fzf";
-    rev = "v0.2.0-rc.3";
+    rev = "v0.2.0";
     sha256 = "sha256-OVvSNN6FWkaO5tzJmteFREXLpKD2kEs+7Sn1wSRFECc=";
   };
 in {
