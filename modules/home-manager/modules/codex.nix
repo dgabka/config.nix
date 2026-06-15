@@ -5,6 +5,7 @@
 }: let
   skillsDir = ../../../assets/skills;
   skillNames = builtins.filter (skill: (builtins.readDir skillsDir).${skill} == "directory") (builtins.attrNames (builtins.readDir skillsDir));
+  llmAgentPackages = llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   programs.codex = {
     enable = false;
@@ -15,8 +16,9 @@ in {
     (
       if pkgs.stdenv.hostPlatform.system == "x86_64-darwin"
       then pkgs.codex
-      else llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
+      else llmAgentPackages.codex
     )
+    llmAgentPackages.codex-acp
   ];
 
   home.file = builtins.listToAttrs (
