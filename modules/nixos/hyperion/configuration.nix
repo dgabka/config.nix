@@ -44,7 +44,11 @@
   };
 
   # Enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    max-jobs = 1;
+    cores = 0;
+  };
   nixpkgs.config.permittedInsecurePackages = [
     "intel-media-sdk-23.2.2"
   ];
