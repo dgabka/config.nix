@@ -12,6 +12,7 @@
     ../modules/darwin.nix
     ../modules/glab.nix
     ../modules/k9s.nix
+    ../modules/pi.nix
   ];
 
   sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";

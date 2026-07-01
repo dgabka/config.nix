@@ -7,6 +7,7 @@
 
 ## `modules/home-manager/modules`
 Reusable Home Manager feature modules, for example:
+- `agent-skills.nix`: shared `~/.agents/skills` links for agents that use the common skills directory.
 - `common.nix`: shared CLI/dev packages and baseline session variables.
 - `zsh.nix`, `tmux.nix`, `git.nix`, `starship.nix`: shell/tool configuration modules.
 - `darwin.nix`: Darwin-only Home Manager additions.

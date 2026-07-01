@@ -8,6 +8,7 @@
     ../modules/codex.nix
     ../modules/gpg.nix
     ../modules/k9s.nix
+    ../modules/pi.nix
   ];
 
   sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";

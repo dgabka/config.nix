@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: let
-  skillsDir = ../../../assets/skills;
-  skillNames = builtins.filter (skill: (builtins.readDir skillsDir).${skill} == "directory") (builtins.attrNames (builtins.readDir skillsDir));
   llmAgentPackages = llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   programs.codex = {
@@ -20,12 +18,4 @@ in {
     )
     llmAgentPackages.codex-acp
   ];
-
-  home.file = builtins.listToAttrs (
-    map (skill: {
-      name = ".codex/skills/${skill}";
-      value.source = skillsDir + "/${skill}";
-    })
-    skillNames
-  );
 }

@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ../modules/agent-skills.nix
     ../modules/bat.nix
     ../modules/common.nix
     ../modules/direnv.nix

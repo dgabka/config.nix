@@ -51,7 +51,7 @@ modules/
 - Hyperion user config → `modules/home-manager/profiles/hyperion.nix`
 - macOS system settings → `modules/darwin/`
 - Hyperion system settings → `modules/nixos/hyperion/configuration.nix` or a new file imported there
-- Agent skills (shared across Claude/Codex) → `assets/skills/`; these are symlinked into `~/.claude/skills/` etc. by `modules/home-manager/modules/claude.nix` and `codex.nix`
+- Agent skills → `assets/skills/`; shared links go through `modules/home-manager/modules/agent-skills.nix` into `~/.agents/skills/`, with tool-specific links such as `~/.claude/skills/` handled by the matching module
 
 ## Style
 

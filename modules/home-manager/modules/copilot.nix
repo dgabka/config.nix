@@ -2,10 +2,7 @@
   llm-agents,
   pkgs,
   ...
-}: let
-  skillsDir = ../../../assets/skills;
-  skillNames = builtins.filter (skill: (builtins.readDir skillsDir).${skill} == "directory") (builtins.attrNames (builtins.readDir skillsDir));
-in {
+}: {
   home.packages = [
     # llm agents
     (
@@ -13,11 +10,7 @@ in {
     )
   ];
 
-  home.file = builtins.listToAttrs (
-    map (skill: {
-      name = ".copilot/skills/${skill}";
-      value.source = skillsDir + "/${skill}";
-    })
-    skillNames
-  );
+  home.file = import ../../../lib/mkSkillLinks.nix {
+    destination = ".copilot/skills";
+  };
 }
