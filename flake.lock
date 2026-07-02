@@ -192,38 +192,6 @@
         "type": "github"
       }
     },
-    "homebrew-cask": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1782903421,
-        "narHash": "sha256-bI2GNBxUMldGqbS6kppaBsmjMjMdPt36sCyXPh1HgFU=",
-        "owner": "homebrew",
-        "repo": "homebrew-cask",
-        "rev": "4f008c8b89d7362c36028845a50bc9d2d186616f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-cask",
-        "type": "github"
-      }
-    },
-    "homebrew-core": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1782902816,
-        "narHash": "sha256-BKGT8u65Kz1OnINbdcBqiChNF+DKO9ZeNJEUOy+6jYA=",
-        "owner": "homebrew",
-        "repo": "homebrew-core",
-        "rev": "e9cda4cab21fe93b4cd75d38ffacd227abc8a448",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-core",
-        "type": "github"
-      }
-    },
     "llm-agents": {
       "inputs": {
         "blueprint": "blueprint",
@@ -342,8 +310,6 @@
         "darwin": "darwin",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "homebrew-cask": "homebrew-cask",
-        "homebrew-core": "homebrew-core",
         "llm-agents": "llm-agents",
         "neovim-nightly": "neovim-nightly",
         "nix-homebrew": "nix-homebrew",

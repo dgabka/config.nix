@@ -36,14 +36,6 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
   };
   outputs = {
     nixpkgs,
@@ -56,8 +48,6 @@
     shap,
     sops-nix,
     nix-homebrew,
-    homebrew-core,
-    homebrew-cask,
     ...
   } @ inputs: let
     darwinConfigurations = import ./outputs/darwin.nix inputs;

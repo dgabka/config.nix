@@ -3,8 +3,6 @@
   home-manager,
   neovim-nightly,
   nix-homebrew,
-  homebrew-core,
-  homebrew-cask,
   llm-agents,
   shap,
   sops-nix,
@@ -33,11 +31,7 @@
       nix-homebrew = {
         enable = true;
         user = "dgabka";
-        taps = {
-          "homebrew/homebrew-core" = homebrew-core;
-          "homebrew/homebrew-cask" = homebrew-cask;
-        };
-        mutableTaps = false;
+        mutableTaps = true;
       };
     }
   ];
