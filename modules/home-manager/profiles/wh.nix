@@ -4,7 +4,9 @@
   lib,
   llm-agents,
   ...
-}: {
+}: let
+  caBundle = "${config.home.homeDirectory}/.nix-profile/etc/ssl/certs/ca-bundle.crt";
+in {
   imports = [
     ./base.nix
     ../modules/codex.nix
@@ -64,8 +66,9 @@
   ];
 
   home.sessionVariables = {
-    NIX_SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-    SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+    # Use the profile symlink so old shells do not keep a GC'd store path.
+    NIX_SSL_CERT_FILE = caBundle;
+    SSL_CERT_FILE = caBundle;
     NODE_EXTRA_CA_CERTS = "${config.home.homeDirectory}/CertificateChain.pem";
   };
 }
