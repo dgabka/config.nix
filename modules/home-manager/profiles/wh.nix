@@ -15,6 +15,7 @@ in {
     ../modules/glab.nix
     ../modules/k9s.nix
     ../modules/pi.nix
+    ../modules/tiling.nix
   ];
 
   sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";

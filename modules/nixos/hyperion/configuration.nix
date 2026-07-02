@@ -86,6 +86,10 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+  programs.dconf.enable = true;
+
+  services.xserver.autoRepeatDelay = 180;
+  services.xserver.autoRepeatInterval = 20;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -140,6 +144,12 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  # Add Sway as a tiling session alongside GNOME.
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

@@ -4,6 +4,7 @@
   homebrew.casks = [
     "ghostty"
     "bruno"
+    "amethyst"
     "obsidian"
     "elmedia-player"
   ];
