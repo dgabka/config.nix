@@ -10,8 +10,7 @@ in {
   home.file.".config/amethyst/amethyst.yml" = lib.mkIf isDarwin {
     text = ''
       layouts:
-        - tall
-        - wide
+        - 3column-right
         - fullscreen
         - column
 
@@ -96,12 +95,9 @@ in {
         mod: mod2
         key: 0
 
-      select-tall-layout:
+      select-3column-right-layout:
         mod: mod1
         key: a
-      select-wide-layout:
-        mod: mod1
-        key: s
       select-fullscreen-layout:
         mod: mod1
         key: d
@@ -125,9 +121,9 @@ in {
         mod: mod2
         key: z
 
-      window-margins: false
+      window-margins: true
       smart-window-margins: false
-      window-margin-size: 0
+      window-margin-size: 8
       window-resize-step: 5
       float-small-windows: true
       floating-is-blacklist: true
@@ -145,7 +141,7 @@ in {
       menu = "${pkgs.wmenu}/bin/wmenu-run";
       bars = [];
       gaps = {
-        inner = 0;
+        inner = 8;
         outer = 0;
       };
       keybindings = {
