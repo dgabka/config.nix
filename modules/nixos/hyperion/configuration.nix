@@ -1,11 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
-{
-  pkgs,
-  fontsPath,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -55,7 +51,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
-  fonts.packages = [fontsPath];
+  fonts.packages = [pkgs.nerd-fonts.jetbrains-mono];
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

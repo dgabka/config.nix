@@ -78,7 +78,6 @@ in {
     docker
     devbox
 
-    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.agentsview
     shap.packages.${pkgs.stdenv.hostPlatform.system}.shap
   ];
 }

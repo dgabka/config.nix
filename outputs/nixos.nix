@@ -14,6 +14,5 @@ in {
     system = "x86_64-linux";
     hostConfigPath = ../modules/nixos/hyperion/configuration.nix;
     homeProfile = ../modules/home-manager/profiles/hyperion.nix;
-    specialArgs = {fontsPath = ../modules/fonts;};
   };
 }
