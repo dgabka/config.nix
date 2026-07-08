@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./base.nix
-    ../modules/claude.nix
     ../modules/codex.nix
     ../modules/darwin.nix
     ../modules/gpg.nix
