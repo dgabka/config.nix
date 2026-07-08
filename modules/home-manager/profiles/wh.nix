@@ -35,6 +35,7 @@ in {
     cacert
     age
     sops
+    acli
 
     llm-agents.packages.${pkgs.stdenv.hostPlatform.system}."copilot-cli"
   ];
