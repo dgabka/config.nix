@@ -7,7 +7,7 @@
   ghosttyTheme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "ghostty";
-    rev = "v0.2.0";
+    rev = "v0.2.1";
     sha256 = "sha256-iviOkqQ3Rh/G4qo/Tn/1WDWfE+1jubk+8ZQ/LogecYU=";
   };
 in {
