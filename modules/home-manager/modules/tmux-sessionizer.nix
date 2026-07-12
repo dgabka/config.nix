@@ -17,7 +17,6 @@
     session_sort_order = "LastAttached"
     excluded_dirs = [
       # VCS and metadata
-      ".git",
       ".hg",
       ".svn",
 
