@@ -4,6 +4,10 @@
   ...
 }: let
   llmAgentPackages = llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
+  copilotFallbackModels = [
+    "github-copilot/claude-sonnet-4.5"
+    "github-copilot/claude-opus-4.6"
+  ];
 in {
   home.packages = [
     llmAgentPackages.pi
@@ -16,11 +20,56 @@ in {
       defaultProvider = "openai-codex";
       defaultModel = "gpt-5.6-terra";
       defaultThinkingLevel = "medium";
+      subagents = {
+        defaultModel = "openai-codex/gpt-5.6-luna";
+        agentOverrides = {
+          scout = {
+            model = "openai-codex/gpt-5.6-luna";
+            thinking = "low";
+            fallbackModels = copilotFallbackModels;
+          };
+          researcher = {
+            model = "openai-codex/gpt-5.6-luna";
+            thinking = "medium";
+            fallbackModels = copilotFallbackModels;
+          };
+          planner = {
+            model = "openai-codex/gpt-5.6-terra";
+            thinking = "medium";
+            fallbackModels = copilotFallbackModels;
+          };
+          worker = {
+            model = "openai-codex/gpt-5.6-terra";
+            thinking = "medium";
+            fallbackModels = copilotFallbackModels;
+          };
+          reviewer = {
+            model = "openai-codex/gpt-5.6-sol";
+            thinking = "high";
+            fallbackModels = copilotFallbackModels;
+          };
+          context-builder = {
+            model = "openai-codex/gpt-5.6-terra";
+            thinking = "medium";
+            fallbackModels = copilotFallbackModels;
+          };
+          oracle = {
+            model = "openai-codex/gpt-5.6-sol";
+            thinking = "high";
+            fallbackModels = copilotFallbackModels;
+          };
+          delegate = {
+            model = "openai-codex/gpt-5.6-luna";
+            thinking = "medium";
+            fallbackModels = copilotFallbackModels;
+          };
+        };
+      };
       packages = [
         "npm:@sageveil/pi@0.2.2"
         "git:github.com/DietrichGebert/ponytail@14a0d79548d4de8fc2de95c1b94bb0de63a739d3"
         "npm:@narumitw/pi-codex-usage@0.13.0"
-        "npm:@narumitw/pi-subagents@0.13.0"
+        "npm:pi-subagents@0.34.0"
       ];
     };
   };
