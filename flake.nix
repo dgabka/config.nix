@@ -8,6 +8,13 @@
     # Main package source (kept on unstable to match nix-darwin master)
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    # x86_64-darwin is supported through Nixpkgs 26.05 only.
+    nixpkgs-intel.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
+    darwin-intel.url = "github:lnl7/nix-darwin/nix-darwin-26.05";
+    darwin-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
+    home-manager-intel.url = "github:nix-community/home-manager/release-26.05";
+    home-manager-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
+
     # Manages link to home dir
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -39,8 +46,11 @@
   };
   outputs = {
     nixpkgs,
+    nixpkgs-intel,
     darwin,
+    darwin-intel,
     home-manager,
+    home-manager-intel,
     neovim-nightly,
     rust-overlay,
     flake-utils,
@@ -53,9 +63,24 @@
     darwinConfigurations = import ./outputs/darwin.nix inputs;
     nixosConfigurations = import ./outputs/nixos.nix inputs;
     devShellOutputs = import ./outputs/devshells.nix inputs;
+    formatterOutputs = flake-utils.lib.eachDefaultSystem (system: let
+      pkgs =
+        (
+          if system == "x86_64-darwin"
+          then nixpkgs-intel
+          else nixpkgs
+        ).legacyPackages.${
+          system
+        };
+    in {
+      packages = {
+        inherit (pkgs) alejandra yamlfmt;
+      };
+    });
   in
     {
       inherit darwinConfigurations nixosConfigurations;
     }
-    // devShellOutputs;
+    // devShellOutputs
+    // formatterOutputs;
 }

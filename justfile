@@ -1,6 +1,6 @@
 fmt:
-  nix run nixpkgs#alejandra -- .
-  nix run nixpkgs#yamlfmt -- .
+  nix run .#alejandra -- .
+  nix run .#yamlfmt -- .
 
 check:
   nix flake check

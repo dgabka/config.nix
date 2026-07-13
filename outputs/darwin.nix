@@ -1,6 +1,8 @@
 {
   darwin,
+  darwin-intel,
   home-manager,
+  home-manager-intel,
   nixpkgs,
   neovim-nightly,
   nix-homebrew,
@@ -12,7 +14,9 @@
   mkDarwinHost = import ../lib/mkDarwinHost.nix;
 in rec {
   personal = mkDarwinHost {
-    inherit darwin home-manager neovim-nightly nix-homebrew llm-agents shap sops-nix;
+    darwin = darwin-intel;
+    home-manager = home-manager-intel;
+    inherit neovim-nightly nix-homebrew llm-agents shap sops-nix;
     system = "x86_64-darwin";
     hostModule = ../modules/darwin/personal.nix;
     homeProfile = ../modules/home-manager/profiles/personal.nix;
