@@ -13,6 +13,22 @@ in {
     llmAgentPackages.pi
   ];
 
+  home.file.".pi/agent/sageveil.json".text = builtins.toJSON {
+    vim = true;
+    fuzzyFiles = true;
+    statusline = {
+      icon = true;
+      vimMode = true;
+      directory = true;
+      gitBranch = true;
+      gitStatus = true;
+      context = true;
+      model = true;
+      usage = true;
+      extensionStatuses = false;
+    };
+  };
+
   home.file.".pi/agent/settings.json" = {
     force = true;
     text = builtins.toJSON {
