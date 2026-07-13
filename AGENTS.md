@@ -9,7 +9,7 @@ This repository is a Nix flake for macOS and NixOS environments.
 - `modules/home-manager/modules/` contains reusable Home Manager modules.
 - `modules/home-manager/profiles/` contains profile composition for shared and machine-specific user environments.
 - `modules/fonts/` stores bundled font assets used by system configuration.
-- `assets/skills/` is the source of truth for shared agent skills; these are linked into `~/.agents/skills/` for Codex/Pi and into tool-specific skill directories only where required.
+- `assets/skills/` is the source of truth for shared agent skills; these are linked into `~/.agents/skills/` for Codex/Pi. Repo-local skills belong in `.agents/skills/`.
 - `shells.nix` defines development shells exported through the flake.
 
 ## Host and Profile Layout
@@ -41,7 +41,7 @@ Available shells currently include:
 - Put shared CLI, shell, editor, and tooling changes in `modules/home-manager/modules/` or `modules/home-manager/profiles/base.nix`.
 - Put personal/work-specific user environment changes in the matching profile file.
 - Put macOS system defaults, Homebrew configuration, and OS-level settings in `modules/darwin/`.
-- Keep skill-linking behavior centralized through `lib/mkSkillLinks.nix` and `modules/home-manager/modules/agent-skills.nix`; add tool-specific skill directories only where a tool requires them.
+- Keep shared skill-linking behavior centralized through `lib/mkSkillLinks.nix` and `modules/home-manager/modules/agent-skills.nix`; put repo-specific skills in `.agents/skills/`.
 
 ## Coding Style & Naming Conventions
 - Follow existing Nix formatting conventions and run `just fmt`.
@@ -54,7 +54,7 @@ Available shells currently include:
 - If a build or check fails with a derivation path, inspect it with `nix log <drv>`.
 - For formatting-related changes, run `just fmt`.
 - For dev shell changes, verify the relevant shell still evaluates with `nix develop .#<shell>`.
-- For agent or skill changes, verify that shared skills still map into `~/.agents/skills/` and any required tool-specific destinations.
+- For agent or skill changes, verify that shared skills still map into `~/.agents/skills/` and repo-local skills remain in `.agents/skills/`.
 
 ## Commit & Pull Request Guidelines
 - Keep commit messages short, lowercase, and action-oriented.
@@ -67,4 +67,4 @@ Available shells currently include:
 - Check both shared and host-specific layers before making recommendations: flake outputs, host builders, shared modules, and profile composition.
 - If a change affects all environments, update the shared layer.
 - If a change is machine-specific, keep it in the smallest appropriate host/profile file.
-- When touching agent tooling, treat `assets/skills/` as the shared source of truth.
+- When touching agent tooling, treat `assets/skills/` as the shared source of truth and `.agents/skills/` as repo-local.

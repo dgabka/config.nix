@@ -4,10 +4,6 @@
   ...
 }: let
   llmAgentPackages = llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
-  copilotFallbackModels = [
-    "github-copilot/claude-sonnet-4.5"
-    "github-copilot/claude-opus-4.6"
-  ];
 in {
   home.packages = [
     llmAgentPackages.pi
@@ -42,42 +38,34 @@ in {
           scout = {
             model = "openai-codex/gpt-5.6-luna";
             thinking = "low";
-            fallbackModels = copilotFallbackModels;
           };
           researcher = {
             model = "openai-codex/gpt-5.6-luna";
             thinking = "medium";
-            fallbackModels = copilotFallbackModels;
           };
           planner = {
             model = "openai-codex/gpt-5.6-terra";
             thinking = "medium";
-            fallbackModels = copilotFallbackModels;
           };
           worker = {
             model = "openai-codex/gpt-5.6-terra";
             thinking = "medium";
-            fallbackModels = copilotFallbackModels;
           };
           reviewer = {
             model = "openai-codex/gpt-5.6-sol";
             thinking = "high";
-            fallbackModels = copilotFallbackModels;
           };
           context-builder = {
             model = "openai-codex/gpt-5.6-terra";
             thinking = "medium";
-            fallbackModels = copilotFallbackModels;
           };
           oracle = {
             model = "openai-codex/gpt-5.6-sol";
             thinking = "high";
-            fallbackModels = copilotFallbackModels;
           };
           delegate = {
             model = "openai-codex/gpt-5.6-luna";
             thinking = "medium";
-            fallbackModels = copilotFallbackModels;
           };
         };
       };
