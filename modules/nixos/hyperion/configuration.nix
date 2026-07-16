@@ -63,12 +63,10 @@
     cores = 0;
   };
   nixpkgs.overlays = [
-    (final: prev: let
+    (final: prev: {
       nodejs_22 = nixpkgs-openclaw-node.legacyPackages.${prev.stdenv.hostPlatform.system}.nodejs_22;
-    in
-      builtins.removeAttrs
-      (nix-openclaw.overlays.default final (prev // {inherit nodejs_22;}))
-      ["pnpm_11"])
+    })
+    (final: prev: builtins.removeAttrs (nix-openclaw.overlays.default final prev) ["pnpm_11"])
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "intel-media-sdk-23.2.2"

@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   nix-openclaw,
   ...
 }: {
@@ -11,10 +10,10 @@
     openclaw_telegram_bot_token = {};
   };
 
+  systemd.user.services.openclaw-gateway.Install.WantedBy = ["default.target"];
+
   programs.openclaw = {
     enable = true;
-    package = nix-openclaw.packages.${pkgs.system}.openclaw;
-
     workspace.bootstrapFiles = {
       agents = ./openclaw-workspace/AGENTS.md;
       soul = ./openclaw-workspace/SOUL.md;
@@ -28,6 +27,7 @@
     config = {
       gateway.mode = "local";
       agents.defaults.model.primary = "openai/gpt-5.6-sol";
+      commands.ownerAllowFrom = ["telegram:8849544452"];
       channels.telegram = {
         enabled = true;
         tokenFile = config.sops.secrets.openclaw_telegram_bot_token.path;
