@@ -409,6 +409,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-openclaw-node": {
+      "locked": {
+        "lastModified": 1784120854,
+        "narHash": "sha256-KesHgItiZPgGX740axSiQLcIQ8D24MDqNpkKYWIek8k=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "753cc8a3a87467296ddd1fa93f0cc3e81120ee46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "753cc8a3a87467296ddd1fa93f0cc3e81120ee46",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1783475452,
@@ -480,6 +496,7 @@
         "nix-openclaw": "nix-openclaw",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-intel": "nixpkgs-intel",
+        "nixpkgs-openclaw-node": "nixpkgs-openclaw-node",
         "rust-overlay": "rust-overlay",
         "shap": "shap",
         "sops-nix": "sops-nix"
