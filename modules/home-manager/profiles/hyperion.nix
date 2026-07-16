@@ -30,5 +30,6 @@
     pass
     kubectl
     kubectx
+    obsidian
   ];
 }
