@@ -70,9 +70,9 @@ in {
         };
       };
       packages = [
-        "npm:@sageveil/pi@0.2.3"
-        "git:github.com/DietrichGebert/ponytail@14a0d79548d4de8fc2de95c1b94bb0de63a739d3"
-        "npm:@narumitw/pi-codex-usage@0.13.0"
+        "npm:@sageveil/pi@0.2.4"
+        "git:github.com/DietrichGebert/ponytail@16f29800fd2681bdf24f3eb4ccffe38be3baec6b"
+        "npm:@narumitw/pi-codex-usage@0.17.0"
         "npm:pi-subagents@0.34.0"
         "npm:pi-web-access@0.13.0"
       ];
