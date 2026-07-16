@@ -25,7 +25,10 @@
     environment.OPENCLAW_GATEWAY_TOKEN = config.sops.secrets.openclaw_gateway_token.path;
 
     config = {
-      gateway.mode = "local";
+      gateway = {
+        mode = "local";
+        bind = "lan";
+      };
       agents.defaults.model.primary = "openai/gpt-5.6-sol";
       commands.ownerAllowFrom = ["telegram:8849544452"];
       channels.telegram = {
