@@ -1,7 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
-{pkgs, ...}: {
+{
+  pkgs,
+  nix-openclaw,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -45,6 +49,9 @@
     max-jobs = 1;
     cores = 0;
   };
+  nixpkgs.overlays = [
+    (final: prev: builtins.removeAttrs (nix-openclaw.overlays.default final prev) ["pnpm_11"])
+  ];
   nixpkgs.config.permittedInsecurePackages = [
     "intel-media-sdk-23.2.2"
   ];

@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./base.nix
+    ./openclaw.nix
     ../modules/codex.nix
     ../modules/gpg.nix
     ../modules/k9s.nix

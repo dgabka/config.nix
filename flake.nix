@@ -43,6 +43,10 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    nix-openclaw.url = "github:openclaw/nix-openclaw";
+    nix-openclaw.inputs.nixpkgs.follows = "nixpkgs";
+    nix-openclaw.inputs.home-manager.follows = "home-manager";
   };
   outputs = {
     nixpkgs,
@@ -58,6 +62,7 @@
     shap,
     sops-nix,
     nix-homebrew,
+    nix-openclaw,
     ...
   } @ inputs: let
     darwinConfigurations = import ./outputs/darwin.nix inputs;
