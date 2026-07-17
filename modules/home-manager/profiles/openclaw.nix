@@ -28,6 +28,10 @@
       gateway = {
         mode = "local";
         bind = "lan";
+        controlUi.allowedOrigins = [
+          "https://openclaw.internal"
+          "https://openclaw.k8s.hyperion.internal"
+        ];
       };
       agents.defaults.model.primary = "openai/gpt-5.6-sol";
       commands.ownerAllowFrom = ["telegram:8849544452"];
