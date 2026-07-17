@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   theme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "starship";
@@ -7,7 +11,7 @@
   };
 in {
   programs.starship = {
-    enable = true;
+    enable = lib.mkDefault true;
     enableZshIntegration = true;
     enableBashIntegration = false;
     settings = builtins.fromTOML (builtins.readFile "${theme}/sageveil.toml");

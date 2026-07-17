@@ -11,10 +11,7 @@ Personal machine (`.#personal`, Intel Mac):
 sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
-Work machine (`.#work`, Apple Silicon):
-```
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-```
+The Apple Silicon work-machine configuration lives in the separate `wh.nix` repository.
 
 Reference: [Determinate installer docs](https://docs.determinate.systems/getting-started/individuals)
 
@@ -27,8 +24,8 @@ sudo nix run nix-darwin -- switch
 ```
 
 Flake host keys:
-- `.#personal` (aliases: `.#Dawids-MacBook-Pro`, `.#Mac`)
-- `.#work` (alias: `.#WHM5006336`)
+- `.#personal` (alias: `.#Dawids-MacBook-Pro`)
+- `.#workBase` is a reusable base consumed by the separate `wh.nix` repository
 
 3. Change shell manually
 ```
@@ -43,7 +40,6 @@ chsh -s "/etc/profiles/per-user/$(whoami)/bin/zsh"
 ```
 just switch
 sudo darwin-rebuild switch --flake .#personal
-sudo darwin-rebuild switch --flake .#work
 sudo nixos-rebuild switch --flake .#hyperion
 ```
 
@@ -79,7 +75,7 @@ darwin-rebuild switch --rollback
 
 ```
 nix eval '.#darwinConfigurations."Dawids-MacBook-Pro".system'
-nix eval .#darwinConfigurations.work.system
+nix eval .#darwinConfigurations.workBase.system
 nix eval .#devShells.x86_64-linux.default.name
 ```
 

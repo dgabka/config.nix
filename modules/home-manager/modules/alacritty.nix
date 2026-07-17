@@ -14,7 +14,7 @@
   alacrittyTerminfoSrc = "${pkgs.alacritty.src}/extra/alacritty.info";
 in {
   programs.alacritty = {
-    enable = false;
+    enable = lib.mkDefault false;
     settings = {
       cursor.blink_interval = 500;
       cursor.blink_timeout = 0;
@@ -62,8 +62,8 @@ in {
   };
 
   # Ensure terminfo entries exist for shells and multiplexers that rely on them.
-  home.activation.installAlacrittyTerminfo = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.installAlacrittyTerminfo = lib.mkIf config.programs.alacritty.enable (lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${pkgs.coreutils}/bin/mkdir -p "${terminfoDir}"
     ${pkgs.ncurses}/bin/tic -x -o "${terminfoDir}" -e alacritty,alacritty-direct "${alacrittyTerminfoSrc}"
-  '';
+  '');
 }

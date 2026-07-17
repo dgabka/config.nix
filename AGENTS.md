@@ -5,7 +5,7 @@ This repository is a Nix flake for macOS and NixOS environments.
 
 - `flake.nix` is the main entry point and delegates outputs to `outputs/darwin.nix`, `outputs/nixos.nix`, and `outputs/devshells.nix`.
 - `lib/mkDarwinHost.nix` and `lib/mkNixosHost.nix` contain the shared host-construction logic.
-- `modules/darwin/` contains shared Darwin defaults plus host-specific Darwin modules.
+- `modules/darwin/` contains shared Darwin defaults plus the personal host module.
 - `modules/home-manager/modules/` contains reusable Home Manager modules.
 - `modules/home-manager/profiles/` contains profile composition for shared and machine-specific user environments.
 - `modules/fonts/` stores bundled font assets used by system configuration.
@@ -13,11 +13,11 @@ This repository is a Nix flake for macOS and NixOS environments.
 - `shells.nix` defines development shells exported through the flake.
 
 ## Host and Profile Layout
-- Darwin hosts are defined in `outputs/darwin.nix`: `personal` and `work`.
+- Darwin outputs are defined in `outputs/darwin.nix`: deployable `personal` and reusable `workBase` for the separate `wh.nix` repository.
 - NixOS host output is currently `hyperion`.
 - `hyperion` system configuration lives in `modules/nixos/hyperion/` (hardware, drives, samba, selfhosted k3s/backup). System changes go there; shared module and Home Manager profile changes apply across all hosts as usual.
 - Shared user-level defaults belong in `modules/home-manager/profiles/base.nix`.
-- Machine- or context-specific user changes belong in `modules/home-manager/profiles/personal.nix`, `modules/home-manager/profiles/wh.nix`, and `modules/home-manager/profiles/hyperion.nix`.
+- Machine-specific user changes belong in `modules/home-manager/profiles/personal.nix` and `modules/home-manager/profiles/hyperion.nix`; work-only configuration belongs in the separate sibling `wh.nix` repository.
 
 ## Build, Test, and Development Commands
 - `just fmt` — format all Nix and YAML files.
@@ -39,7 +39,7 @@ Available shells currently include:
 ## Change Placement Rules
 - Prefer editing an existing module or profile over adding a new file.
 - Put shared CLI, shell, editor, and tooling changes in `modules/home-manager/modules/` or `modules/home-manager/profiles/base.nix`.
-- Put personal/work-specific user environment changes in the matching profile file.
+- Put personal and hyperion-specific user changes in the matching profile file; keep work-specific changes in the separate `wh.nix` repository.
 - Put macOS system defaults, Homebrew configuration, and OS-level settings in `modules/darwin/`.
 - Keep shared skill-linking behavior centralized through `lib/mkSkillLinks.nix` and `modules/home-manager/modules/agent-skills.nix`; put repo-specific skills in `.agents/skills/`.
 
@@ -66,5 +66,5 @@ Available shells currently include:
 - Do not assume host definitions live in a `systems/` directory; follow the flake output wiring instead.
 - Check both shared and host-specific layers before making recommendations: flake outputs, host builders, shared modules, and profile composition.
 - If a change affects all environments, update the shared layer.
-- If a change is machine-specific, keep it in the smallest appropriate host/profile file.
+- If a change is machine-specific, keep it in the smallest appropriate host/profile file or in `wh.nix` for the work machine.
 - When touching agent tooling, treat `assets/skills/` as the shared source of truth and `.agents/skills/` as repo-local.

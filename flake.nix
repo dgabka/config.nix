@@ -88,6 +88,15 @@
   in
     {
       inherit darwinConfigurations nixosConfigurations;
+      homeManagerModules = {
+        codex = ./modules/home-manager/modules/codex.nix;
+        copilot = ./modules/home-manager/modules/copilot.nix;
+        darwin = ./modules/home-manager/modules/darwin.nix;
+        glab = ./modules/home-manager/modules/glab.nix;
+        k9s = ./modules/home-manager/modules/k9s.nix;
+        pi = ./modules/home-manager/modules/pi.nix;
+        tiling = ./modules/home-manager/modules/tiling.nix;
+      };
     }
     // devShellOutputs
     // formatterOutputs;

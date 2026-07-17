@@ -7,7 +7,7 @@ check:
 
 validate:
   nix eval .#darwinConfigurations.personal.system
-  nix eval .#darwinConfigurations.work.system
+  nix eval .#darwinConfigurations.workBase.system
   nix eval .#devShells.x86_64-linux.default.name
   nix eval .#nixosConfigurations --apply builtins.attrNames
 

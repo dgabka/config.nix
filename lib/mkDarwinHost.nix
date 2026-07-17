@@ -9,10 +9,8 @@
   system,
   hostModule,
   homeProfile,
-  allowUnfree ? false,
 }: let
   commonModules = [
-    ({...}: {nixpkgs.config.allowUnfree = allowUnfree;})
     ../modules/darwin
     hostModule
     home-manager.darwinModules.home-manager

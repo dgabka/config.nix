@@ -3,7 +3,6 @@
 ## `modules/darwin`
 - `default.nix`: shared nix-darwin base settings.
 - `personal.nix`: personal-machine Darwin settings.
-- `wh.nix`: work-machine Darwin settings.
 
 ## `modules/home-manager/modules`
 Reusable Home Manager feature modules, for example:
@@ -15,7 +14,9 @@ Reusable Home Manager feature modules, for example:
 
 ## `modules/home-manager/profiles`
 - `base.nix`: common profile imports used by all profiles.
-- `personal.nix`, `wh.nix`, `hyperion.nix`: profile-level package/module composition.
+- `personal.nix`, `hyperion.nix`: profile-level package/module composition.
+
+The work-machine configuration lives in the separate `wh.nix` repository and consumes the shared modules exported by this flake.
 
 ## `modules/home-manager/scripts`
 Script sources used by Home Manager wrappers.

@@ -22,15 +22,13 @@ in rec {
     homeProfile = ../modules/home-manager/profiles/personal.nix;
   };
 
-  work = mkDarwinHost {
+  workBase = mkDarwinHost {
     inherit darwin home-manager neovim-nightly nix-homebrew llm-agents shap sops-nix;
     system = "aarch64-darwin";
-    hostModule = ../modules/darwin/wh.nix;
-    homeProfile = ../modules/home-manager/profiles/wh.nix;
-    allowUnfree = true;
+    hostModule = {};
+    homeProfile = ../modules/home-manager/profiles/base.nix;
   };
 
   # Real machine hostnames
   "Dawids-MacBook-Pro" = personal;
-  WHM5006336 = work;
 }

@@ -16,69 +16,80 @@
   pnpmHome = "${config.xdg.dataHome}/pnpm";
   yarnPrefix = "${config.xdg.dataHome}/yarn";
 in {
-  home.stateVersion = "24.05";
-
-  home.sessionVariables = {
-    NPM_CONFIG_PREFIX = npmPrefix;
-    PNPM_HOME = pnpmHome;
+  options.configNix.common.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = "Enable common development tooling.";
   };
 
-  home.sessionPath = [
-    "${npmPrefix}/bin"
-    "${pnpmHome}/bin"
-    "${yarnPrefix}/bin"
-  ];
+  config = lib.mkMerge [
+    {
+      home.stateVersion = "24.05";
+    }
+    (lib.mkIf config.configNix.common.enable {
+      home.sessionVariables = {
+        NPM_CONFIG_PREFIX = npmPrefix;
+        PNPM_HOME = pnpmHome;
+      };
 
-  home.file.".yarnrc".text = ''
-    prefix "${yarnPrefix}"
-    --global-folder "${yarnPrefix}/global"
-  '';
+      home.sessionPath = [
+        "${npmPrefix}/bin"
+        "${pnpmHome}/bin"
+        "${yarnPrefix}/bin"
+      ];
 
-  home.packages = with pkgs; [
-    # common tools
-    curl
-    tree-sitter
-    nightlyPkgs.neovim
-    jq
-    tree
-    stow
-    htop
-    just
+      home.file.".yarnrc".text = ''
+        prefix "${yarnPrefix}"
+        --global-folder "${yarnPrefix}/global"
+      '';
 
-    # language tools, LSPs, formatters, etc...
-    # nix
-    nil
-    alejandra
-    # lua
-    luajitPackages.luacheck
-    lua-language-server
-    stylua
-    # yaml
-    yaml-language-server
-    yamlfmt
-    # shell tools
-    bash-language-server
-    shellcheck
-    shfmt
-    # javascript tools
-    nodejs
-    vtsls
-    typescript
-    eslint_d
-    prettierd
-    vscode-langservers-extracted
-    playwright-test
-    # other
-    lspmux
-    marksman
-    dockerfile-language-server
-    python3
+      home.packages = with pkgs; [
+        # common tools
+        curl
+        tree-sitter
+        nightlyPkgs.neovim
+        jq
+        tree
+        stow
+        htop
+        just
 
-    # dev tools
-    pre-commit
-    docker
-    devbox
+        # language tools, LSPs, formatters, etc...
+        # nix
+        nil
+        alejandra
+        # lua
+        luajitPackages.luacheck
+        lua-language-server
+        stylua
+        # yaml
+        yaml-language-server
+        yamlfmt
+        # shell tools
+        bash-language-server
+        shellcheck
+        shfmt
+        # javascript tools
+        nodejs
+        vtsls
+        typescript
+        eslint_d
+        prettierd
+        vscode-langservers-extracted
+        playwright-test
+        # other
+        lspmux
+        marksman
+        dockerfile-language-server
+        python3
 
-    shap.packages.${pkgs.stdenv.hostPlatform.system}.shap
+        # dev tools
+        pre-commit
+        docker
+        devbox
+
+        shap.packages.${pkgs.stdenv.hostPlatform.system}.shap
+      ];
+    })
   ];
 }

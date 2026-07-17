@@ -6,7 +6,7 @@
   ...
 }: {
   programs.zsh = {
-    enable = true;
+    enable = lib.mkDefault true;
     autosuggestion.enable = true;
     autosuggestion.highlight = "fg=blue";
     autosuggestion.strategy = ["history" "completion"];

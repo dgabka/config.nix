@@ -4,91 +4,99 @@
   pkgs,
   ...
 }: {
-  home.packages = [
-    pkgs.tmux-sessionizer
-  ];
-  home.sessionVariables.TMS_CONFIG_FILE = "${config.home.homeDirectory}/.config/tms/config.toml";
-  programs.tmux.extraConfig = lib.mkAfter ''
-    set-environment -g TMS_CONFIG_FILE "${config.home.homeDirectory}/.config/tms/config.toml"
-  '';
-  xdg.configFile."tms/config.toml".text = lib.mkBefore ''
-    default_session = "main"
-    search_submodules = false
-    session_sort_order = "LastAttached"
-    excluded_dirs = [
-      # VCS and metadata
-      ".hg",
-      ".svn",
+  options.configNix.tmuxSessionizer.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = "Enable tmux-sessionizer configuration.";
+  };
 
-      # JavaScript / frontend
-      "node_modules",
-      ".pnpm-store",
-      ".yarn",
-      ".yarn-cache",
-      ".npm",
-      ".next",
-      ".nuxt",
-      ".svelte-kit",
-      ".vite",
-      ".parcel-cache",
-      ".eslintcache",
-      ".turbo",
-      ".nx",
+  config = lib.mkIf config.configNix.tmuxSessionizer.enable {
+    home.packages = [
+      pkgs.tmux-sessionizer
+    ];
+    home.sessionVariables.TMS_CONFIG_FILE = "${config.home.homeDirectory}/.config/tms/config.toml";
+    programs.tmux.extraConfig = lib.mkAfter ''
+      set-environment -g TMS_CONFIG_FILE "${config.home.homeDirectory}/.config/tms/config.toml"
+    '';
+    xdg.configFile."tms/config.toml".text = lib.mkBefore ''
+      default_session = "main"
+      search_submodules = false
+      session_sort_order = "LastAttached"
+      excluded_dirs = [
+        # VCS and metadata
+        ".hg",
+        ".svn",
 
-      # Build outputs
-      "dist",
-      "build",
-      "out",
-      "target",
-      "coverage",
-      "storybook-static",
+        # JavaScript / frontend
+        "node_modules",
+        ".pnpm-store",
+        ".yarn",
+        ".yarn-cache",
+        ".npm",
+        ".next",
+        ".nuxt",
+        ".svelte-kit",
+        ".vite",
+        ".parcel-cache",
+        ".eslintcache",
+        ".turbo",
+        ".nx",
 
-      # Monorepo / build systems
-      "bazel-bin",
-      "bazel-out",
-      "bazel-testlogs",
-      "bazel-workspace",
-      ".bazel",
+        # Build outputs
+        "dist",
+        "build",
+        "out",
+        "target",
+        "coverage",
+        "storybook-static",
 
-      # Caches and temp
-      ".cache",
-      ".tmp",
-      "tmp",
-      "temp",
+        # Monorepo / build systems
+        "bazel-bin",
+        "bazel-out",
+        "bazel-testlogs",
+        "bazel-workspace",
+        ".bazel",
 
-      # Env and dev tooling
-      ".direnv",
-      ".devenv",
-      ".env",
-      ".envrc",
+        # Caches and temp
+        ".cache",
+        ".tmp",
+        "tmp",
+        "temp",
 
-      # Infra / IaC
-      ".terraform",
-      ".serverless",
-      ".pulumi",
-      ".aws-sam",
-      ".cdk.out",
+        # Env and dev tooling
+        ".direnv",
+        ".devenv",
+        ".env",
+        ".envrc",
 
-      # CI and tooling noise
-      ".github",
-      ".gitlab",
-      ".circleci",
+        # Infra / IaC
+        ".terraform",
+        ".serverless",
+        ".pulumi",
+        ".aws-sam",
+        ".cdk.out",
 
-      # Editors and OS junk
-      ".idea",
-      ".vscode",
-      ".fleet",
-      ".history",
-      ".DS_Store",
-      ".Trash"
-    ]
+        # CI and tooling noise
+        ".github",
+        ".gitlab",
+        ".circleci",
 
-    [[search_dirs]]
-    path = "${config.home.homeDirectory}/repos"
-    depth = 2
+        # Editors and OS junk
+        ".idea",
+        ".vscode",
+        ".fleet",
+        ".history",
+        ".DS_Store",
+        ".Trash"
+      ]
 
-    [[search_dirs]]
-    path = "${config.home.homeDirectory}/dotfiles"
-    depth = 1
-  '';
+      [[search_dirs]]
+      path = "${config.home.homeDirectory}/repos"
+      depth = 2
+
+      [[search_dirs]]
+      path = "${config.home.homeDirectory}/dotfiles"
+      depth = 1
+    '';
+  };
 }

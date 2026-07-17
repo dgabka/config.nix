@@ -1,16 +1,26 @@
 {
+  config,
+  lib,
   llm-agents,
   pkgs,
   ...
 }: {
-  home.packages = [
-    # llm agents
-    (
-      llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.copilot-cli
-    )
-  ];
+  options.configNix.copilot.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = "Enable Copilot configuration.";
+  };
 
-  home.file = import ../../../lib/mkSkillLinks.nix {
-    destination = ".copilot/skills";
+  config = lib.mkIf config.configNix.copilot.enable {
+    home.packages = [
+      # llm agents
+      (
+        llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.copilot-cli
+      )
+    ];
+
+    home.file = import ../../../lib/mkSkillLinks.nix {
+      destination = ".copilot/skills";
+    };
   };
 }

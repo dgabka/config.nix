@@ -1,6 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.bat = {
-    enable = true;
+    enable = lib.mkDefault true;
     config = {
       theme = "sageveil";
     };

@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   theme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "fzf";
@@ -7,7 +11,7 @@
   };
 in {
   programs.fzf = {
-    enable = true;
+    enable = lib.mkDefault true;
     enableBashIntegration = true;
     enableZshIntegration = true;
     changeDirWidgetCommand = "fd --type d --hidden";

@@ -1,8 +1,8 @@
-{...}: let
+{lib, ...}: let
   fontFamily = "JetBrainsMonoNL Nerd Font";
 in {
   programs.neovide = {
-    enable = false;
+    enable = lib.mkDefault false;
     settings = {
       font = {
         size = 14.0;

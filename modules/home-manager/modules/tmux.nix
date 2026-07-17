@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   sageveil = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "sageveil";
     version = "v0.2.2";
@@ -12,7 +16,7 @@
   };
 in {
   programs.tmux = {
-    enable = true;
+    enable = lib.mkDefault true;
     prefix = "C-a";
     terminal = "tmux-256color";
     clock24 = true;
