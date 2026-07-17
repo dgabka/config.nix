@@ -33,7 +33,7 @@
           "https://openclaw.k8s.hyperion.internal"
         ];
       };
-      agents.defaults.model.primary = "openai/gpt-5.6-sol";
+      agents.defaults.model.primary = "openai/gpt-5.6-terra";
       commands.ownerAllowFrom = ["telegram:8849544452"];
       channels.telegram = {
         enabled = true;
