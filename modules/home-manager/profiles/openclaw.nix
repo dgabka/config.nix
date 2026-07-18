@@ -39,7 +39,7 @@
         enabled = true;
         tokenFile = config.sops.secrets.openclaw_telegram_bot_token.path;
         allowFrom = [8849544452];
-        groups."-1004334846770".requireMention = true;
+        groups."-1003838640573".requireMention = true;
       };
     };
   };
