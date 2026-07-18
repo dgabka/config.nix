@@ -177,6 +177,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    google-chrome
     gnumake
     gcc
 
