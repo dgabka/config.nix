@@ -71,6 +71,8 @@
   nixpkgs.config.permittedInsecurePackages = [
     "intel-media-sdk-23.2.2"
   ];
+  security.pki.certificateFiles = [./homelab-root-ca.pem];
+
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
