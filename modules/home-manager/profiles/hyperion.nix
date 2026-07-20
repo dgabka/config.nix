@@ -4,7 +4,9 @@
   config,
   nix-openclaw,
   ...
-}: {
+}: let
+  integrationEnvironment = "${config.xdg.configHome}/openclaw/claw.env";
+in {
   imports = [
     ./base.nix
     nix-openclaw.homeManagerModules.openclaw
@@ -21,10 +23,19 @@
     git_email_include = {};
     openclaw_gateway_token = {};
     openclaw_telegram_bot_token = {};
+    openclaw_integration_environment = {
+      path = integrationEnvironment;
+      mode = "0600";
+    };
   };
   programs.git.includes = [{path = config.sops.secrets.git_email_include.path;}];
 
   systemd.user.services.openclaw-gateway.Install.WantedBy = ["default.target"];
+
+  xdg.configFile."systemd/user/openclaw-gateway.service.d/claw.conf".text = ''
+    [Service]
+    EnvironmentFile=%h/.config/openclaw/claw.env
+  '';
 
   programs.openclaw = {
     enable = true;
