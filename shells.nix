@@ -5,6 +5,19 @@
     export PNPM_HOME="''${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
     export PATH="$NPM_CONFIG_PREFIX/bin:$PNPM_HOME/bin:''${XDG_DATA_HOME:-$HOME/.local/share}/yarn/bin:$PATH"
   '';
+  nodeShell = name: nodejs:
+    pkgs.mkShell {
+      inherit name;
+      buildInputs = [
+        (pkgs.pnpm.override {inherit nodejs;})
+        nodejs
+        pkgs.yarn
+        pkgs.typescript
+        pkgs.vtsls
+        pkgs.vscode-langservers-extracted
+      ];
+      shellHook = nodeGlobalHook;
+    };
 in {
   default = pkgs.mkShell {
     name = "dev-sh";
@@ -32,44 +45,9 @@ in {
     ];
   };
 
-  node22 = pkgs.mkShell {
-    name = "node22-sh";
-    buildInputs = with pkgs; [
-      (pnpm.override {nodejs = nodejs_22;})
-      nodejs_22
-      yarn
-      typescript
-      vtsls
-      vscode-langservers-extracted
-    ];
-    shellHook = nodeGlobalHook;
-  };
-
-  node24 = pkgs.mkShell {
-    name = "node24-sh";
-    buildInputs = with pkgs; [
-      (pnpm.override {nodejs = nodejs_24;})
-      nodejs_24
-      yarn
-      typescript
-      vtsls
-      vscode-langservers-extracted
-    ];
-    shellHook = nodeGlobalHook;
-  };
-
-  node26 = pkgs.mkShell {
-    name = "node26-sh";
-    buildInputs = with pkgs; [
-      (pnpm.override {nodejs = nodejs_26;})
-      nodejs_26
-      yarn
-      typescript
-      vtsls
-      vscode-langservers-extracted
-    ];
-    shellHook = nodeGlobalHook;
-  };
+  node22 = nodeShell "node22-sh" pkgs.nodejs_22;
+  node24 = nodeShell "node24-sh" pkgs.nodejs_24;
+  node26 = nodeShell "node26-sh" pkgs.nodejs_26;
 
   python = pkgs.mkShell {
     name = "python-sh";

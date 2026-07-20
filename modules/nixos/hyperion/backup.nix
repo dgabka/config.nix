@@ -35,6 +35,7 @@
       "/home/dgabka/dotfiles"
       "/home/dgabka/.password-store"
       "/home/dgabka/.gnupg"
+      "/home/dgabka/.openclaw"
     ];
 
     exclude = [
@@ -71,9 +72,6 @@
       token=$(cat ${config.sops.secrets.kuma_push_token.path})
       ${pkgs.curl}/bin/curl -fsS \
         "http://kuma.internal/api/push/''${token}?status=up&msg=OK&ping=" || true
-    '';
-    backupPrepareCommand = ''
-      # nothing yet
     '';
   };
 }

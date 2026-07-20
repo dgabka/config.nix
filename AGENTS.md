@@ -8,7 +8,7 @@ This repository is a Nix flake for macOS and NixOS environments.
 - `modules/darwin/` contains shared Darwin defaults plus the personal host module.
 - `modules/home-manager/modules/` contains reusable Home Manager modules.
 - `modules/home-manager/profiles/` contains profile composition for shared and machine-specific user environments.
-- `modules/fonts/` stores bundled font assets used by system configuration.
+- `assets/` stores non-Nix sources such as scripts, program fragments, OpenClaw bootstrap files, and shared agent skills.
 - `assets/skills/` is the source of truth for shared agent skills; these are linked into `~/.agents/skills/` for Codex/Pi. Repo-local skills belong in `.agents/skills/`.
 - `shells.nix` defines development shells exported through the flake.
 

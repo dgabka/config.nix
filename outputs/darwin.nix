@@ -3,7 +3,6 @@
   darwin-intel,
   home-manager,
   home-manager-intel,
-  nixpkgs,
   neovim-nightly,
   nix-homebrew,
   llm-agents,

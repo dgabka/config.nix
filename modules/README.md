@@ -6,7 +6,7 @@
 
 ## `modules/home-manager/modules`
 Reusable Home Manager feature modules, for example:
-- `agent-skills.nix`: shared `~/.agents/skills` links for agents that use the common skills directory.
+- `agent-skills.nix`: shared `~/.agents/skills` links sourced from `assets/skills`.
 - `common.nix`: shared CLI/dev packages and baseline session variables.
 - `zsh.nix`, `tmux.nix`, `git.nix`, `starship.nix`: shell/tool configuration modules.
 - `darwin.nix`: Darwin-only Home Manager additions.
@@ -18,8 +18,9 @@ Reusable Home Manager feature modules, for example:
 
 The work-machine configuration lives in the separate `wh.nix` repository and consumes the shared modules exported by this flake.
 
-## `modules/home-manager/scripts`
-Script sources used by Home Manager wrappers.
-
-## `modules/fonts`
-Bundled font assets consumed by system modules.
+## `assets`
+Non-Nix sources consumed by modules:
+- `openclaw/bootstrap/`: declarative OpenClaw workspace bootstrap files.
+- `scripts/`: helper scripts wrapped by Home Manager.
+- `skills/`: shared agent skills.
+- `tmux/`, `zsh/`: program configuration fragments.

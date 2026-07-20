@@ -1,8 +1,8 @@
-# config.nvim
+# config.nix
 
 NixOS and NixDarwin system configurations
 
-## Setup for MacOS
+## Setup for macOS
 
 1. Install Nix
 
