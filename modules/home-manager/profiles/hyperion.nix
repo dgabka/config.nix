@@ -47,6 +47,41 @@
           "https://openclaw.k8s.hyperion.internal"
         ];
       };
+      skills.entries = lib.genAttrs [
+        "1password"
+        "apple-notes"
+        "apple-reminders"
+        "bear-notes"
+        "blogwatcher"
+        "blucli"
+        "camsnap"
+        "eightctl"
+        "gemini"
+        "gifgrep"
+        "gog"
+        "goplaces"
+        "himalaya"
+        "mcporter"
+        "model-usage"
+        "nano-pdf"
+        "node-connect"
+        "openai-whisper"
+        "openai-whisper-api"
+        "openhue"
+        "oracle"
+        "ordercli"
+        "peekaboo"
+        "python-debugpy"
+        "sag"
+        "sherpa-onnx-tts"
+        "songsee"
+        "sonoscli"
+        "spike"
+        "spotify-player"
+        "things-mac"
+        "xurl"
+      ] (_: {enabled = false;});
+
       agents.defaults.model.primary = "openai/gpt-5.6-terra";
       commands.ownerAllowFrom = ["telegram:8849544452"];
       channels.telegram = {
