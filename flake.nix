@@ -94,6 +94,7 @@
         darwin = ./modules/home-manager/modules/darwin.nix;
         glab = ./modules/home-manager/modules/glab.nix;
         k9s = ./modules/home-manager/modules/k9s.nix;
+        opencode = ./modules/home-manager/modules/opencode.nix;
         pi = ./modules/home-manager/modules/pi.nix;
         tiling = ./modules/home-manager/modules/tiling.nix;
       };

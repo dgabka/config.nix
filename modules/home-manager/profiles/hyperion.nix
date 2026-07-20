@@ -13,6 +13,7 @@ in {
     ../modules/codex.nix
     ../modules/gpg.nix
     ../modules/k9s.nix
+    ../modules/opencode.nix
     ../modules/pi.nix
     ../modules/tiling.nix
   ];
