@@ -62,41 +62,41 @@ in {
         theme = "sageveil";
         defaultProvider = "openai-codex";
         defaultModel = "gpt-5.6-terra";
-        defaultThinkingLevel = "medium";
+        defaultThinkingLevel = "low";
         subagents = {
           defaultModel = "openai-codex/gpt-5.6-luna";
           agentOverrides = {
             scout = {
               model = "openai-codex/gpt-5.6-luna";
-              thinking = "low";
+              thinking = "minimal";
             };
             researcher = {
               model = "openai-codex/gpt-5.6-luna";
-              thinking = "medium";
+              thinking = "low";
             };
             planner = {
               model = "openai-codex/gpt-5.6-terra";
-              thinking = "medium";
+              thinking = "low";
             };
             worker = {
               model = "openai-codex/gpt-5.6-terra";
-              thinking = "medium";
+              thinking = "low";
             };
             reviewer = {
               model = "openai-codex/gpt-5.6-sol";
-              thinking = "high";
+              thinking = "medium";
             };
             context-builder = {
               model = "openai-codex/gpt-5.6-terra";
-              thinking = "medium";
+              thinking = "low";
             };
             oracle = {
               model = "openai-codex/gpt-5.6-sol";
-              thinking = "high";
+              thinking = "medium";
             };
             delegate = {
               model = "openai-codex/gpt-5.6-luna";
-              thinking = "medium";
+              thinking = "minimal";
             };
           };
         };
