@@ -102,10 +102,10 @@ in {
         };
         packages =
           [
-            "npm:@sageveil/pi@0.2.4"
+            "npm:@sageveil/pi@0.2.10"
             "git:github.com/DietrichGebert/ponytail@16f29800fd2681bdf24f3eb4ccffe38be3baec6b"
-            "npm:@narumitw/pi-codex-usage@0.17.0"
-            "npm:pi-subagents@0.34.0"
+            "npm:@narumitw/pi-codex-usage@0.25.0"
+            "npm:pi-subagents@0.35.1"
             "npm:pi-web-access@0.13.0"
           ]
           ++ config.configNix.pi.extraPackages;
