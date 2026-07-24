@@ -4,10 +4,14 @@
   home-manager,
   home-manager-intel,
   neovim-nightly,
+  neovim-nightly-intel,
   nix-homebrew,
   llm-agents,
+  llm-agents-intel,
   shap,
+  shap-intel,
   sops-nix,
+  sops-nix-intel,
   ...
 }: let
   mkDarwinHost = import ../lib/mkDarwinHost.nix;
@@ -15,7 +19,11 @@ in rec {
   personal = mkDarwinHost {
     darwin = darwin-intel;
     home-manager = home-manager-intel;
-    inherit neovim-nightly nix-homebrew llm-agents shap sops-nix;
+    neovim-nightly = neovim-nightly-intel;
+    llm-agents = llm-agents-intel;
+    shap = shap-intel;
+    sops-nix = sops-nix-intel;
+    inherit nix-homebrew;
     system = "x86_64-darwin";
     hostModule = ../modules/darwin/personal.nix;
     homeProfile = ../modules/home-manager/profiles/personal.nix;

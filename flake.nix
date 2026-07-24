@@ -14,6 +14,20 @@
     darwin-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
     home-manager-intel.url = "github:nix-community/home-manager/release-26.05";
     home-manager-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
+    neovim-nightly-intel.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
+    llm-agents-intel.url = "github:numtide/llm-agents.nix/cdd2b21be54e644e1f450492cf71e4180bd90401";
+    llm-agents-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
+    shap-intel = {
+      url = "github:dgabka/shap";
+      inputs.llm-agents.follows = "llm-agents-intel";
+      inputs.nixpkgs.follows = "nixpkgs-intel";
+      inputs.rust-overlay.follows = "rust-overlay-intel";
+    };
+    rust-overlay-intel.url = "github:oxalica/rust-overlay";
+    rust-overlay-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
+    sops-nix-intel.url = "github:mic92/sops-nix";
+    sops-nix-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
 
     # Manages link to home dir
     home-manager.url = "github:nix-community/home-manager/master";
@@ -58,11 +72,15 @@
     home-manager,
     home-manager-intel,
     neovim-nightly,
+    neovim-nightly-intel,
     rust-overlay,
     flake-utils,
     llm-agents,
+    llm-agents-intel,
     shap,
+    shap-intel,
     sops-nix,
+    sops-nix-intel,
     nix-homebrew,
     nix-openclaw,
     nixpkgs-openclaw-node,
