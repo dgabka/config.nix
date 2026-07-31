@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  git-wt,
   ...
 }: {
   options.configNix.scripts.enable = lib.mkOption {
@@ -15,8 +16,7 @@
       # Keep the zsh shebang from the script file.
       (pkgs.writeScriptBin "obsidian-quick-note"
         (builtins.readFile ../../../assets/scripts/obsidian-quick-note.zsh))
-      (pkgs.writeShellScriptBin "wt"
-        (builtins.readFile ../../../assets/scripts/wt.bash))
+      git-wt.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     xdg.configFile."wt/hooks".text = ''
