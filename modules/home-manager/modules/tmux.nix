@@ -5,13 +5,13 @@
 }: let
   sageveil = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "sageveil";
-    version = "v0.2.2";
+    version = "v0.2.5";
     rtpFilePath = "sageveil.tmux";
     src = pkgs.fetchFromGitHub {
       owner = "sageveil";
       repo = "tmux";
-      rev = "v0.2.2";
-      sha256 = "sha256-/bQJ2wUuzbmyOT8+qZH1DMHg/OJixNE4bvAZfXdNDbk=";
+      rev = "v0.2.5";
+      sha256 = "sha256-dr9Av79e8m7ouWfq0091ein66ytf0ic8Zpo4PcmcTEI=";
     };
   };
 in {
@@ -32,6 +32,7 @@ in {
         extraConfig = ''
           set -g @sv_show_session_count 'on'
           set -g @sv_show_date_time 'on'
+          set -g @sv_show_ssh_hostname 'on'
         '';
       }
       tmuxPlugins.yank
