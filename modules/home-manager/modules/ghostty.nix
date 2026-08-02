@@ -25,6 +25,9 @@ in {
       config-file = ${ghosttyTheme}/sageveil
       window-decoration = none
       font-size = 14
+      cursor-style = block
+      cursor-style-blink = true
+      shell-integration-features = no-cursor
       keybind = clear
       macos-option-as-alt = left
       keybind = super+equal=increase_font_size:1
