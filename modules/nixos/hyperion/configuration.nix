@@ -132,8 +132,6 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  programs.firefox.enable = true;
-
   # Add Sway as a tiling session alongside GNOME.
   programs.sway = {
     enable = true;
@@ -144,7 +142,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
-    google-chrome
+    ungoogled-chromium
     gnumake
     gcc
 

@@ -3,6 +3,7 @@
   homebrew.enable = true;
   homebrew.casks = [
     "ghostty"
+    "ungoogled-chromium"
     "bruno"
     "amethyst"
     "obsidian"
