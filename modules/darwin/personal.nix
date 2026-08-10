@@ -4,6 +4,7 @@
   homebrew.casks = [
     "ghostty"
     "ungoogled-chromium"
+    "discord"
     "bruno"
     "amethyst"
     "obsidian"
