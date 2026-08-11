@@ -3,7 +3,6 @@
   home-manager,
   neovim-nightly,
   llm-agents,
-  shap,
   sops-nix,
   git-wt,
   system,
@@ -23,7 +22,7 @@ nixpkgs.lib.nixosSystem {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs =
-        {inherit git-wt llm-agents neovim-nightly shap;} // extraSpecialArgs;
+        {inherit git-wt llm-agents neovim-nightly;} // extraSpecialArgs;
       home-manager.users.dgabka = {
         imports = [homeProfile sops-nix.homeManagerModules.sops];
       };

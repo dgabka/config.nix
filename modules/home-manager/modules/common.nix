@@ -4,7 +4,6 @@
   config,
   llm-agents,
   neovim-nightly,
-  shap,
   ...
 }: let
   nightlyPkgs = import pkgs.path {
@@ -87,8 +86,6 @@ in {
         pre-commit
         docker
         devbox
-
-        shap.packages.${pkgs.stdenv.hostPlatform.system}.shap
       ];
     })
   ];

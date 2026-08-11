@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  shap,
   ...
 }: {
   programs.zsh = {
@@ -59,8 +58,6 @@
     };
     initContent = lib.mkAfter ''
       ${builtins.readFile ../../../assets/zsh/content.zsh}
-      export SHAP_BIN="${shap.packages.${pkgs.stdenv.hostPlatform.system}.shap}/bin/shap"
-      source "${shap}/shell/zsh/shap.zsh"
     '';
   };
 }

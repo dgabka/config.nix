@@ -25,7 +25,6 @@ in {
         then pkgs.codex
         else llmAgentPackages.codex
       )
-      llmAgentPackages.codex-acp
     ];
   };
 }

@@ -18,12 +18,6 @@
     neovim-nightly-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
     llm-agents-intel.url = "github:numtide/llm-agents.nix/cdd2b21be54e644e1f450492cf71e4180bd90401";
     llm-agents-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
-    shap-intel = {
-      url = "github:dgabka/shap";
-      inputs.llm-agents.follows = "llm-agents-intel";
-      inputs.nixpkgs.follows = "nixpkgs-intel";
-      inputs.rust-overlay.follows = "rust-overlay-intel";
-    };
     rust-overlay-intel.url = "github:oxalica/rust-overlay";
     rust-overlay-intel.inputs.nixpkgs.follows = "nixpkgs-intel";
     sops-nix-intel.url = "github:mic92/sops-nix";
@@ -45,13 +39,6 @@
     flake-utils.url = "github:numtide/flake-utils";
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs";
-
-    shap = {
-      url = "github:dgabka/shap";
-      inputs.llm-agents.follows = "llm-agents";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
 
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -79,8 +66,6 @@
     flake-utils,
     llm-agents,
     llm-agents-intel,
-    shap,
-    shap-intel,
     sops-nix,
     sops-nix-intel,
     nix-homebrew,

@@ -108,36 +108,6 @@
         "type": "github"
       }
     },
-    "crane": {
-      "locked": {
-        "lastModified": 1780532242,
-        "narHash": "sha256-D+BsdpxmtUwtqGoY0IXPhHgTlmqgcZKCEo1oMyn7ep0=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "59a82a1222dd3b2080b5cc52a1a2e8d5f1b77f37",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
-    "crane_2": {
-      "locked": {
-        "lastModified": 1780532242,
-        "narHash": "sha256-D+BsdpxmtUwtqGoY0IXPhHgTlmqgcZKCEo1oMyn7ep0=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "59a82a1222dd3b2080b5cc52a1a2e8d5f1b77f37",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -689,8 +659,6 @@
         "nixpkgs-openclaw-node": "nixpkgs-openclaw-node",
         "rust-overlay": "rust-overlay",
         "rust-overlay-intel": "rust-overlay-intel",
-        "shap": "shap",
-        "shap-intel": "shap-intel",
         "sops-nix": "sops-nix",
         "sops-nix-intel": "sops-nix-intel"
       }
@@ -730,60 +698,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "shap": {
-      "inputs": {
-        "crane": "crane",
-        "llm-agents": [
-          "llm-agents"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": [
-          "rust-overlay"
-        ]
-      },
-      "locked": {
-        "lastModified": 1781648851,
-        "narHash": "sha256-EflmXtSvekWxy6URK8CLooG2Sj0VFN4bIMPMIjEJJVs=",
-        "owner": "dgabka",
-        "repo": "shap",
-        "rev": "6b4c657f8282c1b3b53d88a0782f9073c335ed46",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dgabka",
-        "repo": "shap",
-        "type": "github"
-      }
-    },
-    "shap-intel": {
-      "inputs": {
-        "crane": "crane_2",
-        "llm-agents": [
-          "llm-agents-intel"
-        ],
-        "nixpkgs": [
-          "nixpkgs-intel"
-        ],
-        "rust-overlay": [
-          "rust-overlay-intel"
-        ]
-      },
-      "locked": {
-        "lastModified": 1781648851,
-        "narHash": "sha256-EflmXtSvekWxy6URK8CLooG2Sj0VFN4bIMPMIjEJJVs=",
-        "owner": "dgabka",
-        "repo": "shap",
-        "rev": "6b4c657f8282c1b3b53d88a0782f9073c335ed46",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dgabka",
-        "repo": "shap",
         "type": "github"
       }
     },
