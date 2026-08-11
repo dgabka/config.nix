@@ -70,6 +70,7 @@ in {
         shfmt
         # javascript tools
         nodejs
+        pnpm
         vtsls
         typescript
         eslint_d

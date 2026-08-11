@@ -4,9 +4,7 @@
   llm-agents,
   pkgs,
   ...
-}: let
-  llmAgentPackages = llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
-in {
+}: {
   options.configNix.pi.enable = lib.mkOption {
     type = lib.types.bool;
     default = true;
@@ -26,9 +24,17 @@ in {
   };
 
   config = lib.mkIf config.configNix.pi.enable {
-    home.packages = [
-      llmAgentPackages.pi
+    home.packages = lib.optionals (pkgs.stdenv.hostPlatform.system != "x86_64-darwin") [
+      llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
     ];
+
+    home.activation.installPi = lib.mkIf (pkgs.stdenv.hostPlatform.system == "x86_64-darwin") (
+      lib.hm.dag.entryAfter ["writeBoundary"] ''
+        export PNPM_HOME="${config.xdg.dataHome}/pnpm"
+        export PATH="$PNPM_HOME/bin:$PATH"
+        $DRY_RUN_CMD ${pkgs.pnpm}/bin/pnpm add --global --ignore-scripts @earendil-works/pi-coding-agent
+      ''
+    );
 
     home.file.".pi/agent/AGENTS.md".text = ''
       # Global agent guidance
