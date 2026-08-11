@@ -109,10 +109,10 @@
         packages =
           [
             "npm:@sageveil/pi@0.2.10"
-            "git:github.com/DietrichGebert/ponytail@16f29800fd2681bdf24f3eb4ccffe38be3baec6b"
-            "npm:@narumitw/pi-usage"
-            "npm:pi-subagents@0.35.1"
-            "npm:pi-web-access@0.13.0"
+            "git:github.com/DietrichGebert/ponytail@2ed6c52c9d7e5e56942508591085fd45dea277d3"
+            "npm:@narumitw/pi-usage@0.50.0"
+            "npm:pi-subagents@0.46.0"
+            "npm:pi-web-access@0.21.0"
           ]
           ++ config.configNix.pi.extraPackages;
       };
