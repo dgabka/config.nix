@@ -25,6 +25,7 @@
   system.defaults.NSGlobalDomain.KeyRepeat = 1;
   system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
   system.defaults.NSGlobalDomain.AppleShowAllFiles = true;
+  system.defaults.CustomUserPreferences."com.apple.HIToolbox".AppleDictationAutoEnable = 1;
   system.defaults.finder.FXDefaultSearchScope = "SCcf";
   system.defaults.finder.ShowPathbar = true;
   system.defaults.finder.ShowStatusBar = true;
