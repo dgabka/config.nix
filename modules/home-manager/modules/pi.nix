@@ -53,6 +53,7 @@
         icon = true;
         vimMode = true;
         directory = true;
+        sessionName = true;
         gitBranch = true;
         gitStatus = true;
         context = true;
@@ -108,7 +109,7 @@
         };
         packages =
           [
-            "npm:@sageveil/pi@0.2.10"
+            "npm:@sageveil/pi@0.2.11"
             "git:github.com/DietrichGebert/ponytail@2ed6c52c9d7e5e56942508591085fd45dea277d3"
             "npm:@narumitw/pi-usage@0.50.0"
             "npm:pi-subagents@0.46.0"
