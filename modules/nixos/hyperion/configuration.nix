@@ -18,6 +18,7 @@
 
   networking.hostName = "hyperion";
   networking.networkmanager.enable = true;
+  services.tailscale.enable = true;
 
   systemd.services.eno1-ring-buffer = {
     description = "Increase eno1 NIC ring buffers";
