@@ -9,7 +9,7 @@
     pkgs.mkShell {
       inherit name;
       buildInputs = [
-        (pkgs.pnpm.override {inherit nodejs;})
+        (pkgs.pnpm.override {nodejs-slim = nodejs;})
         nodejs
         pkgs.yarn
         pkgs.typescript
@@ -28,7 +28,7 @@ in {
 
       # Node.js tools
       nodejs
-      (pnpm.override {nodejs = nodejs;})
+      (pnpm.override {nodejs-slim = nodejs;})
       yarn
       typescript
       vtsls
