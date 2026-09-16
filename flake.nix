@@ -46,7 +46,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     git-wt.url = "github:dgabka/git-wt";
-    grove.url = "github:dgabka/grove/v0.1.2";
+    grove.url = "github:dgabka/grove";
 
     nix-openclaw.url = "github:openclaw/nix-openclaw";
     nix-openclaw.inputs.nixpkgs.follows = "nixpkgs";
