@@ -70,49 +70,12 @@
         defaultProvider = "openai-codex";
         defaultModel = "gpt-5.6-terra";
         defaultThinkingLevel = "low";
-        subagents = {
-          defaultModel = "openai-codex/gpt-5.6-luna";
-          agentOverrides = {
-            scout = {
-              model = "openai-codex/gpt-5.6-luna";
-              thinking = "minimal";
-            };
-            researcher = {
-              model = "openai-codex/gpt-5.6-luna";
-              thinking = "low";
-            };
-            planner = {
-              model = "openai-codex/gpt-5.6-terra";
-              thinking = "low";
-            };
-            worker = {
-              model = "openai-codex/gpt-5.6-terra";
-              thinking = "low";
-            };
-            reviewer = {
-              model = "openai-codex/gpt-5.6-sol";
-              thinking = "medium";
-            };
-            context-builder = {
-              model = "openai-codex/gpt-5.6-terra";
-              thinking = "low";
-            };
-            oracle = {
-              model = "openai-codex/gpt-5.6-sol";
-              thinking = "medium";
-            };
-            delegate = {
-              model = "openai-codex/gpt-5.6-luna";
-              thinking = "minimal";
-            };
-          };
-        };
         packages =
           [
             "npm:@sageveil/pi@0.2.11"
             "git:github.com/DietrichGebert/ponytail@2ed6c52c9d7e5e56942508591085fd45dea277d3"
             "npm:@narumitw/pi-usage@0.50.0"
-            "npm:pi-subagents@0.46.0"
+            "git:github.com/dgabka/pi-interactive-subagents@7ff1997f2f89c9557b0cc2f5833fd066d15d9112"
             "npm:pi-web-access@0.21.0"
           ]
           ++ config.configNix.pi.extraPackages;
