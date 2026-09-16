@@ -5,6 +5,7 @@
   llm-agents,
   sops-nix,
   git-wt,
+  grove,
   system,
   hostConfigPath,
   homeProfile,
@@ -22,7 +23,7 @@ nixpkgs.lib.nixosSystem {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs =
-        {inherit git-wt llm-agents neovim-nightly;} // extraSpecialArgs;
+        {inherit git-wt grove llm-agents neovim-nightly;} // extraSpecialArgs;
       home-manager.users.dgabka = {
         imports = [homeProfile sops-nix.homeManagerModules.sops];
       };

@@ -4,6 +4,7 @@
   neovim-nightly,
   nix-homebrew,
   git-wt,
+  grove,
   llm-agents,
   sops-nix,
   system,
@@ -18,7 +19,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit git-wt llm-agents neovim-nightly;};
+        extraSpecialArgs = {inherit git-wt grove llm-agents neovim-nightly;};
         users.dgabka = {
           imports = [homeProfile sops-nix.homeManagerModules.sops];
         };

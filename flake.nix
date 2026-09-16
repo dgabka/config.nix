@@ -46,6 +46,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     git-wt.url = "github:dgabka/git-wt";
+    grove.url = "github:dgabka/grove/v0.1.2";
 
     nix-openclaw.url = "github:openclaw/nix-openclaw";
     nix-openclaw.inputs.nixpkgs.follows = "nixpkgs";
@@ -70,6 +71,7 @@
     sops-nix-intel,
     nix-homebrew,
     git-wt,
+    grove,
     nix-openclaw,
     nixpkgs-openclaw-node,
     ...

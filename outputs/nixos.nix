@@ -5,6 +5,7 @@
   llm-agents,
   sops-nix,
   git-wt,
+  grove,
   nix-openclaw,
   nixpkgs-openclaw-node,
   ...
@@ -12,7 +13,7 @@
   mkNixosHost = import ../lib/mkNixosHost.nix;
 in {
   hyperion = mkNixosHost {
-    inherit nixpkgs home-manager neovim-nightly llm-agents sops-nix git-wt;
+    inherit nixpkgs home-manager neovim-nightly llm-agents sops-nix git-wt grove;
     specialArgs = {inherit nix-openclaw nixpkgs-openclaw-node;};
     extraSpecialArgs = {inherit nix-openclaw nixpkgs-openclaw-node;};
     system = "x86_64-linux";

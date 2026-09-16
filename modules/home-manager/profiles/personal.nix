@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }: let
   homelabCaBundle = pkgs.runCommand "homelab-ca-bundle.pem" {} ''
@@ -85,10 +84,4 @@ in {
     OBSIDIAN_VAULT = "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/Terminus";
   };
   home.sessionPath = ["${config.home.homeDirectory}/.rd/bin"];
-
-  xdg.configFile."tms/config.toml".text = lib.mkBefore ''
-    bookmarks = [
-      "${config.home.sessionVariables.OBSIDIAN_VAULT}"
-    ]
-  '';
 }

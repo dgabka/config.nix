@@ -57,4 +57,4 @@ Keep it factual and concise. Include the source branch, base, new branch, comple
 
 7. Report the new branch and worktree path. Remind the user that `handoff.md` is intentionally untracked and should normally be deleted before committing.
 
-Do not start another agent process automatically. The `wt` post-add hook refreshes the TMS session; the user can switch to the new worktree and start the next agent there.
+Do not start another agent process automatically. Grove discovers the new worktree; the user can switch to it and start the next agent there.
