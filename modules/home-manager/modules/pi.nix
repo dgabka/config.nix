@@ -75,7 +75,7 @@
             "npm:@sageveil/pi@0.2.11"
             "git:github.com/DietrichGebert/ponytail@2ed6c52c9d7e5e56942508591085fd45dea277d3"
             "npm:@narumitw/pi-usage@0.50.0"
-            "git:github.com/dgabka/pi-interactive-subagents@7ff1997f2f89c9557b0cc2f5833fd066d15d9112"
+            "git:github.com/dgabka/pi-interactive-subagents@v4.0.0"
             "npm:pi-web-access@0.21.0"
           ]
           ++ config.configNix.pi.extraPackages;
