@@ -20,12 +20,12 @@
     [[presets.windows]]
     name = "pi"
     [[presets.windows.panes]]
-    command = ["pi"]
+    command = ["zsh", "-ic", "pi; exec zsh"]
 
     [[presets.windows]]
     name = "nvim"
     [[presets.windows.panes]]
-    command = ["nvim", "-S"]
+    command = ["zsh", "-ic", "nvim -S; exec zsh"]
 
     [[presets.windows]]
     name = "shell"
@@ -36,12 +36,12 @@
     [[presets.windows]]
     name = "pi"
     [[presets.windows.panes]]
-    command = ["pi"]
+    command = ["zsh", "-ic", "pi; exec zsh"]
 
     [[presets.windows]]
     name = "nvim"
     [[presets.windows.panes]]
-    command = ["nvim", "-S"]
+    command = ["zsh", "-ic", "nvim -S; exec zsh"]
 
     [[presets.windows]]
     name = "shell"
