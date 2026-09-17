@@ -10,6 +10,7 @@
     roots = [
       "${config.home.homeDirectory}/repos",
       "${config.home.homeDirectory}/dotfiles",
+      "${builtins.dirOf config.home.sessionVariables.OBSIDIAN_VAULT}",
     ]
     max_depth = 2
 
@@ -28,5 +29,24 @@
 
     [[presets.windows]]
     name = "shell"
+
+    [[presets]]
+    name = "dev-server"
+
+    [[presets.windows]]
+    name = "pi"
+    [[presets.windows.panes]]
+    command = ["pi"]
+
+    [[presets.windows]]
+    name = "nvim"
+    [[presets.windows.panes]]
+    command = ["nvim", "-S"]
+
+    [[presets.windows]]
+    name = "shell"
+
+    [[presets.windows]]
+    name = "server"
   '';
 }
