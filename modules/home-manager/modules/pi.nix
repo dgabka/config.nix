@@ -33,6 +33,7 @@
         export PNPM_HOME="${config.xdg.dataHome}/pnpm"
         export PATH="$PNPM_HOME/bin:$PATH"
         $DRY_RUN_CMD ${pkgs.pnpm}/bin/pnpm add --global --ignore-scripts @earendil-works/pi-coding-agent
+        $DRY_RUN_CMD pi update --extensions
       ''
     );
 
@@ -72,11 +73,11 @@
         defaultThinkingLevel = "low";
         packages =
           [
-            "npm:@sageveil/pi@0.2.11"
-            "git:github.com/DietrichGebert/ponytail@2ed6c52c9d7e5e56942508591085fd45dea277d3"
-            "npm:@narumitw/pi-usage@0.50.0"
-            "git:github.com/dgabka/pi-interactive-subagents@v4.0.0"
-            "npm:pi-web-access@0.21.0"
+            "npm:@sageveil/pi"
+            "git:github.com/DietrichGebert/ponytail"
+            "npm:@narumitw/pi-usage"
+            "git:github.com/dgabka/pi-interactive-subagents"
+            "npm:pi-web-access"
           ]
           ++ config.configNix.pi.extraPackages;
       };
