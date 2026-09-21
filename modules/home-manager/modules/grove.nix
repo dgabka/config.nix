@@ -14,6 +14,22 @@
     ]
     max_depth = 2
 
+    [[defaults]]
+    name = "home"
+    cwd = "${config.home.homeDirectory}"
+
+    [[defaults.windows]]
+    name = "shell"
+
+    [[defaults]]
+    name = "hyperion"
+    cwd = "${config.home.homeDirectory}"
+
+    [[defaults.windows]]
+    name = "shell"
+    [[defaults.windows.panes]]
+    command = ["ssh", "hyperion", "tmux", "at"]
+
     [[presets]]
     name = "dev"
 

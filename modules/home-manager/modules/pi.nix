@@ -31,9 +31,9 @@
     home.activation.installPi = lib.mkIf (pkgs.stdenv.hostPlatform.system == "x86_64-darwin") (
       lib.hm.dag.entryAfter ["writeBoundary"] ''
         export PNPM_HOME="${config.xdg.dataHome}/pnpm"
-        export PATH="$PNPM_HOME/bin:$PATH"
+        export PATH="${pkgs.git}/bin:${pkgs.nodejs}/bin:$PNPM_HOME/bin:$PATH"
         $DRY_RUN_CMD ${pkgs.pnpm}/bin/pnpm add --global --ignore-scripts @earendil-works/pi-coding-agent
-        $DRY_RUN_CMD pi update --extensions
+        $DRY_RUN_CMD pi update git:github.com/dgabka/pi-interactive-subagents
       ''
     );
 
