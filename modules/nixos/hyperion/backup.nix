@@ -36,6 +36,7 @@
       "/home/dgabka/.password-store"
       "/home/dgabka/.gnupg"
       "/home/dgabka/.openclaw"
+      "/home/dgabka/notes"
     ];
 
     exclude = [
