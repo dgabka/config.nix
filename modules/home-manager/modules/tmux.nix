@@ -5,13 +5,13 @@
 }: let
   sageveil = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "sageveil";
-    version = "v0.2.5";
+    version = "v0.2.8";
     rtpFilePath = "sageveil.tmux";
     src = pkgs.fetchFromGitHub {
       owner = "sageveil";
       repo = "tmux";
-      rev = "v0.2.5";
-      sha256 = "sha256-dr9Av79e8m7ouWfq0091ein66ytf0ic8Zpo4PcmcTEI=";
+      rev = "v0.2.8";
+      sha256 = "sha256-A0FxsSbedaF94XShdo7URWqGbgWBdo+GmbXVOdRmcyg=";
     };
   };
 in {

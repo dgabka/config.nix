@@ -8,8 +8,8 @@
   ghosttyTheme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "ghostty";
-    rev = "v0.2.1";
-    sha256 = "sha256-iviOkqQ3Rh/G4qo/Tn/1WDWfE+1jubk+8ZQ/LogecYU=";
+    rev = "v0.2.4";
+    sha256 = "sha256-nC0gJc1T8cE0tnAj7B++t1AweG9tH45MYpUgvikjdSM=";
   };
 in {
   options.configNix.ghostty.enable = lib.mkOption {

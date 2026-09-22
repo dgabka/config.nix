@@ -6,8 +6,8 @@
   theme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "starship";
-    rev = "v0.2.2";
-    sha256 = "sha256-Ua1hJSiCGYfw/D0beGvLEGwiFyhXxQk915qI/YBpyAU=";
+    rev = "v0.2.5";
+    sha256 = "sha256-5SbnlG6yHHOMSeBqF7KmETl9iJQJogwH1aM28mFkYJI=";
   };
 in {
   programs.starship = {

@@ -7,8 +7,8 @@
   theme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "fzf";
-    rev = "v0.2.1";
-    sha256 = "sha256-OVvSNN6FWkaO5tzJmteFREXLpKD2kEs+7Sn1wSRFECc=";
+    rev = "v0.2.4";
+    sha256 = "sha256-8ZcytEd09LrRN7VU4qHFLhtWNFOnavyK+wTT4ZtWEvE=";
   };
   changeDirWidget = {
     command = "fd --type d --hidden";

@@ -13,8 +13,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "sageveil";
           repo = "text-mate";
-          rev = "v0.2.1";
-          sha256 = "sha256-QsLRtfejXDGi3rZiNdgWM60cOlj/BbRQa2dHHEViEss=";
+          rev = "v0.2.4";
+          sha256 = "sha256-KiI1YSrIYr8ueVwgCml5rrGM5zjfeehrZZUAwkTMHvY=";
         };
         file = "sageveil.tmTheme";
       };
