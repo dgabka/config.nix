@@ -49,11 +49,8 @@ in {
       enableZshIntegration = true;
       defaultCommand = "fd --type f --hidden";
       defaultOptions = [
-        "--height 50%"
         "--border=none"
         "--preview-window 'border-none'"
-        "--no-separator"
-        "--no-scrollbar"
       ];
       tmux.enableShellIntegration = true;
       colors = import "${theme}/sageveil.nix";
