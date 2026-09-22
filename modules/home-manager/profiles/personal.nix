@@ -81,7 +81,7 @@ in {
   ];
 
   home.sessionVariables = {
-    OBSIDIAN_VAULT = "${config.home.homeDirectory}/Library/Mobile Documents/iCloud~md~obsidian/Documents/Terminus";
+    OBSIDIAN_VAULT = "${config.home.homeDirectory}/vaults/Terminus";
   };
   home.sessionPath = ["${config.home.homeDirectory}/.rd/bin"];
 }
