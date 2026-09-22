@@ -53,6 +53,7 @@ in {
       gateway = {
         mode = "local";
         bind = "lan";
+        trustedProxies = ["10.42.0.0/24"]; # Traefik pods on this single-node k3s host
         controlUi.allowedOrigins = [
           "https://openclaw.internal"
           "https://openclaw.k8s.hyperion.internal"
