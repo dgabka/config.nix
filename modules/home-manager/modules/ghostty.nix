@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  isLinux = pkgs.stdenv.isLinux;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
   ghosttyTheme = pkgs.fetchFromGitHub {
     owner = "sageveil";
     repo = "ghostty";

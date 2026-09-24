@@ -4,8 +4,8 @@
   lib,
   ...
 }: let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
   mod = "Mod1";
 in {
   options.configNix.tiling.enable = lib.mkOption {
