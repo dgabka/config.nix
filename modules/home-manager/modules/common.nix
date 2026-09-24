@@ -76,7 +76,6 @@ in {
         eslint_d
         prettierd
         vscode-langservers-extracted
-        playwright-test
         # other
         lspmux
         marksman
