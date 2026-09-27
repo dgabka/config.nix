@@ -32,6 +32,10 @@ in {
 
   systemd.user.services.openclaw-gateway.Install.WantedBy = ["default.target"];
 
+  programs.zsh.initContent = lib.mkAfter ''
+    [[ -f "${config.home.homeDirectory}/.openclaw/completions/openclaw.zsh" ]] && source "${config.home.homeDirectory}/.openclaw/completions/openclaw.zsh"
+  '';
+
   xdg.configFile."systemd/user/openclaw-gateway.service.d/claw.conf".text = ''
     [Service]
     EnvironmentFile=%h/.config/openclaw/claw.env
