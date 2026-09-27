@@ -103,7 +103,11 @@ in {
           coding-agent.enabled = true;
         };
 
-      agents.defaults.model.primary = "openai/gpt-5.6-terra";
+      agents.defaults.model.primary = "openai/gpt-5.6-sol";
+      memory.search = {
+        provider = "ollama";
+        model = "nomic-embed-text";
+      };
       commands.ownerAllowFrom = ["telegram:8849544452"];
       channels.telegram = {
         enabled = true;
