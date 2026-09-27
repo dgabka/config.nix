@@ -570,22 +570,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-openclaw-node": {
-      "locked": {
-        "lastModified": 1784120854,
-        "narHash": "sha256-KesHgItiZPgGX740axSiQLcIQ8D24MDqNpkKYWIek8k=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "753cc8a3a87467296ddd1fa93f0cc3e81120ee46",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "753cc8a3a87467296ddd1fa93f0cc3e81120ee46",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1789090104,
@@ -650,6 +634,21 @@
         "type": "github"
       }
     },
+    "openclaw-config": {
+      "locked": {
+        "lastModified": 1790540761,
+        "narHash": "sha256-OcEYGKA6PlUddwGK/+FY2f+f0OXkklux77JZIrOSD/k=",
+        "ref": "refs/heads/main",
+        "rev": "53d1d836ca0139edd6f72c8d99f3f7f3d8368eb8",
+        "revCount": 3,
+        "type": "git",
+        "url": "ssh://git@hyperion.internal:2222/dgabka/openclaw.nix.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@hyperion.internal:2222/dgabka/openclaw.nix.git"
+      }
+    },
     "qmd": {
       "inputs": {
         "flake-utils": [
@@ -693,7 +692,7 @@
         "nix-openclaw": "nix-openclaw",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-intel": "nixpkgs-intel",
-        "nixpkgs-openclaw-node": "nixpkgs-openclaw-node",
+        "openclaw-config": "openclaw-config",
         "rust-overlay": "rust-overlay_2",
         "rust-overlay-intel": "rust-overlay-intel",
         "sops-nix": "sops-nix",

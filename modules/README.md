@@ -20,7 +20,6 @@ The work-machine configuration lives in the separate `wh.nix` repository and con
 
 ## `assets`
 Non-Nix sources consumed by modules:
-- `openclaw/bootstrap/`: declarative OpenClaw workspace bootstrap files.
 - `scripts/`: helper scripts wrapped by Home Manager.
 - `skills/`: shared agent skills.
 - `tmux/`, `zsh/`: program configuration fragments.

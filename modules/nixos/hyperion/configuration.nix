@@ -1,7 +1,6 @@
 {
   pkgs,
   nix-openclaw,
-  nixpkgs-openclaw-node,
   ...
 }: {
   imports = [
@@ -50,9 +49,6 @@
     cores = 0;
   };
   nixpkgs.overlays = [
-    (final: prev: {
-      nodejs_22 = nixpkgs-openclaw-node.legacyPackages.${prev.stdenv.hostPlatform.system}.nodejs_22;
-    })
     (final: prev: builtins.removeAttrs (nix-openclaw.overlays.default final prev) ["pnpm_11"])
   ];
   nixpkgs.config.permittedInsecurePackages = [
