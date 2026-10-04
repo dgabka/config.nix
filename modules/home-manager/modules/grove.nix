@@ -12,6 +12,7 @@
       "${config.home.homeDirectory}/dotfiles",
       "${builtins.dirOf config.home.sessionVariables.OBSIDIAN_VAULT}",
     ]
+    bookmarks = ["${config.home.sessionVariables.OBSIDIAN_VAULT}"]
     max_depth = 2
 
     [[defaults]]
