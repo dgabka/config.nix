@@ -47,6 +47,15 @@
       ${config.configNix.pi.extraAgentGuidance}
     '';
 
+    home.file.".pi/agent/keybindings.json".text = builtins.toJSON {
+      "tui.altScreen.lineUp" = "ctrl+y";
+      "tui.altScreen.lineDown" = "ctrl+e";
+      "tui.altScreen.halfPageUp" = "ctrl+u";
+      "tui.altScreen.halfPageDown" = "ctrl+d";
+      "tui.altScreen.pageUp" = "ctrl+b";
+      "tui.altScreen.pageDown" = "ctrl+f";
+    };
+
     home.file.".pi/agent/sageveil.json".text = builtins.toJSON {
       vim = true;
       fuzzyFiles = true;
