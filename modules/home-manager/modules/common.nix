@@ -61,6 +61,8 @@ in {
         luajitPackages.luacheck
         lua-language-server
         stylua
+        # java
+        jdt-language-server
         # yaml
         yaml-language-server
         yamlfmt
