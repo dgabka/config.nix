@@ -72,7 +72,7 @@ in {
         shfmt
         # javascript tools
         nodejs
-        pnpm
+        pnpm_12
         vtsls
         typescript
         eslint_d

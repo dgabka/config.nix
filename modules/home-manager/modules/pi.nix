@@ -32,7 +32,7 @@
       lib.hm.dag.entryAfter ["writeBoundary"] ''
         export PNPM_HOME="${config.xdg.dataHome}/pnpm"
         export PATH="${pkgs.git}/bin:${pkgs.nodejs}/bin:$PNPM_HOME/bin:$PATH"
-        $DRY_RUN_CMD ${pkgs.pnpm}/bin/pnpm add --global --ignore-scripts @earendil-works/pi-coding-agent
+        $DRY_RUN_CMD ${pkgs.pnpm_12}/bin/pnpm add --global --ignore-scripts @earendil-works/pi-coding-agent
         $DRY_RUN_CMD pi update git:github.com/dgabka/pi-interactive-subagents
       ''
     );

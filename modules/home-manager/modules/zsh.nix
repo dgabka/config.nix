@@ -58,7 +58,7 @@
     };
     initContent = lib.mkAfter ''
       ${builtins.readFile ../../../assets/zsh/content.zsh}
-      source ${pkgs.pnpm}/share/zsh/site-functions/_pnpm
+      source ${pkgs.pnpm_12}/share/zsh/site-functions/_pnpm
     '';
   };
 }
