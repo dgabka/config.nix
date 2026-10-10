@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   ...
@@ -32,4 +33,15 @@
     OBSIDIAN_VAULT = "${config.home.homeDirectory}/vaults/Terminus";
   };
   home.sessionPath = ["${config.home.homeDirectory}/.rd/bin"];
+
+  xdg.configFile."grove/config.toml".text = lib.mkAfter ''
+    [[defaults]]
+    name = "hyperion"
+    cwd = "${config.home.homeDirectory}"
+
+    [[defaults.windows]]
+    name = "shell"
+    [[defaults.windows.panes]]
+    command = ["ssh", "hyperion"]
+  '';
 }
