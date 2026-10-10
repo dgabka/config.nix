@@ -636,11 +636,11 @@
     },
     "openclaw-config": {
       "locked": {
-        "lastModified": 1791225350,
-        "narHash": "sha256-oYJAMqWYtZhDoOiB1BST8nsgqxwe4dQ19xeBdRwQLd0=",
+        "lastModified": 1791664853,
+        "narHash": "sha256-0BbxCAFcLHIWc5596RO1vNwZlcSnIpLU03w/V/n0kwY=",
         "ref": "refs/heads/main",
-        "rev": "0c59233f0659431e162891be17a90f9af30f5e23",
-        "revCount": 7,
+        "rev": "08e38b8b0a3efb32c7c2fdca44d2d618e320d5d3",
+        "revCount": 9,
         "type": "git",
         "url": "ssh://git@hyperion.internal:2222/dgabka/openclaw.nix.git"
       },
