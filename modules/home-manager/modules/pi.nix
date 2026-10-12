@@ -82,7 +82,8 @@
         defaultThinkingLevel = "low";
         packages =
           [
-            "npm:@sageveil/pi"
+            # "npm:@sageveil/pi"
+            "${config.home.homeDirectory}/repos/sageveil/dist/ports/pi"
             "git:github.com/DietrichGebert/ponytail"
             "npm:@narumitw/pi-usage"
             "git:github.com/dgabka/pi-interactive-subagents"

@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -7,12 +8,13 @@
     pluginName = "sageveil";
     version = "0.2.9";
     rtpFilePath = "sageveil.tmux";
-    src = pkgs.fetchFromGitHub {
-      owner = "sageveil";
-      repo = "tmux";
-      rev = "0.2.9";
-      sha256 = "sha256-QbPxhAkebhFtpeXi5YdEEGeMLx4SsbL19cvMjn5MDjc=";
-    };
+    # src = pkgs.fetchFromGitHub {
+    #   owner = "sageveil";
+    #   repo = "tmux";
+    #   rev = "0.2.9";
+    #   sha256 = "sha256-QbPxhAkebhFtpeXi5YdEEGeMLx4SsbL19cvMjn5MDjc=";
+    # };
+    src = /. + "${config.home.homeDirectory}/repos/sageveil/dist/ports/tmux";
   };
 in {
   programs.tmux = {

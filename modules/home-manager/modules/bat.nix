@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -10,12 +11,13 @@
     };
     themes = {
       sageveil = {
-        src = pkgs.fetchFromGitHub {
-          owner = "sageveil";
-          repo = "text-mate";
-          rev = "v0.2.4";
-          sha256 = "sha256-KiI1YSrIYr8ueVwgCml5rrGM5zjfeehrZZUAwkTMHvY=";
-        };
+        # src = pkgs.fetchFromGitHub {
+        #   owner = "sageveil";
+        #   repo = "text-mate";
+        #   rev = "v0.2.4";
+        #   sha256 = "sha256-KiI1YSrIYr8ueVwgCml5rrGM5zjfeehrZZUAwkTMHvY=";
+        # };
+        src = /. + "${config.home.homeDirectory}/repos/sageveil/dist/ports/text-mate";
         file = "sageveil.tmTheme";
       };
     };

@@ -1,14 +1,16 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: let
-  sageveil = pkgs.fetchFromGitHub {
-    owner = "sageveil";
-    repo = "k9s";
-    rev = "v0.2.4";
-    sha256 = "sha256-rXKeHAQ9ICctH9YoGpcWCXXATcR//APY2jRh8MW5F4M=";
-  };
+  # sageveil = pkgs.fetchFromGitHub {
+  #   owner = "sageveil";
+  #   repo = "k9s";
+  #   rev = "v0.2.4";
+  #   sha256 = "sha256-rXKeHAQ9ICctH9YoGpcWCXXATcR//APY2jRh8MW5F4M=";
+  # };
+  sageveil = /. + "${config.home.homeDirectory}/repos/sageveil/dist/ports/k9s";
 in {
   programs.k9s = {
     enable = lib.mkDefault true;
