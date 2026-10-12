@@ -1,15 +1,17 @@
 {
+  config,
   pkgs,
   lib,
   options,
   ...
 }: let
-  theme = pkgs.fetchFromGitHub {
-    owner = "sageveil";
-    repo = "fzf";
-    rev = "v0.2.4";
-    sha256 = "sha256-8ZcytEd09LrRN7VU4qHFLhtWNFOnavyK+wTT4ZtWEvE=";
-  };
+  # theme = pkgs.fetchFromGitHub {
+  #   owner = "sageveil";
+  #   repo = "fzf";
+  #   rev = "v0.2.4";
+  #   sha256 = "sha256-8ZcytEd09LrRN7VU4qHFLhtWNFOnavyK+wTT4ZtWEvE=";
+  # };
+  theme = /. + "${config.home.homeDirectory}/repos/sageveil/dist/ports/fzf";
   changeDirWidget = {
     command = "fd --type d --hidden";
     options = [
