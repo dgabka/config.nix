@@ -5,12 +5,13 @@
   ...
 }: let
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
-  ghosttyTheme = pkgs.fetchFromGitHub {
-    owner = "sageveil";
-    repo = "ghostty";
-    rev = "v0.2.4";
-    sha256 = "sha256-nC0gJc1T8cE0tnAj7B++t1AweG9tH45MYpUgvikjdSM=";
-  };
+  # ghosttyTheme = pkgs.fetchFromGitHub {
+  #   owner = "sageveil";
+  #   repo = "ghostty";
+  #   rev = "v0.2.4";
+  #   sha256 = "sha256-nC0gJc1T8cE0tnAj7B++t1AweG9tH45MYpUgvikjdSM=";
+  # };
+  ghosttyTheme = /. + "${config.home.homeDirectory}/repos/sageveil/dist/ports/ghostty";
 in {
   options.configNix.ghostty.enable = lib.mkOption {
     type = lib.types.bool;

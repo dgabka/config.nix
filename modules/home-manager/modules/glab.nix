@@ -4,12 +4,13 @@
   pkgs,
   ...
 }: let
-  theme = pkgs.fetchFromGitHub {
-    owner = "sageveil";
-    repo = "glamour";
-    rev = "v0.2.4";
-    sha256 = "sha256-+Fz3bpeSSgAQxYFQ7wghONjOnCMdQ46uw8Rw5CT8Kgg=";
-  };
+  # theme = pkgs.fetchFromGitHub {
+  #   owner = "sageveil";
+  #   repo = "glamour";
+  #   rev = "v0.2.4";
+  #   sha256 = "sha256-+Fz3bpeSSgAQxYFQ7wghONjOnCMdQ46uw8Rw5CT8Kgg=";
+  # };
+  theme = /. + "${config.home.homeDirectory}/repos/sageveil/dist/ports/glamour";
 in {
   options.configNix.glab.enable = lib.mkOption {
     type = lib.types.bool;
