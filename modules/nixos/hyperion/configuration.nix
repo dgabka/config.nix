@@ -1,8 +1,4 @@
-{
-  pkgs,
-  nix-openclaw,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./external-drives.nix
@@ -48,9 +44,6 @@
     max-jobs = 1;
     cores = 0;
   };
-  nixpkgs.overlays = [
-    (final: prev: builtins.removeAttrs (nix-openclaw.overlays.default final prev) ["pnpm_11"])
-  ];
   nixpkgs.config.permittedInsecurePackages = [
     "intel-media-sdk-23.2.2"
   ];

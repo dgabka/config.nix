@@ -47,12 +47,6 @@
 
     git-wt.url = "github:dgabka/git-wt";
     grove.url = "github:dgabka/grove";
-
-    nix-openclaw.url = "github:openclaw/nix-openclaw";
-    nix-openclaw.inputs.nixpkgs.follows = "nixpkgs";
-    nix-openclaw.inputs.home-manager.follows = "home-manager";
-    openclaw-config.url = "git+ssh://git@hyperion.internal:2222/dgabka/openclaw.nix.git";
-
   };
   outputs = {
     nixpkgs,
@@ -72,7 +66,6 @@
     nix-homebrew,
     git-wt,
     grove,
-    nix-openclaw,
     ...
   } @ inputs: let
     darwinConfigurations = import ./outputs/darwin.nix inputs;

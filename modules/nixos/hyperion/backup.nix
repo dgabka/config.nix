@@ -35,7 +35,7 @@
       "/home/dgabka/dotfiles"
       "/home/dgabka/.password-store"
       "/home/dgabka/.gnupg"
-      "/home/dgabka/.openclaw"
+      "/home/dgabka/.local/state/livesync-bridge"
       "/home/dgabka/notes"
     ];
 
