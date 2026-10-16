@@ -19,6 +19,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
+        backupFileExtension = "hm-backup";
         extraSpecialArgs = {inherit git-wt grove llm-agents neovim-nightly;};
         users.dgabka = {
           imports = [homeProfile sops-nix.homeManagerModules.sops];

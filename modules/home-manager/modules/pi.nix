@@ -78,7 +78,7 @@
       text = builtins.toJSON {
         theme = "sageveil";
         defaultProvider = "openai-codex";
-        defaultModel = "gpt-5.6-terra";
+        defaultModel = "gpt-6.1-sol";
         defaultThinkingLevel = "low";
         packages =
           [
