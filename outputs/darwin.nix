@@ -7,7 +7,6 @@
   neovim-nightly-intel,
   nix-homebrew,
   git-wt,
-  grove,
   llm-agents,
   llm-agents-intel,
   sops-nix,
@@ -22,14 +21,14 @@ in rec {
     neovim-nightly = neovim-nightly-intel;
     llm-agents = llm-agents-intel;
     sops-nix = sops-nix-intel;
-    inherit nix-homebrew git-wt grove;
+    inherit nix-homebrew git-wt;
     system = "x86_64-darwin";
     hostModule = ../modules/darwin/personal.nix;
     homeProfile = ../modules/home-manager/profiles/personal.nix;
   };
 
   workBase = mkDarwinHost {
-    inherit darwin home-manager neovim-nightly nix-homebrew git-wt grove llm-agents sops-nix;
+    inherit darwin home-manager neovim-nightly nix-homebrew git-wt llm-agents sops-nix;
     system = "aarch64-darwin";
     hostModule = {};
     homeProfile = ../modules/home-manager/profiles/base.nix;

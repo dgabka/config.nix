@@ -46,7 +46,6 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     git-wt.url = "github:dgabka/git-wt";
-    grove.url = "github:dgabka/grove";
   };
   outputs = {
     nixpkgs,
@@ -65,7 +64,6 @@
     sops-nix-intel,
     nix-homebrew,
     git-wt,
-    grove,
     ...
   } @ inputs: let
     darwinConfigurations = import ./outputs/darwin.nix inputs;

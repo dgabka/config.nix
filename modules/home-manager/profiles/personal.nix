@@ -34,14 +34,9 @@
   };
   home.sessionPath = ["${config.home.homeDirectory}/.rd/bin"];
 
-  xdg.configFile."grove/config.toml".text = lib.mkAfter ''
-    [[defaults]]
-    name = "hyperion"
-    cwd = "${config.home.homeDirectory}"
-
-    [[defaults.windows]]
-    name = "shell"
-    [[defaults.windows.panes]]
-    command = ["ssh", "hyperion"]
+  xdg.configFile."tms/config.toml".text = lib.mkBefore ''
+    bookmarks = [
+      "${config.home.sessionVariables.OBSIDIAN_VAULT}"
+    ]
   '';
 }

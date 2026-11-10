@@ -271,25 +271,6 @@
         "type": "github"
       }
     },
-    "grove": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2",
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1791485275,
-        "narHash": "sha256-yxvNUeDl1iu6XuKxO/NOUPkTeTIpDBp7qdo4GOMCBd8=",
-        "owner": "dgabka",
-        "repo": "grove",
-        "rev": "8d8b477211631f451b3a3630472b9208c0937456",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dgabka",
-        "repo": "grove",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -510,22 +491,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1789090104,
-        "narHash": "sha256-aYuIOkjWlA2YvXzx9NVgwHtGZqA+J6G7Dt3wbuuGwlg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b378e416ccd4a9d27aba331c8f51a7c985dea1a0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-26.05-darwin",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1793977579,
         "narHash": "sha256-WrSODdZFVIs/Hh2NzC0bY+ROByi0bATg8WfePX8dPj8=",
         "owner": "nixos",
@@ -540,7 +505,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1744536153,
         "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
@@ -562,7 +527,6 @@
         "darwin-intel": "darwin-intel",
         "flake-utils": "flake-utils",
         "git-wt": "git-wt",
-        "grove": "grove",
         "home-manager": "home-manager",
         "home-manager-intel": "home-manager-intel",
         "llm-agents": "llm-agents",
@@ -570,9 +534,9 @@
         "neovim-nightly": "neovim-nightly",
         "neovim-nightly-intel": "neovim-nightly-intel",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-intel": "nixpkgs-intel",
-        "rust-overlay": "rust-overlay_2",
+        "rust-overlay": "rust-overlay",
         "rust-overlay-intel": "rust-overlay-intel",
         "sops-nix": "sops-nix",
         "sops-nix-intel": "sops-nix-intel"
@@ -580,30 +544,7 @@
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "grove",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1789196581,
-        "narHash": "sha256-yJr1Bt4fKkKIpPYbsKGqJ0VFdoDnURgRwuffmBQ2WzY=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "228ecefb6329d5a531b77b46b581a2f0c26ee056",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rust-overlay-intel": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-intel"
-        ]
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1794216702,
@@ -619,9 +560,11 @@
         "type": "github"
       }
     },
-    "rust-overlay_2": {
+    "rust-overlay-intel": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": [
+          "nixpkgs-intel"
+        ]
       },
       "locked": {
         "lastModified": 1794216702,
