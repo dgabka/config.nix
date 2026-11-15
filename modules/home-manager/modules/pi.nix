@@ -44,6 +44,15 @@
       - Use `$OBSIDIAN_VAULT` for requested durable notes or memory; do not hard-code its path.
       - `personal` (`Dawids-MacBook-Pro`) is the primary Intel MacBook Pro workstation. `hyperion` is the NixOS homelab server and runs the Kubernetes cluster. Check `hostname` before host-specific or disruptive work.
       - Do not apply system configuration, deploy, or restart services without explicit approval. Never commit or expose secrets.
+
+      ## Durable notes
+
+      - Write notes for me, not about me. Document current state and useful knowledge, not the agent's work or our conversation.
+      - Keep what helps me understand or use the subject: what it is, where it is configured, how to use it, and essential rationale.
+      - Do not add request summaries, "the user/learner requested", pending-work sections, approval status, implementation steps, commit hashes, check results, or "nothing changed" disclaimers. Keep work status in chat; use plans or logs only when requested.
+      - Update facts in place rather than appending a change history. Never describe an unverified configuration as deployed.
+      - Omit generic warnings and defensive caveats. Include only concrete limitations that affect use, stated briefly and once.
+      - State findings directly: "No Ollama references in repositories A and B", not a narrative of searches and their methodological limits.
       ${config.configNix.pi.extraAgentGuidance}
     '';
 
