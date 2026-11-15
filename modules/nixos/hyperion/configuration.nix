@@ -132,7 +132,6 @@
 
   environment.systemPackages = with pkgs; [
     vim
-    ungoogled-chromium
     gnumake
     gcc
 
