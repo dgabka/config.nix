@@ -15,6 +15,7 @@
   networking.networkmanager.enable = true;
   services.tailscale.enable = true;
   services.ollama.enable = true;
+  services.ollama.host = "0.0.0.0";
 
   systemd.services.eno1-ring-buffer = {
     description = "Increase eno1 NIC ring buffers";
