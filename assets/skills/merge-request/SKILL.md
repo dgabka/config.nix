@@ -26,9 +26,21 @@ If `glab` is missing, unauthenticated, or the current branch is `main`/`master`,
    ```sh
    git push -u origin HEAD
    ```
-3. Draft a concise title and description from the commits/diff.
+3. Draft a concise title and description from the commits/diff (see Description).
 4. Create only after the user approves the final draft.
 5. If the user says publish/create/open after edits, use the final approved draft exactly.
+
+## Description
+
+Write it for the reviewer: what the MR changes and, when it isn't obvious, why.
+
+- Title: conventional-commit style summary of the net change, e.g. `feat(tennis-iframe): migrate the tennis scoreboard`.
+- Body: a one-line purpose, then the essential changes as short bullets in terms of behaviour and structure.
+- If the MR relates to a Jira ticket, end the description with the ticket reference, e.g. `[ALAB-4613](https://evokeplc.atlassian.net/browse/ALAB-4613)`.
+- Describe the net change relative to the target branch, not how it was built: no implementation diary, review history, fix-up notes or "addressed feedback" lists.
+- No validation, test or check results (format, lint, typecheck, unit/e2e counts, pipeline status). The pipeline shows them.
+- No request summaries, approval status, pending work, commit hashes, file inventories, generic caveats or "nothing else changed" disclaimers. Mention a limitation or rollout step only when it concretely affects reviewing or deploying, briefly and once.
+- Keep it short; prefer deleting a line over qualifying it. When the MR changes later, update the description in place to match the current state.
 
 ## Create
 
